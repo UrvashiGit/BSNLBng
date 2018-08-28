@@ -1,4 +1,4 @@
-package com.sterlite.bsnl.controller;
+package com.sterlite.bsnl.utill.reportbuilder;
 
 import java.util.List;
 import java.util.Map;
@@ -9,23 +9,17 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.view.document.AbstractXlsxView;
 
 import com.sterlite.bsnl.entity.Book;
-import com.sterlite.bsnl.services.IBookStoreService;
 
 public class ExcelViewReport extends AbstractXlsxView  {
 
 
-	
-	
 	@Override
 	protected void buildExcelDocument(Map<String, Object> model, Workbook workbook, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-
-		response.setHeader("Content-Disposition", "attachment; filename=\"books.xlsx\"");
-		
+	
 		@SuppressWarnings("unchecked")
 		  List<Book> books = (List<Book>) model.get("bookList");
 		

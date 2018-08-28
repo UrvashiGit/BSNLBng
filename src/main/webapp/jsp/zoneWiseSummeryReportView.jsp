@@ -39,7 +39,8 @@
 							<th>Phase</th>
 							<th>Zone Name</th>
 							<th>Total BNG</th>
-							<th>Site Survey Site Ready</th>
+							<th>Site Survey </th>
+							<th>Site Ready</th>
 							<th>Material Delivery</th>
 							<th>Power On</th>
 							<th>NW Integration</th>
@@ -69,27 +70,30 @@
 							<td></td>
 							<td></td>
 							<td></td>
-						</tr>
-						<tr>
-							<td>Phase - 1</td>
-							<td>South</td>
-							<td>34</td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
 							<td></td>
 						</tr>
 						<tr>
 							<td>Phase - 1</td>
 							<td>South</td>
 							<td>34</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>Phase - 1</td>
+							<td>South</td>
+							<td>34</td>
+							<td></td>
 							<td></td>
 							<td></td>
 							<td></td>
@@ -106,10 +110,10 @@
 				</table>
 
 				<div>
-					<button type="button" class="btn btn-primary">Download As
-						Xls</button>
-					<button type="button" class="btn btn-primary">Download As
-						Pdf</button>
+					<a href="zoneWiseSummeryReportDownloadExcel" class="btn btn-primary">Download As
+						Excel</a>
+					<a href="pdfreport" target="_blank" class="btn btn-primary">Download As
+						Pdf</a>
 				</div>
 
 			</div>

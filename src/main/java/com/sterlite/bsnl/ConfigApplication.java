@@ -11,8 +11,8 @@ import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.JstlView;
 
-import com.sterlite.bsnl.controller.ExcelViewReport;
 import com.sterlite.bsnl.interceptor.LoginInterceptor;
+import com.sterlite.bsnl.utill.reportbuilder.ExcelViewReport;
 
 
 @SuppressWarnings("deprecation")

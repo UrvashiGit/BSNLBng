@@ -134,10 +134,10 @@
 				</table>
 
 				<div>
-					<button type="button" class="btn btn-primary">Download As
-						Xls</button>
-					<button type="button" class="btn btn-primary">Download As
-						Pdf</button>
+					<a href="circleWiseDetailedReportDownloadExcel" class="btn btn-primary">Download As
+						Excel</a>
+					<a href="pdfreport" target="_blank" class="btn btn-primary">Download As
+						Pdf</a>
 				</div>
 
 			</div>
