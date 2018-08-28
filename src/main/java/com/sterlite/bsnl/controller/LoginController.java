@@ -22,5 +22,11 @@ public class LoginController {
 		List<User> books = null;
 		return new ModelAndView("home","books",books);
 	}
+/*	
+	@RequestMapping(value = "/login")
+	public ModelAndView login() {
+		List<User> books = null;
+		return new ModelAndView("home","books",books);
+	}*/
 	
 }
