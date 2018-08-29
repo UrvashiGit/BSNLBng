@@ -20,7 +20,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 import com.sterlite.bsnl.entity.Book;
 
-public class ZoneWiseSummeryReportPdfBuilder {
+public class CircleWiseSummeryReportPdfBuilder {
 	
 	public static ByteArrayInputStream generateReport(List<Book> books) {
 
@@ -30,25 +30,29 @@ public class ZoneWiseSummeryReportPdfBuilder {
         Font headFont = FontFactory.getFont(FontFactory.HELVETICA);
         headFont.setSize(12);
         //Title
-        Chunk chunk = new Chunk("Zone Wise Summery Report", headFont);
+        Chunk chunk = new Chunk("Circle Wise Summery Report", headFont);
         Chapter titleLine = new Chapter(new Paragraph(chunk), 1);
         titleLine.setNumberDepth(0);
         
         
         try {
 
-            PdfPTable table = new PdfPTable(15);
+            PdfPTable table = new PdfPTable(16);
             table.setWidthPercentage(100);
 
-//Phase	Zone Name	Total BNG	Site Survey Site Ready	Material Delivery	Power On	NW Integration	
-            //AT	Commissinong	ATC	ERP PO	MIGO	MIRO	Payment Status
+          //Phase	Circle Name	Circle Code	Total BNG	Site Survey	Site Ready	Material Delivery
+            //Power On	NW Integration	AT	Commissinong	ATC	ERP PO	MIGO	MIRO	Payment Status
 
             PdfPCell hcell;
             hcell = new PdfPCell(new Phrase("Phase", headFont));
             hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(hcell);
 
-            hcell = new PdfPCell(new Phrase("Zone Name", headFont));
+            hcell = new PdfPCell(new Phrase("Circle Name", headFont));
+            hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(hcell);
+            
+            hcell = new PdfPCell(new Phrase("Circle Code", headFont));
             hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(hcell);
 
