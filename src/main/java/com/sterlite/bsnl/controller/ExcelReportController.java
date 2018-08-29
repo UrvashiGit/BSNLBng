@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sterlite.bsnl.entity.BngMaster;
 import com.sterlite.bsnl.entity.Book;
+import com.sterlite.bsnl.services.IBngService;
 import com.sterlite.bsnl.services.IBookStoreService;
 import com.sterlite.bsnl.utill.reportbuilder.CircleWiseDetailedReportExcelBuilder;
 import com.sterlite.bsnl.utill.reportbuilder.CircleWiseSummeryReportExcelBuilder;
@@ -24,13 +26,17 @@ public class ExcelReportController {
 	@Autowired
 	private IBookStoreService service;
 	
+	@Autowired
+	private IBngService bngMasterService;
+	
 	// Download Report
 	@RequestMapping(value="/zoneWiseSummeryReportDownloadExcel", method=RequestMethod.GET)
 	 public ModelAndView zoneWiseSummeryReportDownloadExcel(HttpServletRequest req, HttpServletResponse res){
-		List<Book> books = service.getBooks();	
+		//List<Book> books = service.getBooks();	
+		List<BngMaster> bngMasterList = bngMasterService.getBngMasterList();
 		res.setContentType( "application/ms-excel" );
         res.setHeader( "Content-disposition", "attachment; filename=zoneWiseSummeryReport.xls" ); 
-		return new ModelAndView(new ZoneWiseSummeryReportExcelBuilder(), "bookList", books);
+		return new ModelAndView(new ZoneWiseSummeryReportExcelBuilder(), "bngMasterList", bngMasterList);
 	
 	}
 	
@@ -98,6 +104,12 @@ public class ExcelReportController {
 	
 	}
 	// View Report end
+
+	@RequestMapping(value="/bngSiteDetailsReport", method=RequestMethod.GET)
+	 public ModelAndView bngSiteDetailsReportView(HttpServletRequest req, HttpServletResponse res){
+		List<BngMaster> bngMasterList = bngMasterService.getBngMasterList();
+		return new ModelAndView("bngSiteDetailsReportView","bngList",bngMasterList);
 	
+	}
 
 }

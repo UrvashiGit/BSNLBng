@@ -102,9 +102,9 @@
 
 
 				<!-- DataTables Example -->
-				<%-- <div class="card mb-3">
+				<div class="card mb-3">
 					<div class="card-header">
-						<i class="fas fa-table"></i> Data Table Example
+						<i class="fas fa-table"></i> BNG Site Details
 					</div>
 					<div class="card-body">
 						<div class="table-responsive">
@@ -128,8 +128,6 @@
 										<th>Site Person Name</th>
 										<th>Site Contact No.</th>
 										<th>GSTIN</th>
-										<th>Created Date</th>
-										<th>Created By</th>
 									</tr>
 								</thead>
 								<!-- <tfoot>
@@ -161,8 +159,7 @@
 											<td>${bng.sitePersonDet}</td>
 											<td>${bng.siteContactNo}</td>
 											<td>${bng.gstin}</td>
-											<td>${bng.createdBy}</td>
-											<td>${bng.createdDate}</td>
+											
 											
 										</tr>
 									</c:forEach>
@@ -172,7 +169,7 @@
 					</div>
 				<!-- 	<div class="card-footer small text-muted">Updated yesterday
 						at 11:59 PM</div> -->
-				</div> --%>
+				</div>
 
 			</div>
 			<!-- /.container-fluid -->

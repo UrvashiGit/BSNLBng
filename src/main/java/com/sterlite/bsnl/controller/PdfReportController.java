@@ -32,7 +32,8 @@ public class PdfReportController {
             produces = MediaType.APPLICATION_PDF_VALUE)
     public ResponseEntity<InputStreamResource> pdfReport() throws IOException {
 		
-		List<Book> books = service.getBooks();	
+		List<Book> books = service.getBooks();
+		
 		ByteArrayInputStream bis = ZoneWiseSummeryReportPdfBuilder.generateReport(books);
 		
 		HttpHeaders headers = new HttpHeaders();

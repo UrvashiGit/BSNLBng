@@ -11,6 +11,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.web.servlet.view.document.AbstractXlsxView;
 
+import com.sterlite.bsnl.entity.BngMaster;
 import com.sterlite.bsnl.entity.Book;
 
 public class ZoneWiseSummeryReportExcelBuilder extends AbstractXlsxView  {
@@ -22,6 +23,8 @@ public class ZoneWiseSummeryReportExcelBuilder extends AbstractXlsxView  {
 	
 		@SuppressWarnings("unchecked")
 		  List<Book> books = (List<Book>) model.get("bookList");
+		List<BngMaster> bngMasterList = (List<BngMaster>) model.get("bngMasterList");
+		
 		
 		Sheet sheet = workbook.createSheet("ZoneWiseSummeryReport");
 //Phase	Zone Name	Total BNG	Site Survey Site Ready	Material Delivery	Power On	NW Integration	AT	Commissinong	ATC	ERP PO	MIGO	MIRO	Payment Status
@@ -43,11 +46,11 @@ public class ZoneWiseSummeryReportExcelBuilder extends AbstractXlsxView  {
 		header.createCell(14).setCellValue("Payment Status");
 		
 		int rowCount = 1;
-		for (Book book :books) {
-			Row bookRow = sheet.createRow(rowCount++);
-			bookRow.createCell(0).setCellValue(book.getName());
-			bookRow.createCell(1).setCellValue(book.getAuthor());
-			bookRow.createCell(2).setCellValue(book.getPublication());
+		for (BngMaster bng :bngMasterList) {
+			Row row = sheet.createRow(rowCount++);
+			row.createCell(0).setCellValue(bng.getPhase());
+			row.createCell(1).setCellValue(bng.getZoneName());
+			row.createCell(2).setCellValue(bng.getBngType());
 		}
 
 		
