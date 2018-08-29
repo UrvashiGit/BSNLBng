@@ -116,7 +116,7 @@
 				<div>
 				<a href="circleWiseSummeryReportDownloadExcel" class="btn btn-primary">Download As
 						Excel</a>
-					<a href="pdfreport" target="_blank" class="btn btn-primary">Download As
+					<a href="circleWiseSummeryReportPdfDownload" target="_blank" class="btn btn-primary">Download As
 						Pdf</a>
 				</div>
 

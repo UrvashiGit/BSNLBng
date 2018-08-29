@@ -112,7 +112,7 @@
 				<div>
 					<a href="zoneWiseSummeryReportDownloadExcel" class="btn btn-primary">Download As
 						Excel</a>
-					<a href="pdfreport" target="_blank" class="btn btn-primary">Download As
+					<a href="zoneWiseSummeryReportPdfDownload" target="_blank" class="btn btn-primary">Download As
 						Pdf</a>
 				</div>
 
