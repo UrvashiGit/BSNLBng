@@ -65,7 +65,7 @@
 								</br> 
 								
 								TargetDate &nbsp;&nbsp;&nbsp; : <input type="date" name="targetDate" id="siteSurTargetDate" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
-									value="${entry.value.getTargetDate()}" <c:if test="${entry.value.getStatus() == 'Completed'}">
+									value="${entry.value.getTargetDate()}" onchange="resetSiteSurveyCloseDate()" <c:if test="${entry.value.getStatus() == 'Completed'}">
 								<c:out value="disabled='disabled'"/></c:if>"> 
 									</br> 
 									
@@ -386,8 +386,10 @@ function ValidateSiteSurveyForm() {
 	
 	var clDate = document.getElementById("siteSurCloseDate").value;
 	var tgDate = document.getElementById("siteSurTargetDate").value;
+	var myTDate = new Date(tgDate);
+	var myCDate = new Date(clDate);
 	
-	if(tgDate != ''){
+	if(tgDate != '' && myTDate > myCDate) {
 		document.getElementById("siteSurveyForm").submit();
 	}else{
 		$("#errorDiv").show();
@@ -397,6 +399,12 @@ function ValidateSiteSurveyForm() {
 		$("#errorDiv" ).text( "Please Select Proper Target Date");
 	}
 	
+}
+
+function resetSiteSurveyCloseDate() {
+	var tgDate = document.getElementById("siteSurTargetDate").value;
+	$('#siteSurCloseDate').prop('max', tgDate);
+	$('#siteSurCloseDate').prop('min', tgDate);
 }
          
 </script>
