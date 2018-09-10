@@ -1,3 +1,4 @@
+
 package com.sterlite.bsnl.controller;
 
 import java.util.List;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sterlite.bsnl.entity.BngMaster;
+import com.sterlite.bsnl.model.SingleBNGInstAndCmsnModel;
 import com.sterlite.bsnl.model.SingleBNGInvModel;
 import com.sterlite.bsnl.services.IBngService;
 
@@ -39,7 +41,7 @@ public class BNGInvoicingController {
 	
 	@RequestMapping(value="/updateSingleBNGInvDetails", method=RequestMethod.POST)
 	 public ModelAndView updateSingleBngIAndCStatus(HttpServletRequest req, HttpServletResponse res){
-//		/Map<String,SingleBNGInstAndCmsnModel> singleBNGInstAndCmsMap = bngMasterService.getSingleBNGIAndCStatus(strBNGID);
+		Map<String,SingleBNGInstAndCmsnModel> singleBNGInstAndCmsMap = bngMasterService.getSingleBNGIAndCStatus(strBNGID);
 		System.out.println("Inside updateSsingleBNGDetails()");
 		
 	 /***
@@ -50,3 +52,4 @@ public class BNGInvoicingController {
 		return new ModelAndView("singleBNGSiteDetailsForIAndC","singleMap","");	
 	}
 }
+

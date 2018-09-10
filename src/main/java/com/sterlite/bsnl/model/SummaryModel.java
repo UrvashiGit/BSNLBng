@@ -1,3 +1,4 @@
+
 package com.sterlite.bsnl.model;
 
 public class SummaryModel {
@@ -138,3 +139,4 @@ public class SummaryModel {
 	
 
 }
+

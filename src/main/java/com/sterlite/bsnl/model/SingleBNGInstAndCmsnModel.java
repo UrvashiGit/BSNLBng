@@ -1,15 +1,30 @@
+
 package com.sterlite.bsnl.model;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class SingleBNGInstAndCmsnModel {
 	
 	private String Status;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date closeDate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date targetDate;
 	private int orderId;
 	private String stageName;
 	private String bngid;
+	private int currentBNGOrderId;
+	
+	
+	
+	public int getCurrentBNGOrderId() {
+		return currentBNGOrderId;
+	}
+	public void setCurrentBNGOrderId(int currentBNGOrderId) {
+		this.currentBNGOrderId = currentBNGOrderId;
+	}
 	public String getBngid() {
 		return bngid;
 	}
@@ -48,12 +63,12 @@ public class SingleBNGInstAndCmsnModel {
 	}
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("SingleBNGInstAndCmsnModel [Status=").append(Status).append(", closeDate=").append(closeDate)
-				.append(", targetDate=").append(targetDate).append(", orderId=").append(orderId).append(", stageName=")
-				.append(stageName).append(", bngid=").append(bngid).append("]");
-		return builder.toString();
+		return "SingleBNGInstAndCmsnModel [Status=" + Status + ", closeDate=" + closeDate + ", targetDate=" + targetDate
+				+ ", orderId=" + orderId + ", stageName=" + stageName + ", bngid=" + bngid + ", currentBNGOrderId="
+				+ currentBNGOrderId + "]";
 	}
+
 	
 	
 }
+
