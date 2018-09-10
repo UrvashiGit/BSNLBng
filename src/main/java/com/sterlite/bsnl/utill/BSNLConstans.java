@@ -47,9 +47,10 @@ public class BSNLConstans {
 	
 	
 	//Query to Update BNG INS Stage Detail
-	
 	public static final String updateBNGInsStageDetail= "update TBLBNGINSTANDCOMMISTAGE A set A.TARGETDATE =:TDATE, A.CLOSEDATE=:CLDATE, A.STATUS=:STATUS ,A.LASTMODIFIEDDATE=SYSDATE(), A.LATMODIFIEDBY=1 where BNGID=:bngId and  A.STAGEID=:stageId";
-	
+
+	// Query to get Master BNG by ID
+	public static final String getBngICStageStatusByStageId="select STATUS from TBLBNGINSTANDCOMMISTAGE where BNGID=:bngId and STAGEID=:stageId" ;
 	
 	/** Constanst for BNG  I & C*/
 	

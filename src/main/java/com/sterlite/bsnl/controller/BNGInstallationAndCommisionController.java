@@ -52,8 +52,19 @@ public class BNGInstallationAndCommisionController {
 	  */
 		
 		bngMasterService.updateBngINSStage(singleBNGInstAndCmsnModel);
-		
-		return new ModelAndView("singleBNGSiteDetailsForIAndC","singleMap","");	
+		String status = bngMasterService.getBngICStageStatusByStageId(singleBNGInstAndCmsnModel.getBngid(),singleBNGInstAndCmsnModel.getOrderId());
+		String url = null;
+		if(status != null) {
+			if(status.equals("InProgress")) {
+				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId();
+			}else if(status.equals("Completed")) {
+				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId()+1;
+			}else if(status.equals("Pending")) {
+				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId();
+			}
+			
+		}
+		return new ModelAndView("redirect:/singleBNGDetails?getBNGID="+singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId()+1);
 	}
 	
 	

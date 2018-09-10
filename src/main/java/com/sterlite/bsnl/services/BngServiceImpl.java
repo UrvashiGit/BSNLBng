@@ -101,9 +101,8 @@ public class BngServiceImpl implements IBngService {
 				System.out.println("EQUAL >>");
 				singleModel.setStatus("Completed");
 				
-			}
-			// if TD is greater then sysdate or GT then Close date(in case of TG EXtended) --> status = inProgress
-			if(givenTargetDate.compareTo(currentDate) > 0 || givenTargetDate.after(givenCloseDate)) {
+			}else if(givenTargetDate.after(givenCloseDate)) {
+				// if TD is greater then sysdate or GT then Close date(in case of TG EXtended) --> status = inProgress
 				System.out.println("INPROGESS >>");
 				singleModel.setStatus("InProgress");
 			}
@@ -116,6 +115,11 @@ public class BngServiceImpl implements IBngService {
 		}
 
 		return bngMasterDao.updateBngINSStage(singleModel);
+	}
+
+	@Override
+	public String getBngICStageStatusByStageId(String bngId,int stageId) {
+		return bngMasterDao.getBngICStageStatusByStageId(bngId,stageId);
 	}
 	
 	

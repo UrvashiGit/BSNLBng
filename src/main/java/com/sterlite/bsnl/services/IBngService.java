@@ -15,6 +15,8 @@ public interface IBngService {
 	
 	List<BngMaster> getBngMasterList();
 	
+	String getBngICStageStatusByStageId(String bngId,int stageId);
+	
 	List<CircularMaster> getCircularMasterList(); 
 	
 	List<ZoneWiseDetailed> getZoneWiseDetailedReport();

@@ -16,6 +16,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
+import com.itextpdf.text.pdf.PdfStructTreeController.returnType;
 import com.sterlite.bsnl.entity.BngMaster;
 import com.sterlite.bsnl.entity.CircularMaster;
 import com.sterlite.bsnl.model.SingleBNGInstAndCmsnModel;
@@ -564,6 +565,30 @@ public class BngMasterDaoImpl implements IBngMasterDAO {
 		
 		
 		return 0;
+	}
+
+	@Override
+	public String getBngICStageStatusByStageId(String bngId,int stageId) {
+
+		Session session;
+		String query;
+		String status = null;
+		
+		try{
+			query = BSNLConstans.getBngICStageStatusByStageId;
+			session = getSession(); 
+	 		System.out.println("hqlFetch >> :  "+ query);
+	 		
+	 		Object result = session.createSQLQuery(query).setParameter("bngId", bngId).setParameter("stageId", stageId).getSingleResult();
+	 		if(result != null) {
+	 			status = result.toString();
+	 			System.out.println("Result >>"+status);
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return status;
+		
 	}
 
 

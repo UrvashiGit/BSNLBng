@@ -3,9 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 
-<script>
-         
-</script>
 
 <!-- java script for validate form details (code pending) -->
 
@@ -35,6 +32,8 @@
 		<div id="content-wrapper">
 
 			<div class="container-fluid">
+			<div style="display: none;color: red;" id="errorDiv"></div>
+			<div style="color: green;font-style: bold;font-size: 11px">Note: Stage Can not be Modified, once it is Completed. </div>
 				<c:forEach var="entry" items="${singleMap}">
 				
 	<hr>
@@ -42,7 +41,7 @@
 					<div id="siteSurvey">
 						<c:if test="${'Site Survey' == entry.key}">
 							<form method="post" action="updateSiteSurvey"
-								name="updateBNGIAndC">
+								id="siteSurveyForm">
 								<b><u> Site Survey </u></b> </br> Status :
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 								<%-- ${entry.value.getStatus()} --%>
@@ -58,24 +57,27 @@
 									<option value="InProgress"${entry.value.getStatus() == 'InProgress'? 'selected="selected"' : ''}">InProgress
 									</option>
 								</select> </br>
-								<!-- Date logic based on Status (code pending)
-									  -->
-								CloseDate &nbsp;&nbsp;&nbsp; : <input type="date" name="closeDate" id="closeDate" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
-									value="${entry.value.getCloseDate()}"> 
+								
+								CloseDate &nbsp;&nbsp;&nbsp; : <input type="date" name="closeDate" id="siteSurCloseDate" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
+									value="${entry.value.getCloseDate()}" <c:if test="${entry.value.getStatus() == 'Completed'}">
+								<c:out value="disabled='disabled'"/></c:if>">
 									
 								</br> 
 								
-								TargetDate &nbsp;&nbsp;&nbsp; : <input type="date" name="targetDate" id="targetDate" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
-									value="${entry.value.getTargetDate()}"> 
+								TargetDate &nbsp;&nbsp;&nbsp; : <input type="date" name="targetDate" id="siteSurTargetDate" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
+									value="${entry.value.getTargetDate()}" <c:if test="${entry.value.getStatus() == 'Completed'}">
+								<c:out value="disabled='disabled'"/></c:if>"> 
 									</br> 
 									
-								Survey Report :
+								<%--Survey Report :
 								<a href="#"> <u> Details</u></a> </br>
-							<%-- <c:if test="${entry.value.currentBNGOrderId() == entry.value.getOrderId}">
+							 <c:if test="${entry.value.currentBNGOrderId() == entry.value.getOrderId}">
 								<input type="submit" value="update" <c:if test="{empty aaa}">disabled="disabled" </c:if>>
 							</c:if> --%>
-							<input type="submit" value="update" <c:if test="${entry.value.getCurrentBNGOrderId() != stageLimit && entry.value.getOrderId() > entry.value.getCurrentBNGOrderId()+1}">
+							<c:if test="${entry.value.getStatus() != 'Completed'}">
+								 <input type="button" value="update" onclick="ValidateSiteSurveyForm()" <c:if test="${entry.value.getCurrentBNGOrderId() != stageLimit && entry.value.getOrderId() > entry.value.getCurrentBNGOrderId()+1}">
 								<c:out value="disabled='disabled'"/></c:if>">
+							</c:if>
 							</form>
 						</c:if>
 
@@ -102,18 +104,20 @@
 									</option>
 								</select> </br> 
 								
-								CloseDate &nbsp;&nbsp;&nbsp; : <input type="date" name="closeDate" id="closeDate" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
+								CloseDate &nbsp;&nbsp;&nbsp; : <input type="date" name="siteReadyCloseDate" id="closeDate" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
 									value="${entry.value.getCloseDate()}"> 
 									
 								</br> 
 								
-								TargetDate &nbsp;&nbsp;&nbsp; : <input type="date" name="targetDate" id="targetDate" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
+								TargetDate &nbsp;&nbsp;&nbsp; : <input type="date" name="siteReadyTargetDate" id="targetDate" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
 									value="${entry.value.getTargetDate()}"> 
 									</br> 
 								 </br>
 									
+								<c:if test="${entry.value.getStatus() != 'Completed'}">
 									<input type="submit" value="update" <c:if test="${entry.value.getCurrentBNGOrderId() != stageLimit  && entry.value.getOrderId() > entry.value.getCurrentBNGOrderId()+1}">
 								<c:out value="disabled='disabled'"/></c:if>">
+								</c:if>
 							</form>
 						</c:if>
 
@@ -151,9 +155,10 @@
 								</br> Challan
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : <a href="#"> <u>
 										Details</u></a> </br>
-							
-							<input type="submit" value="update" <c:if test="${entry.value.getCurrentBNGOrderId() != stageLimit && entry.value.getOrderId() > entry.value.getCurrentBNGOrderId()+1}">
+							<c:if test="${entry.value.getStatus() != 'Completed'}">
+								<input type="submit" value="update" <c:if test="${entry.value.getCurrentBNGOrderId() != stageLimit && entry.value.getOrderId() > entry.value.getCurrentBNGOrderId()+1}">
 								<c:out value="disabled='disabled'"/></c:if>">
+								</c:if>
 							</form>
 						</c:if>
 
@@ -190,8 +195,10 @@
 									value="${entry.value.getTargetDate()}"> 
 									</br> 
 								</br>
+								<c:if test="${entry.value.getStatus() != 'Completed'}">
 							<input type="submit" value="update" <c:if test="${entry.value.getCurrentBNGOrderId() != stageLimit  && entry.value.getOrderId() > entry.value.getCurrentBNGOrderId()+1}">
 								<c:out value="disabled='disabled'"/></c:if>">
+								</c:if>
 							</form>
 						</c:if>
 
@@ -224,8 +231,10 @@
 								TargetDate &nbsp;&nbsp;&nbsp; : <input type="date" name="targetDate" id="targetDate" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
 									value="${entry.value.getTargetDate()}"> 
 									</br> 
+							<c:if test="${entry.value.getStatus() != 'Completed'}">
 							<input type="submit" value="update" <c:if test="${entry.value.getCurrentBNGOrderId() != stageLimit  && entry.value.getOrderId() > entry.value.getCurrentBNGOrderId()+1}">
 								<c:out value="disabled='disabled'"/></c:if>">
+								</c:if>
 							</form>
 						</c:if>
 
@@ -258,8 +267,10 @@
 								TargetDate &nbsp;&nbsp;&nbsp; : <input type="date" name="targetDate" id="targetDate" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
 									value="${entry.value.getTargetDate()}"> 
 									</br> 
+									<c:if test="${entry.value.getStatus() != 'Completed'}">
 							<input type="submit" value="update" <c:if test="${entry.value.getCurrentBNGOrderId() != stageLimit  && entry.value.getOrderId() > entry.value.getCurrentBNGOrderId()+1}">
 								<c:out value="disabled='disabled'"/></c:if>">
+								</c:if>
 							</form>
 						</c:if>
 
@@ -292,9 +303,10 @@
 								TargetDate &nbsp;&nbsp;&nbsp; : <input type="date" name="targetDate" id="targetDate" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
 									value="${entry.value.getTargetDate()}"> 
 									</br>  </br>
+							<c:if test="${entry.value.getStatus() != 'Completed'}">
 							<input type="submit" value="update" <c:if test="${entry.value.getCurrentBNGOrderId() != stageLimit  && entry.value.getOrderId() > entry.value.getCurrentBNGOrderId()+1}">
 								<c:out value="disabled='disabled'"/></c:if>">
-							
+							</c:if>
 							</form>
 						</c:if>
 
@@ -328,8 +340,10 @@
 									value="${entry.value.getTargetDate()}"> 
 									</br> </br> Certificate
 								&nbsp;&nbsp;&nbsp; : <a href="#"> <u> Details</u></a> </br>
+							<c:if test="${entry.value.getStatus() != 'Completed'}">
 							<input type="submit" value="update" <c:if test="${entry.value.getCurrentBNGOrderId() != stageLimit  && entry.value.getOrderId() > entry.value.getCurrentBNGOrderId()+1}">
 								<c:out value="disabled='disabled'"/></c:if>">
+								</c:if>
 							</form>
 						</c:if>
 
@@ -340,14 +354,6 @@
 				</c:forEach>
 
 
-
-
-
-
-
-
-
-
 			</div>
 			</div>
 
@@ -356,5 +362,43 @@
 
 		</div>
 </body>
+
+
+<script type="text/javascript">
+$( document ).ready(function() {
+    console.log( "ready!" );
+    
+    var now = new Date(),
+    minDateForAll = now.toISOString().substring(0,10);
+	$('input[type="date"]').prop('min', minDateForAll);
+	
+	// Set Max close date value of all closedate  
+	var tgDate = document.getElementById("siteSurTargetDate").value;
+	console.log( tgDate );
+	$("#siteSurCloseDate").prop('max', tgDate);
+	
+
+});
+
+
+// Validate SiteSurvey
+function ValidateSiteSurveyForm() {
+	
+	var clDate = document.getElementById("siteSurCloseDate").value;
+	var tgDate = document.getElementById("siteSurTargetDate").value;
+	
+	if(tgDate != ''){
+		document.getElementById("siteSurveyForm").submit();
+	}else{
+		$("#errorDiv").show();
+		 var now = new Date(),
+		    minDateForAll = now.toISOString().substring(0,10);
+			$('input[type="date"]').prop('min', minDateForAll);
+		$("#errorDiv" ).text( "Please Select Proper Target Date");
+	}
+	
+}
+         
+</script>
 
 </html>
