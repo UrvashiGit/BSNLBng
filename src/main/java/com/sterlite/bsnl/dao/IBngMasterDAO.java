@@ -10,6 +10,8 @@ import com.sterlite.bsnl.model.SingleBNGInvModel;
 import com.sterlite.bsnl.model.SummaryModel;
 import com.sterlite.bsnl.model.ZoneWiseDetailed;
 
+import org.hibernate.Session;
+
 
 public interface IBngMasterDAO {
 	
@@ -27,16 +29,18 @@ public interface IBngMasterDAO {
 	
 	List<SummaryModel> getCircleWiseSummaryReportDAO();
 	
-	Map<String, SingleBNGInstAndCmsnModel> getSingleBNGIAndCStatusDAO(String bngId,int currentOrderId);
+    Map<String, SingleBNGInstAndCmsnModel> getSingleBNGIAndCStatusDAO(String bngId,int currentOrderId);
 	
-	Map<String, SingleBNGInvModel> getSingleBNGInvDAO(String bngId);
+	Map<String, SingleBNGInvModel> getSingleBNGInvDAO(String bngId,int currentOrderId);
 	
 	//update TBLBNGINSTANDCOMMISTAGE
-			int updateBngINSStage(SingleBNGInstAndCmsnModel singleModel);
-
-			/*
-			int updateBngINSMasterStage(SingleBNGInstAndCmsnModel singleModel);
+	int updateBngINSStage(SingleBNGInstAndCmsnModel singleModel);
 			
-			int AddBngINSAudit(SingleBNGInstAndCmsnModel singleModel);*/
+	int updateBngINSMasterStage(SingleBNGInstAndCmsnModel singleModel,Session session);
 	
+	int updateBngINVStage(SingleBNGInvModel singleModel);
+	
+	 int updateBngINVMasterStage(SingleBNGInvModel singleModel,Session session);
+			
+	int insertAudit(Object singleModel,Session session);
 }

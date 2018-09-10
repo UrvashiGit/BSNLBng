@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,24 +33,49 @@ public class BNGInvoicingController {
 	}
 	
 	@RequestMapping(value="/singleBNGInvDetails", method=RequestMethod.GET)
-	 public ModelAndView getSingleBngInvoicing(HttpServletResponse response,@RequestParam("getBNGID") String strBNGID){
-		Map<String,SingleBNGInvModel> singleBNGInvMap = bngMasterService.getSingleBNGInv(strBNGID);
+	 public ModelAndView getSingleBngInvoicing(HttpServletResponse response,@RequestParam("getBNGID") String strBNGID,
+			 @RequestParam("currentOrder") int currentOrder){
+		Map<String,SingleBNGInvModel> singleBNGInvMap = bngMasterService.getSingleBNGInv(strBNGID,currentOrder);
 		System.out.println("CONTROLLER : "+singleBNGInvMap.size());
 		return new ModelAndView("singleBNGSiteDetailsForInv","singleMap",singleBNGInvMap);	
 	}
 	
 	
-	@RequestMapping(value="/updateSingleBNGInvDetails", method=RequestMethod.POST)
-	 public ModelAndView updateSingleBngIAndCStatus(HttpServletRequest req, HttpServletResponse res){
-		//Map<String,SingleBNGInstAndCmsnModel> singleBNGInstAndCmsMap = bngMasterService.getSingleBNGIAndCStatus(strBNGID);
-		System.out.println("Inside updateSsingleBNGDetails()");
+	@RequestMapping(value="/updateERPPO", method=RequestMethod.POST)
+	 public ModelAndView updateERPPOStatus(HttpServletRequest req, HttpServletResponse res,@ModelAttribute("SingleBNGInvModel")SingleBNGInvModel singleBNGInvModel) throws Exception{
+//		/Map<String,SingleBNGInstAndCmsnModel> singleBNGInstAndCmsMap = bngMasterService.getSingleBNGIAndCStatus(strBNGID);
+		System.out.println("Inside updateERPPOStatus() :"+singleBNGInvModel.toString());
 		
-	 /***
-	  * Code for update data inside TBLBNGINSTANDCOMMISTAGE
-	  * Auditing code 
-	  * 
-	  */
-		return new ModelAndView("singleBNGSiteDetailsForIAndC","singleMap","");	
+		bngMasterService.updateBngINVStage(singleBNGInvModel);
+		
+		return new ModelAndView("singleBNGSiteDetailsForIAndC","","");	
+	}
+	@RequestMapping(value="/updateMIGO", method=RequestMethod.POST)
+	 public ModelAndView updateMIGOStatus(HttpServletRequest req, HttpServletResponse res,@ModelAttribute("SingleBNGInvModel")SingleBNGInvModel singleBNGInvModel) throws Exception{
+//		/Map<String,SingleBNGInstAndCmsnModel> singleBNGInstAndCmsMap = bngMasterService.getSingleBNGIAndCStatus(strBNGID);
+		System.out.println("Inside updateMIGOStatus() :"+singleBNGInvModel.toString());
+		
+		bngMasterService.updateBngINVStage(singleBNGInvModel);
+		
+		return new ModelAndView("singleBNGSiteDetailsForIAndC","","");	
+	}
+	@RequestMapping(value="/updateMIRO", method=RequestMethod.POST)
+	 public ModelAndView updateMIROStatus(HttpServletRequest req, HttpServletResponse res,@ModelAttribute("SingleBNGInvModel")SingleBNGInvModel singleBNGInvModel) throws Exception{
+//		/Map<String,SingleBNGInstAndCmsnModel> singleBNGInstAndCmsMap = bngMasterService.getSingleBNGIAndCStatus(strBNGID);
+		System.out.println("Inside updateERPPOStatus() :"+singleBNGInvModel.toString());
+		
+		bngMasterService.updateBngINVStage(singleBNGInvModel);
+		
+		return new ModelAndView("singleBNGSiteDetailsForIAndC","","");	
+	}
+	@RequestMapping(value="/updatePaymentStatus", method=RequestMethod.POST)
+	 public ModelAndView updatePaymentStatus(HttpServletRequest req, HttpServletResponse res,@ModelAttribute("SingleBNGInvModel")SingleBNGInvModel singleBNGInvModel) throws Exception{
+//		/Map<String,SingleBNGInstAndCmsnModel> singleBNGInstAndCmsMap = bngMasterService.getSingleBNGIAndCStatus(strBNGID);
+		System.out.println("Inside updatePaymentStatus() :"+singleBNGInvModel.toString());
+		
+		bngMasterService.updateBngINVStage(singleBNGInvModel);
+		
+		return new ModelAndView("singleBNGSiteDetailsForIAndC","","");	
 	}
 }
 

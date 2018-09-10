@@ -453,11 +453,11 @@ public class BngMasterDaoImpl implements IBngMasterDAO {
 		return map;
 	}
 	@Override
-	public Map<String, SingleBNGInvModel> getSingleBNGInvDAO(String bngId) {
+	public Map<String, SingleBNGInvModel> getSingleBNGInvDAO(String bngId,int currentOrderId) {
 		Session session;
 		String hqlFetch;
 		List<Object[]> listOfSingleBNG = null;
-		Map<String, SingleBNGInvModel> map= new HashMap<>();
+		Map<String, SingleBNGInvModel> map= new LinkedHashMap<>();
 		System.out.println("Inside getSingleBNGInvDAO()");
 		try{
 			session = getSession(); 
@@ -471,6 +471,7 @@ public class BngMasterDaoImpl implements IBngMasterDAO {
 	 				 //map= new HashMap<>();
 	 				if(BSNLConstans.ERP_PO.equals(row[0].toString())) {
 	 					SingleBNGInvModel singleBNGInvModel=new SingleBNGInvModel();
+	 					singleBNGInvModel.setCurrentBNGOrderId(currentOrderId);
 	 					singleBNGInvModel.setStatus(row[1].toString());
 	 					if(null !=row[2]){
 	 						singleBNGInvModel.setCloseDate(new SimpleDateFormat("yyyy-mm-dd").parse(row[2].toString()));
@@ -478,13 +479,17 @@ public class BngMasterDaoImpl implements IBngMasterDAO {
 	 					if(null !=row[3]){
 	 						singleBNGInvModel.setCloseDate(new SimpleDateFormat("yyyy-mm-dd").parse(row[3].toString()));
 	 					}
-	 					singleBNGInvModel.setOrderId((int) row[4]);
-	 					singleBNGInvModel.setBngid(row[5].toString());
+	 					if(null !=row[4]) {
+	 						singleBNGInvModel.setJV(row[4].toString());
+	 					}
+	 					singleBNGInvModel.setOrderId((int) row[5]);
+	 					singleBNGInvModel.setBngid(row[6].toString());
 	 					map.put(row[0].toString(),singleBNGInvModel);
 	 					System.out.println(map);
 	 				}
 	 				else if(BSNLConstans.MIGO.equals(row[0].toString())) {
 	 					SingleBNGInvModel singleBNGInvModel=new SingleBNGInvModel();
+	 					singleBNGInvModel.setCurrentBNGOrderId(currentOrderId);
 	 					singleBNGInvModel.setStatus(row[1].toString());
 	 					if(null !=row[2]){
 	 						singleBNGInvModel.setCloseDate(new SimpleDateFormat("yyyy-mm-dd").parse(row[2].toString()));
@@ -492,13 +497,17 @@ public class BngMasterDaoImpl implements IBngMasterDAO {
 	 					if(null !=row[3]){
 	 						singleBNGInvModel.setCloseDate(new SimpleDateFormat("yyyy-mm-dd").parse(row[3].toString()));
 	 					}
-	 					singleBNGInvModel.setOrderId((int) row[4]);
-	 					singleBNGInvModel.setBngid(row[5].toString());
+	 					if(null !=row[4]) {
+	 						singleBNGInvModel.setJV(row[4].toString());
+	 					}
+	 					singleBNGInvModel.setOrderId((int) row[5]);
+	 					singleBNGInvModel.setBngid(row[6].toString());
 	 					map.put(row[0].toString(),singleBNGInvModel);
 	 					System.out.println(map);
 	 				}
 	 				else if(BSNLConstans.MIRO.equals(row[0].toString())) {
 	 					SingleBNGInvModel singleBNGInvModel=new SingleBNGInvModel();
+	 					singleBNGInvModel.setCurrentBNGOrderId(currentOrderId);
 	 					singleBNGInvModel.setStatus(row[1].toString());
 	 					if(null !=row[2]){
 	 						singleBNGInvModel.setCloseDate(new SimpleDateFormat("yyyy-mm-dd").parse(row[2].toString()));
@@ -506,13 +515,17 @@ public class BngMasterDaoImpl implements IBngMasterDAO {
 	 					if(null !=row[3]){
 	 						singleBNGInvModel.setCloseDate(new SimpleDateFormat("yyyy-mm-dd").parse(row[3].toString()));
 	 					}
-	 					singleBNGInvModel.setOrderId((int) row[4]);
-	 					singleBNGInvModel.setBngid(row[5].toString());
+	 					if(null !=row[4]) {
+	 						singleBNGInvModel.setJV(row[4].toString());
+	 					}
+	 					singleBNGInvModel.setOrderId((int) row[5]);
+	 					singleBNGInvModel.setBngid(row[6].toString());
 	 					map.put(row[0].toString(),singleBNGInvModel);
 	 					System.out.println(map);
 	 				}
 	 				else if(BSNLConstans.PAYMENT_STATUS.equals(row[0].toString())) {
 	 					SingleBNGInvModel singleBNGInvModel=new SingleBNGInvModel();
+	 					singleBNGInvModel.setCurrentBNGOrderId(currentOrderId);
 	 					singleBNGInvModel.setStatus(row[1].toString());
 	 					if(null !=row[2]){
 	 						singleBNGInvModel.setCloseDate(new SimpleDateFormat("yyyy-mm-dd").parse(row[2].toString()));
@@ -520,8 +533,11 @@ public class BngMasterDaoImpl implements IBngMasterDAO {
 	 					if(null !=row[3]){
 	 						singleBNGInvModel.setCloseDate(new SimpleDateFormat("yyyy-mm-dd").parse(row[3].toString()));
 	 					}
-	 					singleBNGInvModel.setOrderId((int) row[4]);
-	 					singleBNGInvModel.setBngid(row[5].toString());
+	 					if(null !=row[4]) {
+	 						singleBNGInvModel.setJV(row[4].toString());
+	 					}
+	 					singleBNGInvModel.setOrderId((int) row[5]);
+	 					singleBNGInvModel.setBngid(row[6].toString());
 	 					map.put(row[0].toString(),singleBNGInvModel);
 	 					System.out.println(map);
 	 				}
@@ -589,6 +605,122 @@ public class BngMasterDaoImpl implements IBngMasterDAO {
 		}
 		return status;
 		
+	}
+
+
+
+
+	@Override
+	public int updateBngINSMasterStage(SingleBNGInstAndCmsnModel singleModel,Session session) {
+		String updateQuery;
+		int finalResult=0;
+		
+		try{
+			updateQuery = BSNLConstans.updateBNGORDERBICIDDetail;
+			 
+	 		System.out.println("hqlFetch >> :  "+ updateQuery);
+	 		//int i=0;
+	 		int queryStatus = session.createSQLQuery(updateQuery).setParameter("ORDERBICID", singleModel.getOrderId()).setParameter("BNGID", singleModel.getBngid())
+	 		.executeUpdate();
+	 		
+	 		if(queryStatus > 0) {
+	 			System.out.println("Executed");
+	 			finalResult++;
+	 			
+	 		}
+	 		
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		return finalResult;
+	}
+
+	/*@Override
+	public int insertAudit(SingleBNGInstAndCmsnModel singleModel,Session session) {
+		// TODO Auto-generated method stub
+		return 0;
+	}*/
+	
+	@Override
+	public int updateBngINVStage(SingleBNGInvModel singleModel) {
+		// update BNG stage info
+		
+		Session session;
+		String updateQuery;
+		int finalResult=0;
+		
+		try{
+			updateQuery = BSNLConstans.updateBNGInvStageDetail;
+			session = getSession(); 
+	 		System.out.println("hqlFetch >> :  "+ updateQuery);
+	 		//int i=0;
+	 		int queryStatus = session.createSQLQuery(updateQuery).setParameter("TDATE", singleModel.getTargetDate()).setParameter("CLDATE", singleModel.getCloseDate()).
+	 		setParameter("STATUS",singleModel.getStatus()).
+	 		setParameter("bngId", singleModel.getBngid()).setParameter("stageId", singleModel.getOrderId()).executeUpdate();
+	 		
+	 		if(queryStatus > 0) {
+	 			System.out.println("Executed");
+	 			
+	 			/**Code for update BNGIANDCORDERID  in bngMaster table*/
+	 			
+	 			int updateStatus=updateBngINVMasterStage(singleModel,session);
+	 			
+	 			if(updateStatus > 0) {
+	 				
+	 				/**Code for Audit  in AuditMaster table*/
+	 				
+	 				int insertStatus=insertAudit(singleModel,session);
+	 				
+	 				if(insertStatus >0) {
+	 					
+	 					finalResult++;
+	 				}
+	 			}
+	 			
+	 			
+	 		}
+	 		
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		return finalResult;
+	}
+
+	@Override
+	public int updateBngINVMasterStage(SingleBNGInvModel singleModel,Session session) {
+		String updateQuery;
+		int finalResult=0;
+		
+		try{
+			updateQuery = BSNLConstans.updateBNGORDERBINVIDDetail;
+			 
+	 		System.out.println("hqlFetch >> :  "+ updateQuery);
+	 		//int i=0;
+	 		int queryStatus = session.createSQLQuery(updateQuery).setParameter("ORDERBINVID", singleModel.getOrderId()).setParameter("BNGID", singleModel.getBngid())
+	 		.executeUpdate();
+	 		
+	 		if(queryStatus > 0) {
+	 			System.out.println("Executed");
+	 			finalResult++;
+	 			
+	 		}
+	 		
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		return finalResult;
+	}
+
+	@Override
+	public int insertAudit(Object singleModel,Session session) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 

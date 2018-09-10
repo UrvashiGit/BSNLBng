@@ -27,18 +27,14 @@ public interface IBngService {
 	
 	List<SummaryModel> getCircleWiseSummeryReport();
 	
-	Map<String, SingleBNGInstAndCmsnModel> getSingleBNGIAndCStatus(String bngId,int currentOrderId);
+    Map<String, SingleBNGInstAndCmsnModel> getSingleBNGIAndCStatus(String bngId,int currentOrderId);
 	
-	Map<String, SingleBNGInvModel> getSingleBNGInv(String bngId);
+	Map<String, SingleBNGInvModel> getSingleBNGInv(String bngId,int currentOrderId);
 	
 	//update TBLBNGINSTANDCOMMISTAGE
-		int updateBngINSStage(SingleBNGInstAndCmsnModel singleModel);
-
-		/*
-		int updateBngINSMasterStage(SingleBNGInstAndCmsnModel singleModel);
-		
-		int AddBngINSAudit(SingleBNGInstAndCmsnModel singleModel);*/
+	int updateBngINSStage(SingleBNGInstAndCmsnModel singleModel) throws Exception;
 	
+	int updateBngINVStage(SingleBNGInvModel singleModel) throws Exception;
 	
 
 

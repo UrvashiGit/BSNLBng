@@ -79,9 +79,9 @@ public class BngServiceImpl implements IBngService {
 	}
 	
 	@Override
-	public Map<String, SingleBNGInvModel> getSingleBNGInv(String bngId) {
+	public Map<String, SingleBNGInvModel> getSingleBNGInv(String bngId,int currentOrderId) {
 		
-		Map<String,SingleBNGInvModel> singleBNGInvModel=bngMasterDao.getSingleBNGInvDAO(bngId);
+		Map<String,SingleBNGInvModel> singleBNGInvModel=bngMasterDao.getSingleBNGInvDAO(bngId,currentOrderId);
 		System.out.println("BngServiceImpl : "+singleBNGInvModel.size());
 		
 		
@@ -120,6 +120,37 @@ public class BngServiceImpl implements IBngService {
 	@Override
 	public String getBngICStageStatusByStageId(String bngId,int stageId) {
 		return bngMasterDao.getBngICStageStatusByStageId(bngId,stageId);
+	}
+
+	
+	@Override
+	public int updateBngINVStage(SingleBNGInvModel singleModel) throws Exception {
+	
+		Date currentDate = new Date();
+		Date givenCloseDate = singleModel.getCloseDate();
+		Date givenTargetDate = singleModel.getTargetDate();
+		
+		if(givenCloseDate != null && givenTargetDate != null) {
+			// if both date is equal then status is completed
+			if(givenCloseDate.compareTo(givenTargetDate) == 0) {
+				System.out.println("EQUAL >>");
+				singleModel.setStatus("Completed");
+				
+			}
+			// if TD is greater then sysdate or GT then Close date(in case of TG EXtended) --> status = inProgress
+			if(givenTargetDate.compareTo(currentDate) > 0 || givenTargetDate.after(givenCloseDate)) {
+				System.out.println("INPROGESS >>");
+				singleModel.setStatus("InProgress");
+			}
+		}else if (givenTargetDate != null && givenCloseDate == null) {
+			singleModel.setStatus("InProgress");
+		}
+		else {
+			// if there is no date then Pending
+			singleModel.setStatus("Pending");
+		}
+
+		return bngMasterDao.updateBngINVStage(singleModel);
 	}
 	
 	

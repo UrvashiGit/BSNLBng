@@ -3,17 +3,28 @@ package com.sterlite.bsnl.model;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class SingleBNGInvModel {
 	
 	private String Status;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date closeDate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date targetDate;
 	private String JV;
 	private int orderId;
 	private String stageName;
 	private String bngid;
+	private int currentBNGOrderId;
 	public String getBngid() {
 		return bngid;
+	}
+	public int getCurrentBNGOrderId() {
+		return currentBNGOrderId;
+	}
+	public void setCurrentBNGOrderId(int currentBNGOrderId) {
+		this.currentBNGOrderId = currentBNGOrderId;
 	}
 	public void setBngid(String bngid) {
 		this.bngid = bngid;
@@ -59,7 +70,8 @@ public class SingleBNGInvModel {
 		StringBuilder builder = new StringBuilder();
 		builder.append("SingleBNGInvModel [Status=").append(Status).append(", closeDate=").append(closeDate)
 				.append(", targetDate=").append(targetDate).append(", JV=").append(JV).append(", orderId=")
-				.append(orderId).append(", stageName=").append(stageName).append(", bngid=").append(bngid).append("]");
+				.append(orderId).append(", stageName=").append(stageName).append(", bngid=").append(bngid)
+				.append(", currentBNGOrderId=").append(currentBNGOrderId).append("]");
 		return builder.toString();
 	}
 	
