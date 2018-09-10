@@ -17,12 +17,12 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-
 import com.sterlite.bsnl.entity.Book;
+import com.sterlite.bsnl.model.SummaryModel;
 
 public class CircleWiseSummeryReportPdfBuilder {
 	
-	public static ByteArrayInputStream generateReport(List<Book> books) {
+	public static ByteArrayInputStream generateReport(List<SummaryModel> circleWiseSummaryList) {
 
         Document document = new Document(PageSize.A4.rotate(), 10f, 10f, 10f, 0f);
         
@@ -109,21 +109,71 @@ public class CircleWiseSummeryReportPdfBuilder {
             hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(hcell);
             
-            for (Book book: books) {
+            for (SummaryModel singleCircleWiseSummary: circleWiseSummaryList) {
 
                 PdfPCell cell;
 
-                cell = new PdfPCell(new Phrase(book.getName()));
+                cell = new PdfPCell(new Phrase(singleCircleWiseSummary.getPhase()));
                 table.addCell(cell);
-
-                cell = new PdfPCell(new Phrase(book.getAuthor()));
+                
+                cell = new PdfPCell(new Phrase(singleCircleWiseSummary.getCircleName()));
                 cell.setPaddingLeft(5);
-            
+                table.addCell(cell);
+				
+				cell = new PdfPCell(new Phrase(singleCircleWiseSummary.getCircleCode()));
+                cell.setPaddingLeft(5);
                 table.addCell(cell);
 
-                cell = new PdfPCell(new Phrase(book.getPublication()));
-               // cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
-               // cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
+                cell = new PdfPCell(new Phrase(singleCircleWiseSummary.getTotalBng()));
+                cell.setPaddingLeft(5);
+                table.addCell(cell);
+                
+                cell = new PdfPCell(new Phrase(singleCircleWiseSummary.getSiteSurvey()));
+                cell.setPaddingLeft(5);
+                table.addCell(cell);
+                
+                cell = new PdfPCell(new Phrase(singleCircleWiseSummary.getSiteReady()));
+                cell.setPaddingLeft(5);
+                table.addCell(cell);
+                
+                cell = new PdfPCell(new Phrase(singleCircleWiseSummary.getMaterialDelivery()));
+                cell.setPaddingLeft(5);
+                table.addCell(cell);
+                
+                cell = new PdfPCell(new Phrase(singleCircleWiseSummary.getPowerOn()));
+                cell.setPaddingLeft(5);
+                table.addCell(cell);
+                
+                cell = new PdfPCell(new Phrase(singleCircleWiseSummary.getNWIntegration()));
+                cell.setPaddingLeft(5);
+                table.addCell(cell);
+                
+                cell = new PdfPCell(new Phrase(singleCircleWiseSummary.getAT()));
+                cell.setPaddingLeft(5);
+                table.addCell(cell);
+                
+                cell = new PdfPCell(new Phrase(singleCircleWiseSummary.getCommissioning()));
+                cell.setPaddingLeft(5);
+                table.addCell(cell);
+                
+                cell = new PdfPCell(new Phrase(singleCircleWiseSummary.getATC()));
+                cell.setPaddingLeft(5);
+                table.addCell(cell);
+                
+                cell = new PdfPCell(new Phrase(singleCircleWiseSummary.getERPPO()));
+                cell.setPaddingLeft(5);
+                table.addCell(cell);
+                
+                cell = new PdfPCell(new Phrase(singleCircleWiseSummary.getMIGO()));
+                cell.setPaddingLeft(5);
+                table.addCell(cell);
+                
+                cell = new PdfPCell(new Phrase(singleCircleWiseSummary.getMIRO()));
+                cell.setPaddingLeft(5);
+                table.addCell(cell);
+                
+
+                cell = new PdfPCell(new Phrase(singleCircleWiseSummary.getPaymentStatus()));
                 cell.setPaddingRight(5);
                 table.addCell(cell);
             }

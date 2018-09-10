@@ -14,8 +14,8 @@
           <div class="dropdown-menu" aria-labelledby="pagesDropdown" style="font-size:11px">
            <!--  <h6 class="dropdown-header">Login Screens:</h6> -->
             <a class="dropdown-item" href="bngSiteDetailsReport">BNG Site Details</a>
-            <a class="dropdown-item" href="register.html">BNG I&C Status</a>
-            <a class="dropdown-item" href="forgot-password.html" target="_blank">BNG Invoicing</a>
+            <a class="dropdown-item" href="bngIAndCStatus">BNG I&C Status</a>
+            <a class="dropdown-item" href="bngInvoicing" >BNG Invoicing</a>
             <a class="dropdown-item" href="zoneWiseSummeryReport">BNG Zone Wise Summary Report</a>
             <a class="dropdown-item" href="circleWiseSummeryReport">BNG Circle Wise Summary Report</a>
             <a class="dropdown-item" href="zoneWiseDetailedReport">BNG Zone Wise Detailed Report</a>

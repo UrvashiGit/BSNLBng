@@ -313,7 +313,7 @@ align=center x:publishsource="Excel">
   <td class=xl7520058 style='border-top:none;border-left:none'>Change in BNG
   Consignee and BNG location of Kerala Circle for Phase-I</td>
   <td class=xl7320058 style='border-top:none;border-left:none'><a
-  href="https://drive.google.com/open?id=1X0_n7HxsS31uNenGhpHliSmWd--hCKzB">https://drive.google.com/open?id=1X0_n7HxsS31uNenGhpHliSmWd--hCKzB</a></td>
+  href="https://drive.google.com/open?id=1X0_n7HxsS31uNenGhpHliSmWd--hCKzB">View/Download</a></td>
   <td class=xl6520058></td>
   <td class=xl6520058></td>
   <td class=xl6520058></td>
@@ -337,7 +337,7 @@ align=center x:publishsource="Excel">
   <td class=xl7520058 style='border-top:none;border-left:none'>WSR Meeting
   Schedule for BSNL, ITI &amp; Sterlite</td>
   <td class=xl7320058 style='border-top:none;border-left:none'><a
-  href="https://drive.google.com/open?id=1ABTK6h-5IjX1pvtJq2zly-DnwygMPAPG">https://drive.google.com/open?id=1ABTK6h-5IjX1pvtJq2zly-DnwygMPAPG</a></td>
+  href="https://drive.google.com/open?id=1ABTK6h-5IjX1pvtJq2zly-DnwygMPAPG">View/Download</a></td>
   <td class=xl6520058></td>
   <td class=xl6520058></td>
   <td class=xl6520058></td>
@@ -361,7 +361,7 @@ align=center x:publishsource="Excel">
   <td class=xl7520058 style='border-top:none;border-left:none'>Billing and
   Payment Process</td>
   <td class=xl7320058 style='border-top:none;border-left:none'><a
-  href="https://drive.google.com/open?id=1uB-9V1xKAkP2aGgnAYiFQvHIlHtY5p1R">https://drive.google.com/open?id=1uB-9V1xKAkP2aGgnAYiFQvHIlHtY5p1R</a></td>
+  href="https://drive.google.com/open?id=1uB-9V1xKAkP2aGgnAYiFQvHIlHtY5p1R">View/Download</a></td>
   <td class=xl6520058></td>
   <td class=xl6520058></td>
   <td class=xl6520058></td>
@@ -385,7 +385,7 @@ align=center x:publishsource="Excel">
   <td class=xl7520058 style='border-top:none;border-left:none'>Make Over of
   Test Bed MPLS Router - JuniperMX960</td>
   <td class=xl7320058 style='border-top:none;border-left:none'><a
-  href="https://drive.google.com/open?id=18RtWnCTKdQ9k29thjnuqKzWr68yfIo8U">https://drive.google.com/open?id=18RtWnCTKdQ9k29thjnuqKzWr68yfIo8U</a></td>
+  href="https://drive.google.com/open?id=18RtWnCTKdQ9k29thjnuqKzWr68yfIo8U">View/Download</a></td>
   <td class=xl6520058></td>
   <td class=xl6520058></td>
   <td class=xl6520058></td>

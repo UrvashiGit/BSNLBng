@@ -12,6 +12,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.web.servlet.view.document.AbstractXlsxView;
 
 import com.sterlite.bsnl.entity.Book;
+import com.sterlite.bsnl.model.ZoneWiseDetailed;
 
 public class ZoneWiseDetailedReportExcelBuilder extends AbstractXlsxView  {
 
@@ -21,9 +22,9 @@ public class ZoneWiseDetailedReportExcelBuilder extends AbstractXlsxView  {
 			HttpServletResponse response) throws Exception {
 	
 		@SuppressWarnings("unchecked")
-		  List<Book> books = (List<Book>) model.get("bookList");
+		  List<ZoneWiseDetailed> zoneWiseDetailedList = (List<ZoneWiseDetailed>) model.get("zwdList");
 		
-		Sheet sheet = workbook.createSheet("ZoneWiseSummeryReport");
+		Sheet sheet = workbook.createSheet("ZoneWiseDetailedReport");
 //Phase	Zone Name	Circle Name	Circle Code	Location	SSA Code	BNG Type	Exist/New/Train	BNG ID	Site Survey	Site Ready
 		//Material Delivery	Power On	NW Integration	AT	Commissioning	ATC	ERP PO	MIGO	MIRO	Payment Status
 		Row header = sheet.createRow(0);
@@ -50,11 +51,29 @@ public class ZoneWiseDetailedReportExcelBuilder extends AbstractXlsxView  {
 		header.createCell(20).setCellValue("Payment Status");
 		
 		int rowCount = 1;
-		for (Book book :books) {
-			Row bookRow = sheet.createRow(rowCount++);
-			bookRow.createCell(0).setCellValue(book.getName());
-			bookRow.createCell(1).setCellValue(book.getAuthor());
-			bookRow.createCell(2).setCellValue(book.getPublication());
+		for (ZoneWiseDetailed zoneWiseDetailedSingle :zoneWiseDetailedList) {
+			Row zwdRow = sheet.createRow(rowCount++);
+			zwdRow.createCell(0).setCellValue(zoneWiseDetailedSingle.getPhase());
+			zwdRow.createCell(1).setCellValue(zoneWiseDetailedSingle.getZoneName());
+			zwdRow.createCell(2).setCellValue(zoneWiseDetailedSingle.getCircleName());
+			zwdRow.createCell(3).setCellValue(zoneWiseDetailedSingle.getCircleCode());
+			zwdRow.createCell(4).setCellValue(zoneWiseDetailedSingle.getLocation());
+			zwdRow.createCell(5).setCellValue(zoneWiseDetailedSingle.getSSACode());
+			zwdRow.createCell(6).setCellValue(zoneWiseDetailedSingle.getBNGType());
+			zwdRow.createCell(7).setCellValue(zoneWiseDetailedSingle.getExistNewTrain());
+			zwdRow.createCell(8).setCellValue(zoneWiseDetailedSingle.getBNGID());
+			zwdRow.createCell(9).setCellValue(zoneWiseDetailedSingle.getSiteSurvey());
+			zwdRow.createCell(10).setCellValue(zoneWiseDetailedSingle.getSiteReady());
+			zwdRow.createCell(11).setCellValue(zoneWiseDetailedSingle.getMaterialDelivery());
+			zwdRow.createCell(12).setCellValue(zoneWiseDetailedSingle.getPowerOn());
+			zwdRow.createCell(13).setCellValue(zoneWiseDetailedSingle.getNWIntegration());
+			zwdRow.createCell(14).setCellValue(zoneWiseDetailedSingle.getAT());
+			zwdRow.createCell(15).setCellValue(zoneWiseDetailedSingle.getCommissioning());
+			zwdRow.createCell(16).setCellValue(zoneWiseDetailedSingle.getATC());
+			zwdRow.createCell(17).setCellValue(zoneWiseDetailedSingle.getERPPO());
+			zwdRow.createCell(18).setCellValue(zoneWiseDetailedSingle.getMIGO());
+			zwdRow.createCell(19).setCellValue(zoneWiseDetailedSingle.getMIRO());
+			zwdRow.createCell(20).setCellValue(zoneWiseDetailedSingle.getPaymentStatus());
 		}
 
 		

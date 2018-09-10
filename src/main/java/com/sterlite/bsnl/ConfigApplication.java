@@ -1,23 +1,17 @@
 package com.sterlite.bsnl;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.MediaType;
-import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-import org.springframework.web.servlet.view.JstlView;
 
 import com.sterlite.bsnl.interceptor.LoginInterceptor;
-import com.sterlite.bsnl.utill.reportbuilder.ExcelViewReport;
 
 
 @SuppressWarnings("deprecation")
 @Configuration
-
+@ComponentScan("com.sterlite.bsnl.*")
 public class ConfigApplication extends WebMvcConfigurerAdapter{
 	
 	@Override

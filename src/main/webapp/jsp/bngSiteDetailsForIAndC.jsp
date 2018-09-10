@@ -14,7 +14,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>BSNL-BNG</title>
+<title>BSNL-BNG Installation And Commissioning</title>
 
 </head>
 
@@ -104,7 +104,7 @@
 				<!-- DataTables Example -->
 				<div class="card mb-3">
 					<div class="card-header">
-						<i class="fas fa-table"></i> BNG Site Details
+						<i class="fas fa-table"></i> BSNL-BNG Installation And Commissioning
 					</div>
 					<div class="card-body">
 						<div class="table-responsive">
@@ -121,13 +121,7 @@
 										<th>SSA Code</th>
 										<th>BNG Type</th>
 										<th>Exist/New/Train</th>
-										<th>Site Name & Location</th>
-										<th>Circle Coordinator Details</th>
-										<th>Consignee Detail</th>
-										<th>Site Address</th>
-										<th>Site Person Name</th>
-										<th>Site Contact No.</th>
-										<th>GSTIN</th>
+										
 									</tr>
 								</thead>
 								<!-- <tfoot>
@@ -143,7 +137,7 @@
 								<tbody>
 									<c:forEach items="${bngList}" var="bng">
 										<tr>
-											<td>${bng.id}</td>
+											<td><a href="singleBNGDetails?getBNGID=${bng.id}">${bng.id} </a></td>
 											<td>${bng.phase}</td>
 											<td>${bng.zoneName}</td>
 											<td>${bng.circleName}</td>
@@ -152,13 +146,7 @@
 											<td>${bng.ssaCode}</td>
 											<td>${bng.bngType}</td>
 											<td>${bng.exitNewTrain}</td>
-											<td>${bng.siteNameLocation}</td>
-											<td>${bng.circleCoordinatorDet}</td>
-											<td>${bng.consigneeDet}</td>
-											<td>${bng.siteAddress}</td>
-											<td>${bng.sitePersonDet}</td>
-											<td>${bng.siteContactNo}</td>
-											<td>${bng.gstin}</td>
+											
 											
 											
 										</tr>
@@ -179,11 +167,11 @@
 							</table>
 							
 							<div>
-					<a href="bngSiteDetailsReportDownloadExcel" class="btn btn-primary">Download As
+				<!-- 	<a href="bngSiteDetailsReportDownloadExcel" class="btn btn-primary">Download As
 						Excel</a>
 					<a href="bngSiteDetailsReportPdfDownload" target="_blank" class="btn btn-primary">Download As
 						Pdf</a>
-				</div>
+				</div> -->
 							
 							
 						</div>

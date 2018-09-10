@@ -12,6 +12,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.web.servlet.view.document.AbstractXlsxView;
 
 import com.sterlite.bsnl.entity.Book;
+import com.sterlite.bsnl.model.ZoneWiseDetailed;
 
 public class CircleWiseDetailedReportExcelBuilder extends AbstractXlsxView  {
 
@@ -21,7 +22,7 @@ public class CircleWiseDetailedReportExcelBuilder extends AbstractXlsxView  {
 			HttpServletResponse response) throws Exception {
 	
 		@SuppressWarnings("unchecked")
-		  List<Book> books = (List<Book>) model.get("bookList");
+		  List<ZoneWiseDetailed> circleWiseDetailedList = (List<ZoneWiseDetailed>) model.get("circleList");
 		
 		Sheet sheet = workbook.createSheet("CircleWiseDetailedReport");
 		//Phase	Circle Name	Circle Code	Total BNG	Site Survey	Site Ready	Material Delivery	Power On	NW Integration	AT	Commissinong	ATC	ERP PO	MIGO	MIRO	Payment Status
@@ -50,13 +51,30 @@ public class CircleWiseDetailedReportExcelBuilder extends AbstractXlsxView  {
 
 		
 		int rowCount = 1;
-		for (Book book :books) {
-			Row bookRow = sheet.createRow(rowCount++);
-			bookRow.createCell(0).setCellValue(book.getName());
-			bookRow.createCell(1).setCellValue(book.getAuthor());
-			bookRow.createCell(2).setCellValue(book.getPublication());
+		for (ZoneWiseDetailed circleWiseDetailedSingle :circleWiseDetailedList) {
+			Row zwdRow = sheet.createRow(rowCount++);
+			zwdRow.createCell(0).setCellValue(circleWiseDetailedSingle.getPhase());
+			/*zwdRow.createCell(1).setCellValue(circleWiseDetailedSingle.getZoneName());*/
+			zwdRow.createCell(1).setCellValue(circleWiseDetailedSingle.getCircleName());
+			zwdRow.createCell(2).setCellValue(circleWiseDetailedSingle.getCircleCode());
+			zwdRow.createCell(3).setCellValue(circleWiseDetailedSingle.getLocation());
+			zwdRow.createCell(4).setCellValue(circleWiseDetailedSingle.getCircleName());
+			zwdRow.createCell(5).setCellValue(circleWiseDetailedSingle.getSSACode());
+			zwdRow.createCell(6).setCellValue(circleWiseDetailedSingle.getBNGType());
+			zwdRow.createCell(7).setCellValue(circleWiseDetailedSingle.getExistNewTrain());
+			zwdRow.createCell(8).setCellValue(circleWiseDetailedSingle.getBNGID());
+			zwdRow.createCell(9).setCellValue(circleWiseDetailedSingle.getSiteSurvey());
+			zwdRow.createCell(10).setCellValue(circleWiseDetailedSingle.getSiteReady());
+			zwdRow.createCell(11).setCellValue(circleWiseDetailedSingle.getMaterialDelivery());
+			zwdRow.createCell(12).setCellValue(circleWiseDetailedSingle.getPowerOn());
+			zwdRow.createCell(13).setCellValue(circleWiseDetailedSingle.getNWIntegration());
+			zwdRow.createCell(14).setCellValue(circleWiseDetailedSingle.getCommissioning());
+			zwdRow.createCell(15).setCellValue(circleWiseDetailedSingle.getAT());
+			zwdRow.createCell(16).setCellValue(circleWiseDetailedSingle.getERPPO());
+			zwdRow.createCell(17).setCellValue(circleWiseDetailedSingle.getMIGO());
+			zwdRow.createCell(18).setCellValue(circleWiseDetailedSingle.getMIRO());
+			zwdRow.createCell(19).setCellValue(circleWiseDetailedSingle.getPaymentStatus());
 		}
-
 		
 	}
 }

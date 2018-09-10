@@ -28,8 +28,8 @@
 		<div id="content-wrapper">
 
 			<div class="container-fluid">
-
-				<h3>BNG Circle Wise Summary Report as on DD-MM-YYYY</h3>
+<%java.text.DateFormat df = new java.text.SimpleDateFormat("dd/MM/yyyy"); %>
+				<h3>BNG Circle Wise Summary Report as on <%= df.format(new java.util.Date()) %></h3>
 				<hr>
 				<br>
 				<table class="table table-bordered" width="100%" cellspacing="0"
@@ -56,60 +56,41 @@
 						</tr>
 					</thead>
 					<tbody style="font-size: 11px;">
-						<tr>
-							<td>Phase - 1</td>
-							<td>Andhra Pradesh</td>
-							<td>AP</td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td>Phase - 1</td>
-							<td>Gujarat</td>
-							<td>GJ</td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td>Phase - 1</td>
-							<td>Telangna</td>
-							<td>CC</td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
+					   <c:if test="${not empty cwsList}">
+						<c:forEach items="${cwsList}" var="cws">
+										<tr>
+											<td>${cws.getPhase()}</td>
+											<td>${cws.getCircleName()}</td>
+											<td>${cws.getCircleCode()}</td>
+											<td>${cws.getTotalBng()}</td>
+											<td>${cws.getSiteSurvey()}</td>
+											<td>${cws.getSiteReady()}</td>
+											<td>${cws.getMaterialDelivery()}</td>
+											<td>${cws.getPowerOn()}</td>
+											<td>${cws.getNWIntegration()}</td>
+											<td>${cws.getAT()}</td>
+											<td>${cws.getCommissioning()}</td>
+											<td>${cws.getATC()}</td>
+											<td>${cws.getERPPO()}</td>
+											<td>${cws.getMIGO()}</td>
+											<td>${cws.getMIRO()}</td>
+											<td>${cws.getPaymentStatus()}</td>
+											
+											
+										</tr>
+									</c:forEach>
+									</c:if>
+									
+					</tbody>
+					<tbody style="font-size: 11px;">
+					   <c:if test="${empty cwsList}">
+						
+										<tr>
+											<td colspan="16"><b>No records found !!</b></td>
+											
+										</tr>
+							</c:if>		
+									
 					</tbody>
 				</table>
 

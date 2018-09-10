@@ -258,6 +258,23 @@ public class BngMaster implements Serializable {
 	public void setOrderBInvId(int orderBInvId) {
 		this.orderBInvId = orderBInvId;
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("BngMaster [id=").append(id).append(", phase=").append(phase).append(", zoneName=")
+				.append(zoneName).append(", circleName=").append(circleName).append(", circleCode=").append(circleCode)
+				.append(", location=").append(location).append(", ssaCode=").append(ssaCode).append(", bngType=")
+				.append(bngType).append(", exitNewTrain=").append(exitNewTrain).append(", siteNameLocation=")
+				.append(siteNameLocation).append(", circleCoordinatorDet=").append(circleCoordinatorDet)
+				.append(", consigneeDet=").append(consigneeDet).append(", siteAddress=").append(siteAddress)
+				.append(", sitePersonDet=").append(sitePersonDet).append(", siteContactNo=").append(siteContactNo)
+				.append(", gstin=").append(gstin).append(", orderBicId=").append(orderBicId).append(", orderBInvId=")
+				.append(orderBInvId).append(", createdDate=").append(createdDate).append(", lastModifiDate=")
+				.append(lastModifiDate).append(", createdBy=").append(createdBy).append(", modifiedBy=")
+				.append(modifiedBy).append("]");
+		return builder.toString();
+	}
 	
 	
 	

@@ -17,18 +17,18 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-
 import com.sterlite.bsnl.entity.Book;
+import com.sterlite.bsnl.model.ZoneWiseDetailed;
 
 public class CircleWiseDetailedReportPdfBuilder {
 	
-	public static ByteArrayInputStream generateReport(List<Book> books) {
+	public static ByteArrayInputStream generateReport(List<ZoneWiseDetailed> circleWiseDetailedList) {
 
         Document document = new Document(PageSize.A4.rotate(), 10f, 10f, 10f, 0f);
         
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         Font headFont = FontFactory.getFont(FontFactory.HELVETICA);
-        headFont.setSize(12);
+        headFont.setSize(10);
         //Title
         Chunk chunk = new Chunk("Circle Wise Detailed Report", headFont);
         Chapter titleLine = new Chapter(new Paragraph(chunk), 1);
@@ -124,21 +124,84 @@ public class CircleWiseDetailedReportPdfBuilder {
             hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(hcell);
             
-            for (Book book: books) {
-
-                PdfPCell cell;
-
-                cell = new PdfPCell(new Phrase(book.getName()));
+            for (ZoneWiseDetailed circleWiseDetailed: circleWiseDetailedList) {
+            	PdfPCell cell;
+                cell = new PdfPCell(new Phrase(circleWiseDetailed.getPhase()));
                 table.addCell(cell);
-
-                cell = new PdfPCell(new Phrase(book.getAuthor()));
+                
+              
+                cell = new PdfPCell(new Phrase(circleWiseDetailed.getCircleName()));
                 cell.setPaddingLeft(5);
-            
                 table.addCell(cell);
+                
+                cell = new PdfPCell(new Phrase(circleWiseDetailed.getCircleCode()));
+                cell.setPaddingLeft(5);
+                table.addCell(cell);
+                
+                cell = new PdfPCell(new Phrase(circleWiseDetailed.getLocation()));
+                cell.setPaddingLeft(5);
+                table.addCell(cell);
+                
+                cell = new PdfPCell(new Phrase(circleWiseDetailed.getSSACode()));
+                cell.setPaddingLeft(5);
+                table.addCell(cell);
+                
+                cell = new PdfPCell(new Phrase(circleWiseDetailed.getBNGType()));
+                cell.setPaddingLeft(5);
+                table.addCell(cell);
+                cell = new PdfPCell(new Phrase(circleWiseDetailed.getExistNewTrain()));
+                cell.setPaddingLeft(5);
+                table.addCell(cell);
+                cell = new PdfPCell(new Phrase(circleWiseDetailed.getBNGID()));
+                cell.setPaddingLeft(5);
+                table.addCell(cell);
+                
+                cell = new PdfPCell(new Phrase(circleWiseDetailed.getSiteSurvey()));
+                cell.setPaddingLeft(5);
+                table.addCell(cell);
+                
+                cell = new PdfPCell(new Phrase(circleWiseDetailed.getSiteReady()));
+                cell.setPaddingLeft(5);
+                table.addCell(cell);
+                
+                cell = new PdfPCell(new Phrase(circleWiseDetailed.getMaterialDelivery()));
+                cell.setPaddingLeft(5);
+                table.addCell(cell);
+                
+                cell = new PdfPCell(new Phrase(circleWiseDetailed.getPowerOn()));
+                cell.setPaddingLeft(5);
+                table.addCell(cell);
+                
+                cell = new PdfPCell(new Phrase(circleWiseDetailed.getNWIntegration()));
+                cell.setPaddingLeft(5);
+                table.addCell(cell);
+                
+                cell = new PdfPCell(new Phrase(circleWiseDetailed.getAT()));
+                cell.setPaddingLeft(5);
+                table.addCell(cell);
+                
+                cell = new PdfPCell(new Phrase(circleWiseDetailed.getCommissioning()));
+                cell.setPaddingLeft(5);
+                table.addCell(cell);
+                
+                cell = new PdfPCell(new Phrase(circleWiseDetailed.getATC()));
+                cell.setPaddingLeft(5);
+                table.addCell(cell);
+                
+                cell = new PdfPCell(new Phrase(circleWiseDetailed.getERPPO()));
+                cell.setPaddingLeft(5);
+                table.addCell(cell);
+                
+                cell = new PdfPCell(new Phrase(circleWiseDetailed.getMIGO()));
+                cell.setPaddingLeft(5);
+                table.addCell(cell);
+                
+                cell = new PdfPCell(new Phrase(circleWiseDetailed.getMIRO()));
+                cell.setPaddingLeft(5);
+                table.addCell(cell);
+                
 
-                cell = new PdfPCell(new Phrase(book.getPublication()));
-               // cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
-               // cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
+                cell = new PdfPCell(new Phrase(circleWiseDetailed.getPaymentStatus()));
                 cell.setPaddingRight(5);
                 table.addCell(cell);
             }

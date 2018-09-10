@@ -12,7 +12,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.web.servlet.view.document.AbstractXlsxView;
 
 import com.sterlite.bsnl.entity.BngMaster;
-import com.sterlite.bsnl.entity.Book;
+import com.sterlite.bsnl.model.SummaryModel;
 
 public class ZoneWiseSummeryReportExcelBuilder extends AbstractXlsxView  {
 
@@ -22,8 +22,8 @@ public class ZoneWiseSummeryReportExcelBuilder extends AbstractXlsxView  {
 			HttpServletResponse response) throws Exception {
 	
 		@SuppressWarnings("unchecked")
-		  List<Book> books = (List<Book>) model.get("bookList");
-		List<BngMaster> bngMasterList = (List<BngMaster>) model.get("bngMasterList");
+		//  List<Book> books = (List<Book>) model.get("bookList");
+		List<SummaryModel> zoneWiseSummaryList = (List<SummaryModel>) model.get("zwsList");
 		
 		
 		Sheet sheet = workbook.createSheet("ZoneWiseSummeryReport");
@@ -46,11 +46,23 @@ public class ZoneWiseSummeryReportExcelBuilder extends AbstractXlsxView  {
 		header.createCell(14).setCellValue("Payment Status");
 		
 		int rowCount = 1;
-		for (BngMaster bng :bngMasterList) {
-			Row row = sheet.createRow(rowCount++);
-			row.createCell(0).setCellValue(bng.getPhase());
-			row.createCell(1).setCellValue(bng.getZoneName());
-			row.createCell(2).setCellValue(bng.getBngType());
+		for (SummaryModel singleSummaryModel :zoneWiseSummaryList) {
+			Row zwsRow = sheet.createRow(rowCount++);
+			zwsRow.createCell(0).setCellValue(singleSummaryModel.getPhase());
+			zwsRow.createCell(1).setCellValue(singleSummaryModel.getZoneName());
+			zwsRow.createCell(2).setCellValue(singleSummaryModel.getTotalBng());
+			zwsRow.createCell(3).setCellValue(singleSummaryModel.getSiteSurvey());
+			zwsRow.createCell(4).setCellValue(singleSummaryModel.getSiteReady());
+			zwsRow.createCell(5).setCellValue(singleSummaryModel.getMaterialDelivery());
+			zwsRow.createCell(6).setCellValue(singleSummaryModel.getPowerOn());
+			zwsRow.createCell(7).setCellValue(singleSummaryModel.getNWIntegration());
+			zwsRow.createCell(8).setCellValue(singleSummaryModel.getAT());
+			zwsRow.createCell(9).setCellValue(singleSummaryModel.getCommissioning());
+			zwsRow.createCell(10).setCellValue(singleSummaryModel.getATC());
+			zwsRow.createCell(11).setCellValue(singleSummaryModel.getERPPO());
+			zwsRow.createCell(12).setCellValue(singleSummaryModel.getMIGO());
+			zwsRow.createCell(13).setCellValue(singleSummaryModel.getMIRO());
+			zwsRow.createCell(14).setCellValue(singleSummaryModel.getPaymentStatus());
 		}
 
 		

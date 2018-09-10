@@ -12,6 +12,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.web.servlet.view.document.AbstractXlsxView;
 
 import com.sterlite.bsnl.entity.Book;
+import com.sterlite.bsnl.model.SummaryModel;
 
 public class CircleWiseSummeryReportExcelBuilder extends AbstractXlsxView  {
 
@@ -21,7 +22,7 @@ public class CircleWiseSummeryReportExcelBuilder extends AbstractXlsxView  {
 			HttpServletResponse response) throws Exception {
 	
 		@SuppressWarnings("unchecked")
-		  List<Book> books = (List<Book>) model.get("bookList");
+		  List<SummaryModel> circleWiseSummaryList = (List<SummaryModel>) model.get("cwsList");
 		
 		Sheet sheet = workbook.createSheet("CircleWiseSummeryReport");
 		//Phase	Circle Name	Circle Code	Total BNG	Site Survey	Site Ready	Material Delivery	Power On	NW Integration	AT	Commissinong	ATC	ERP PO	MIGO	MIRO	Payment Status
@@ -44,11 +45,24 @@ public class CircleWiseSummeryReportExcelBuilder extends AbstractXlsxView  {
 		header.createCell(15).setCellValue("Payment Status");
 		
 		int rowCount = 1;
-		for (Book book :books) {
-			Row bookRow = sheet.createRow(rowCount++);
-			bookRow.createCell(0).setCellValue(book.getName());
-			bookRow.createCell(1).setCellValue(book.getAuthor());
-			bookRow.createCell(2).setCellValue(book.getPublication());
+		for (SummaryModel singleSummaryModel :circleWiseSummaryList) {
+			Row cwsRow = sheet.createRow(rowCount++);
+			cwsRow.createCell(0).setCellValue(singleSummaryModel.getPhase());
+			cwsRow.createCell(1).setCellValue(singleSummaryModel.getCircleName());
+			cwsRow.createCell(2).setCellValue(singleSummaryModel.getCircleCode());
+			cwsRow.createCell(3).setCellValue(singleSummaryModel.getTotalBng());
+			cwsRow.createCell(4).setCellValue(singleSummaryModel.getSiteSurvey());
+			cwsRow.createCell(5).setCellValue(singleSummaryModel.getSiteReady());
+			cwsRow.createCell(6).setCellValue(singleSummaryModel.getMaterialDelivery());
+			cwsRow.createCell(7).setCellValue(singleSummaryModel.getPowerOn());
+			cwsRow.createCell(8).setCellValue(singleSummaryModel.getNWIntegration());
+			cwsRow.createCell(9).setCellValue(singleSummaryModel.getAT());
+			cwsRow.createCell(10).setCellValue(singleSummaryModel.getCommissioning());
+			cwsRow.createCell(11).setCellValue(singleSummaryModel.getATC());
+			cwsRow.createCell(12).setCellValue(singleSummaryModel.getERPPO());
+			cwsRow.createCell(13).setCellValue(singleSummaryModel.getMIGO());
+			cwsRow.createCell(14).setCellValue(singleSummaryModel.getMIRO());
+			cwsRow.createCell(15).setCellValue(singleSummaryModel.getPaymentStatus());
 		}
 
 		

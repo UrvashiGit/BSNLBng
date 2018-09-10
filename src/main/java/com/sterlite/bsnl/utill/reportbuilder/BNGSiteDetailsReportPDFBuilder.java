@@ -17,12 +17,12 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.sterlite.bsnl.entity.BngMaster;
 import com.sterlite.bsnl.entity.Book;
-import com.sterlite.bsnl.model.SummaryModel;
 
-public class ZoneWiseSummeryReportPdfBuilder {
+public class BNGSiteDetailsReportPDFBuilder {
 	
-	public static ByteArrayInputStream generateReport(List<SummaryModel> zoneWiseSummaryList) {
+	public static ByteArrayInputStream generateReport(List<BngMaster> bngMasterList) {
 
         Document document = new Document(PageSize.A4.rotate(), 10f, 10f, 10f, 0f);
         
@@ -30,144 +30,161 @@ public class ZoneWiseSummeryReportPdfBuilder {
         Font headFont = FontFactory.getFont(FontFactory.HELVETICA);
         headFont.setSize(10);
         //Title
-        Chunk chunk = new Chunk("Zone Wise Summery Report", headFont);
+        Chunk chunk = new Chunk("BNG Site Details", headFont);
         Chapter titleLine = new Chapter(new Paragraph(chunk), 1);
         titleLine.setNumberDepth(0);
         
         
         try {
 
-            PdfPTable table = new PdfPTable(15);
+            PdfPTable table = new PdfPTable(16);
             table.setWidthPercentage(100);
 
-//Phase	Zone Name	Total BNG	Site Survey Site Ready	Material Delivery	Power On	NW Integration	
-            //AT	Commissinong	ATC	ERP PO	MIGO	MIRO	Payment Status
+          //Phase	Circle Name	Circle Code	Total BNG	Site Survey	Site Ready	Material Delivery
+            //Power On	NW Integration	AT	Commissinong	ATC	ERP PO	MIGO	MIRO	Payment Status
 
             PdfPCell hcell;
             hcell = new PdfPCell(new Phrase("Phase", headFont));
+            hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(hcell);
+            
+            hcell = new PdfPCell(new Phrase("BNG ID", headFont));
             hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(hcell);
 
             hcell = new PdfPCell(new Phrase("Zone Name", headFont));
             hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(hcell);
-
-            hcell = new PdfPCell(new Phrase("Total BNG", headFont));
+            
+            hcell = new PdfPCell(new Phrase("Circle Name", headFont));
             hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(hcell);
             
-            hcell = new PdfPCell(new Phrase("Site Survey", headFont));
-            hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
-            table.addCell(hcell);
-            
-            hcell = new PdfPCell(new Phrase("Site Ready", headFont));
-            hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
-            table.addCell(hcell);
-            
-            hcell = new PdfPCell(new Phrase("Material Delivery", headFont));
-            hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
-            table.addCell(hcell);
-            
-            hcell = new PdfPCell(new Phrase("Power On", headFont));
-            hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
-            table.addCell(hcell);
-            
-            hcell = new PdfPCell(new Phrase("NW Integration", headFont));
-            hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
-            table.addCell(hcell);
-            
-            hcell = new PdfPCell(new Phrase("AT", headFont));
-            hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
-            table.addCell(hcell);
-            
-            hcell = new PdfPCell(new Phrase("Commissinong", headFont));
-            hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
-            table.addCell(hcell);
-            
-            hcell = new PdfPCell(new Phrase("ATC", headFont));
-            hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
-            table.addCell(hcell);
-            
-            hcell = new PdfPCell(new Phrase("ERP PO", headFont));
-            hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
-            table.addCell(hcell);
-            
-            hcell = new PdfPCell(new Phrase("MIGO", headFont));
-            hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
-            table.addCell(hcell);
-            
-            hcell = new PdfPCell(new Phrase("MIRO", headFont));
+            hcell = new PdfPCell(new Phrase("Circle Code", headFont));
             hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(hcell);
 
-            
-            hcell = new PdfPCell(new Phrase("Payment Status", headFont));
+            hcell = new PdfPCell(new Phrase("Location", headFont));
             hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(hcell);
             
-            for (SummaryModel singleZoneWiseSummary: zoneWiseSummaryList) {
+            hcell = new PdfPCell(new Phrase("SSA Code", headFont));
+            hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(hcell);
+            
+            hcell = new PdfPCell(new Phrase("BNG Type", headFont));
+            hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(hcell);
+            
+            hcell = new PdfPCell(new Phrase("Exist/New/Train", headFont));
+            hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(hcell);
+            
+            hcell = new PdfPCell(new Phrase("Site Name & Location", headFont));
+            hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(hcell);
+            
+            hcell = new PdfPCell(new Phrase("Circle Coordinator Details", headFont));
+            hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(hcell);
+            
+            hcell = new PdfPCell(new Phrase("Consignee Detail", headFont));
+            hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(hcell);
+            
+            hcell = new PdfPCell(new Phrase("Site Address", headFont));
+            hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(hcell);
+            
+            hcell = new PdfPCell(new Phrase("Site Person Name", headFont));
+            hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(hcell);
+            
+            hcell = new PdfPCell(new Phrase("Site Contact No.", headFont));
+            hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(hcell);
+            
+            hcell = new PdfPCell(new Phrase("GSTIN", headFont));
+            hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(hcell);
+            
+          
+            
+            for (BngMaster bngMaster: bngMasterList) {
 
+            	 System.out.println("Inside PDF : " +bngMaster.getId() );
                 PdfPCell cell;
 
-                cell = new PdfPCell(new Phrase(singleZoneWiseSummary.getPhase()));
-                table.addCell(cell);
-                
-                cell = new PdfPCell(new Phrase(singleZoneWiseSummary.getZoneName()));
-                cell.setPaddingLeft(5);
+                cell = new PdfPCell(new Phrase(bngMaster.getPhase()));
                 table.addCell(cell);
 
-                cell = new PdfPCell(new Phrase(singleZoneWiseSummary.getTotalBng()));
+                cell = new PdfPCell(new Phrase(bngMaster.getId()));
                 cell.setPaddingLeft(5);
                 table.addCell(cell);
                 
-                cell = new PdfPCell(new Phrase(singleZoneWiseSummary.getSiteSurvey()));
+                cell = new PdfPCell(new Phrase(bngMaster.getZoneName()));
                 cell.setPaddingLeft(5);
                 table.addCell(cell);
                 
-                cell = new PdfPCell(new Phrase(singleZoneWiseSummary.getSiteReady()));
+                cell = new PdfPCell(new Phrase(bngMaster.getCircleName()));
                 cell.setPaddingLeft(5);
                 table.addCell(cell);
                 
-                cell = new PdfPCell(new Phrase(singleZoneWiseSummary.getMaterialDelivery()));
+                cell = new PdfPCell(new Phrase(bngMaster.getCircleCode()));
                 cell.setPaddingLeft(5);
                 table.addCell(cell);
                 
-                cell = new PdfPCell(new Phrase(singleZoneWiseSummary.getPowerOn()));
+                cell = new PdfPCell(new Phrase(bngMaster.getLocation()));
                 cell.setPaddingLeft(5);
                 table.addCell(cell);
                 
-                cell = new PdfPCell(new Phrase(singleZoneWiseSummary.getNWIntegration()));
+                cell = new PdfPCell(new Phrase(bngMaster.getSsaCode()));
                 cell.setPaddingLeft(5);
                 table.addCell(cell);
                 
-                cell = new PdfPCell(new Phrase(singleZoneWiseSummary.getAT()));
+                cell = new PdfPCell(new Phrase(bngMaster.getBngType()));
                 cell.setPaddingLeft(5);
                 table.addCell(cell);
                 
-                cell = new PdfPCell(new Phrase(singleZoneWiseSummary.getCommissioning()));
+                cell = new PdfPCell(new Phrase(bngMaster.getExitNewTrain()));
                 cell.setPaddingLeft(5);
                 table.addCell(cell);
                 
-                cell = new PdfPCell(new Phrase(singleZoneWiseSummary.getATC()));
+                cell = new PdfPCell(new Phrase(bngMaster.getSiteNameLocation()));
                 cell.setPaddingLeft(5);
                 table.addCell(cell);
                 
-                cell = new PdfPCell(new Phrase(singleZoneWiseSummary.getERPPO()));
+                cell = new PdfPCell(new Phrase(bngMaster.getCircleCoordinatorDet()));
                 cell.setPaddingLeft(5);
                 table.addCell(cell);
                 
-                cell = new PdfPCell(new Phrase(singleZoneWiseSummary.getMIGO()));
+                cell = new PdfPCell(new Phrase(bngMaster.getConsigneeDet()));
                 cell.setPaddingLeft(5);
                 table.addCell(cell);
                 
-                cell = new PdfPCell(new Phrase(singleZoneWiseSummary.getMIRO()));
+                cell = new PdfPCell(new Phrase(bngMaster.getSiteAddress()));
                 cell.setPaddingLeft(5);
                 table.addCell(cell);
+                
+                cell = new PdfPCell(new Phrase(bngMaster.getSitePersonDet()));
+                cell.setPaddingLeft(5);
+                table.addCell(cell);
+                
+                cell = new PdfPCell(new Phrase(bngMaster.getSiteContactNo()));
+                cell.setPaddingLeft(5);
+                table.addCell(cell);
+                
+                cell = new PdfPCell(new Phrase(bngMaster.getGstin()));
+                cell.setPaddingLeft(5);
+                table.addCell(cell);
+                
                 
 
-                cell = new PdfPCell(new Phrase(singleZoneWiseSummary.getPaymentStatus()));
+               /* cell = new PdfPCell(new Phrase(book.getPublication()));
+               // cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+               // cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
                 cell.setPaddingRight(5);
-                table.addCell(cell);
+                table.addCell(cell);*/
             }
 
             PdfWriter.getInstance(document, out);

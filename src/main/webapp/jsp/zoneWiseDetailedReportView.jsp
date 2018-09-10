@@ -28,8 +28,8 @@
 		<div id="content-wrapper" >
 
 			<div class="container-fluid" style=" overflow-x: auto !important;">
-
-				<h3>BNG Zone Wise Detailed Report as on DD-MM-YYYY</h3>
+				<%java.text.DateFormat df = new java.text.SimpleDateFormat("dd/MM/yyyy"); %>
+				<h3>BNG Zone Wise Detailed Report as on  <%= df.format(new java.util.Date()) %></h3>
 				<hr>
 				<br>
 				<table class="table table-bordered" width="100%" cellspacing="0"
@@ -61,75 +61,43 @@
 						</tr>
 					</thead>
 					<tbody style="font-size: 11px;">
-						<tr>
-							<td>Phase - 1</td>
-							<td>South</td>
-							<td>34</td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td>Phase - 1</td>
-							<td>South</td>
-							<td>34</td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td>Phase - 1</td>
-							<td>South</td>
-							<td>34</td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
+						<c:forEach items="${zwdList}" var="zwd">
+										<tr>
+											<td>${zwd.getPhase()}</td>
+											<td>${zwd.getZoneName()}</td>
+											<td>${zwd.getCircleName()}</td>
+											<td>${zwd.getCircleCode()}</td>
+											<td>${zwd.getLocation()}</td>
+											<td>${zwd.getSSACode()}</td>
+											<td>${zwd.getBNGType()}</td>
+											<td>${zwd.getExistNewTrain()}</td>
+											<td>${zwd.getBNGID()}</td>
+											<td>${zwd.getSiteSurvey()}</td>
+											<td>${zwd.getSiteReady()}</td>
+											<td>${zwd.getMaterialDelivery()}</td>
+											<td>${zwd.getPowerOn()}</td>
+											<td>${zwd.getNWIntegration()}</td>
+											<td>${zwd.getAT()}</td>
+											<td>${zwd.getCommissioning()}</td>
+											<td>${zwd.getATC()}</td>
+											<td>${zwd.getERPPO()}</td>
+											<td>${zwd.getMIGO()}</td>
+											<td>${zwd.getMIRO()}</td>
+											<td>${zwd.getPaymentStatus()}</td>
+											
+											
+										</tr>
+									</c:forEach>
+					</tbody>
+					<tbody style="font-size: 11px;">
+					        <c:if test="${empty zwdList}">
+						
+										<tr>
+											<td colspan="21"><b>No records found !!</b></td>
+											
+										</tr>
+							</c:if>		
+									
 					</tbody>
 				</table>
 
