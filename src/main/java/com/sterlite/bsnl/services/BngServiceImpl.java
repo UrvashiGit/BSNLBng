@@ -1,5 +1,6 @@
 package com.sterlite.bsnl.services;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -68,9 +69,9 @@ public class BngServiceImpl implements IBngService {
 	}
 	
 	@Override
-	public Map<String, SingleBNGInstAndCmsnModel> getSingleBNGIAndCStatus(String bngId) {
+	public Map<String, SingleBNGInstAndCmsnModel> getSingleBNGIAndCStatus(String bngId,int currentOrderId) {
 		
-		Map<String,SingleBNGInstAndCmsnModel> singleBNGInstAndCmsnModel=bngMasterDao.getSingleBNGIAndCStatusDAO(bngId);
+		Map<String,SingleBNGInstAndCmsnModel> singleBNGInstAndCmsnModel=bngMasterDao.getSingleBNGIAndCStatusDAO(bngId, currentOrderId);
 		System.out.println("BngServiceImpl : "+singleBNGInstAndCmsnModel.size());
 		
 		
@@ -85,6 +86,36 @@ public class BngServiceImpl implements IBngService {
 		
 		
 		return singleBNGInvModel;
+	}
+	
+	@Override
+	public int updateBngINSStage(SingleBNGInstAndCmsnModel singleModel) {
+	
+		Date currentDate = new Date();
+		Date givenCloseDate = singleModel.getCloseDate();
+		Date givenTargetDate = singleModel.getTargetDate();
+		
+		if(givenCloseDate != null && givenTargetDate != null) {
+			// if both date is equal then status is completed
+			if(givenCloseDate.compareTo(givenTargetDate) == 0) {
+				System.out.println("EQUAL >>");
+				singleModel.setStatus("Completed");
+				
+			}
+			// if TD is greater then sysdate or GT then Close date(in case of TG EXtended) --> status = inProgress
+			if(givenTargetDate.compareTo(currentDate) > 0 || givenTargetDate.after(givenCloseDate)) {
+				System.out.println("INPROGESS >>");
+				singleModel.setStatus("InProgress");
+			}
+		}else if (givenTargetDate != null && givenCloseDate == null) {
+			singleModel.setStatus("InProgress");
+		}
+		else {
+			// if there is no date then Pending
+			singleModel.setStatus("Pending");
+		}
+
+		return bngMasterDao.updateBngINSStage(singleModel);
 	}
 	
 	

@@ -25,10 +25,16 @@ public interface IBngMasterDAO {
 	
 	List<SummaryModel> getCircleWiseSummaryReportDAO();
 	
-	Map<String, SingleBNGInstAndCmsnModel> getSingleBNGIAndCStatusDAO(String bngId);
+	Map<String, SingleBNGInstAndCmsnModel> getSingleBNGIAndCStatusDAO(String bngId,int currentOrderId);
 	
 	Map<String, SingleBNGInvModel> getSingleBNGInvDAO(String bngId);
 	
-	
+	//update TBLBNGINSTANDCOMMISTAGE
+			int updateBngINSStage(SingleBNGInstAndCmsnModel singleModel);
+
+			/*
+			int updateBngINSMasterStage(SingleBNGInstAndCmsnModel singleModel);
+			
+			int AddBngINSAudit(SingleBNGInstAndCmsnModel singleModel);*/
 	
 }

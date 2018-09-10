@@ -2,7 +2,9 @@ package com.sterlite.bsnl.dao;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -286,12 +288,12 @@ public class BngMasterDaoImpl implements IBngMasterDAO {
 	
 	@SuppressWarnings("deprecation")
 	@Override
-	public Map<String,SingleBNGInstAndCmsnModel> getSingleBNGIAndCStatusDAO(String bngId) {
+	public Map<String,SingleBNGInstAndCmsnModel> getSingleBNGIAndCStatusDAO(String bngId,int currentOrderId) {
 		
 		Session session;
 		String hqlFetch;
 		List<Object[]> listOfSingleBNG = null;
-		Map<String, SingleBNGInstAndCmsnModel> map= new HashMap<>();
+		Map<String, SingleBNGInstAndCmsnModel> map= new LinkedHashMap<>();
 		System.out.println("Inside getSingleBNGIAndCStatusDAO()");
 		try{
 			session = getSession(); 
@@ -305,12 +307,15 @@ public class BngMasterDaoImpl implements IBngMasterDAO {
 	 				 //map= new HashMap<>();
 	 				if(BSNLConstans.SITE_SURVEY.equals(row[0].toString())) {
 	 					SingleBNGInstAndCmsnModel singleBNGInstAndCmsnModel=new SingleBNGInstAndCmsnModel();
+	 					singleBNGInstAndCmsnModel.setCurrentBNGOrderId(currentOrderId);
 	 					singleBNGInstAndCmsnModel.setStatus(row[1].toString());
 	 					if(null !=row[2]){
-	 					singleBNGInstAndCmsnModel.setCloseDate(new SimpleDateFormat("yyyy-mm-dd").parse(row[2].toString()));
+	 						singleBNGInstAndCmsnModel.setCloseDate((Date) row[2]);
+	 				//	singleBNGInstAndCmsnModel.setCloseDate(new SimpleDateFormat("yyyy-mm-dd").parse(row[2].toString()));
 	 					}
 	 					if(null !=row[3]){
-	 					singleBNGInstAndCmsnModel.setCloseDate(new SimpleDateFormat("yyyy-mm-dd").parse(row[3].toString()));
+	 						singleBNGInstAndCmsnModel.setTargetDate((Date) row[3]);
+	 				//	singleBNGInstAndCmsnModel.setCloseDate(new SimpleDateFormat("yyyy-mm-dd").parse(row[3].toString()));
 	 					}
 	 					singleBNGInstAndCmsnModel.setOrderId((int) row[4]);
 	 					singleBNGInstAndCmsnModel.setBngid(row[5].toString());
@@ -319,12 +324,15 @@ public class BngMasterDaoImpl implements IBngMasterDAO {
 	 				}
 	 				else if(BSNLConstans.SITE_READY.equals(row[0].toString())) {
 	 					SingleBNGInstAndCmsnModel singleBNGInstAndCmsnModel=new SingleBNGInstAndCmsnModel();
+	 					singleBNGInstAndCmsnModel.setCurrentBNGOrderId(currentOrderId);
 	 					singleBNGInstAndCmsnModel.setStatus(row[1].toString());
 	 					if(null !=row[2]){
-	 					singleBNGInstAndCmsnModel.setCloseDate(new SimpleDateFormat("yyyy-mm-dd").parse(row[2].toString()));
+	 						singleBNGInstAndCmsnModel.setCloseDate((Date) row[2]);
+	 				//	singleBNGInstAndCmsnModel.setCloseDate(new SimpleDateFormat("yyyy-mm-dd").parse(row[2].toString()));
 	 					}
 	 					if(null !=row[3]){
-	 					singleBNGInstAndCmsnModel.setCloseDate(new SimpleDateFormat("yyyy-mm-dd").parse(row[3].toString()));
+	 						singleBNGInstAndCmsnModel.setTargetDate((Date) row[3]);
+	 				//	singleBNGInstAndCmsnModel.setCloseDate(new SimpleDateFormat("yyyy-mm-dd").parse(row[3].toString()));
 	 					}
 	 					singleBNGInstAndCmsnModel.setOrderId((int) row[4]);
 	 					singleBNGInstAndCmsnModel.setBngid(row[5].toString());
@@ -333,12 +341,15 @@ public class BngMasterDaoImpl implements IBngMasterDAO {
 	 				}
 	 				else if(BSNLConstans.MATERIAL_DELIVERY.equals(row[0].toString())) {
 	 					SingleBNGInstAndCmsnModel singleBNGInstAndCmsnModel=new SingleBNGInstAndCmsnModel();
+	 					singleBNGInstAndCmsnModel.setCurrentBNGOrderId(currentOrderId);
 	 					singleBNGInstAndCmsnModel.setStatus(row[1].toString());
 	 					if(null !=row[2]){
-	 					singleBNGInstAndCmsnModel.setCloseDate(new SimpleDateFormat("yyyy-mm-dd").parse(row[2].toString()));
+	 						singleBNGInstAndCmsnModel.setCloseDate((Date) row[2]);
+	 				//	singleBNGInstAndCmsnModel.setCloseDate(new SimpleDateFormat("yyyy-mm-dd").parse(row[2].toString()));
 	 					}
 	 					if(null !=row[3]){
-	 					singleBNGInstAndCmsnModel.setCloseDate(new SimpleDateFormat("yyyy-mm-dd").parse(row[3].toString()));
+	 						singleBNGInstAndCmsnModel.setTargetDate((Date) row[3]);
+	 				//	singleBNGInstAndCmsnModel.setCloseDate(new SimpleDateFormat("yyyy-mm-dd").parse(row[3].toString()));
 	 					}
 	 					singleBNGInstAndCmsnModel.setOrderId((int) row[4]);
 	 					singleBNGInstAndCmsnModel.setBngid(row[5].toString());
@@ -347,12 +358,15 @@ public class BngMasterDaoImpl implements IBngMasterDAO {
 	 				}
 	 				else if(BSNLConstans.POWER_ON.equals(row[0].toString())) {
 	 					SingleBNGInstAndCmsnModel singleBNGInstAndCmsnModel=new SingleBNGInstAndCmsnModel();
+	 					singleBNGInstAndCmsnModel.setCurrentBNGOrderId(currentOrderId);
 	 					singleBNGInstAndCmsnModel.setStatus(row[1].toString());
 	 					if(null !=row[2]){
-	 					singleBNGInstAndCmsnModel.setCloseDate(new SimpleDateFormat("yyyy-mm-dd").parse(row[2].toString()));
+	 						singleBNGInstAndCmsnModel.setCloseDate((Date) row[2]);
+	 				//	singleBNGInstAndCmsnModel.setCloseDate(new SimpleDateFormat("yyyy-mm-dd").parse(row[2].toString()));
 	 					}
 	 					if(null !=row[3]){
-	 					singleBNGInstAndCmsnModel.setCloseDate(new SimpleDateFormat("yyyy-mm-dd").parse(row[3].toString()));
+	 						singleBNGInstAndCmsnModel.setTargetDate((Date) row[3]);
+	 				//	singleBNGInstAndCmsnModel.setCloseDate(new SimpleDateFormat("yyyy-mm-dd").parse(row[3].toString()));
 	 					}
 	 					singleBNGInstAndCmsnModel.setOrderId((int) row[4]);
 	 					singleBNGInstAndCmsnModel.setBngid(row[5].toString());
@@ -361,12 +375,15 @@ public class BngMasterDaoImpl implements IBngMasterDAO {
 	 				}
 	 				else if(BSNLConstans.NW_INTEGRATION.equals(row[0].toString())) {
 	 					SingleBNGInstAndCmsnModel singleBNGInstAndCmsnModel=new SingleBNGInstAndCmsnModel();
+	 					singleBNGInstAndCmsnModel.setCurrentBNGOrderId(currentOrderId);
 	 					singleBNGInstAndCmsnModel.setStatus(row[1].toString());
 	 					if(null !=row[2]){
-	 					singleBNGInstAndCmsnModel.setCloseDate(new SimpleDateFormat("yyyy-mm-dd").parse(row[2].toString()));
+	 						singleBNGInstAndCmsnModel.setCloseDate((Date) row[2]);
+	 				//	singleBNGInstAndCmsnModel.setCloseDate(new SimpleDateFormat("yyyy-mm-dd").parse(row[2].toString()));
 	 					}
 	 					if(null !=row[3]){
-	 					singleBNGInstAndCmsnModel.setCloseDate(new SimpleDateFormat("yyyy-mm-dd").parse(row[3].toString()));
+	 						singleBNGInstAndCmsnModel.setTargetDate((Date) row[3]);
+	 				//	singleBNGInstAndCmsnModel.setCloseDate(new SimpleDateFormat("yyyy-mm-dd").parse(row[3].toString()));
 	 					}
 	 					singleBNGInstAndCmsnModel.setOrderId((int) row[4]);
 	 					singleBNGInstAndCmsnModel.setBngid(row[5].toString());
@@ -375,12 +392,15 @@ public class BngMasterDaoImpl implements IBngMasterDAO {
 	 				}
 	 				else if(BSNLConstans.AT.equals(row[0].toString())) {
 	 					SingleBNGInstAndCmsnModel singleBNGInstAndCmsnModel=new SingleBNGInstAndCmsnModel();
+	 					singleBNGInstAndCmsnModel.setCurrentBNGOrderId(currentOrderId);
 	 					singleBNGInstAndCmsnModel.setStatus(row[1].toString());
 	 					if(null !=row[2]){
-	 					singleBNGInstAndCmsnModel.setCloseDate(new SimpleDateFormat("yyyy-mm-dd").parse(row[2].toString()));
+	 						singleBNGInstAndCmsnModel.setCloseDate((Date) row[2]);
+	 				//	singleBNGInstAndCmsnModel.setCloseDate(new SimpleDateFormat("yyyy-mm-dd").parse(row[2].toString()));
 	 					}
 	 					if(null !=row[3]){
-	 					singleBNGInstAndCmsnModel.setCloseDate(new SimpleDateFormat("yyyy-mm-dd").parse(row[3].toString()));
+	 						singleBNGInstAndCmsnModel.setTargetDate((Date) row[3]);
+	 				//	singleBNGInstAndCmsnModel.setCloseDate(new SimpleDateFormat("yyyy-mm-dd").parse(row[3].toString()));
 	 					}
 	 					singleBNGInstAndCmsnModel.setOrderId((int) row[4]);
 	 					singleBNGInstAndCmsnModel.setBngid(row[5].toString());
@@ -389,12 +409,15 @@ public class BngMasterDaoImpl implements IBngMasterDAO {
 	 				}
 	 				else if(BSNLConstans.COMMISIONING.equals(row[0].toString())) {
 	 					SingleBNGInstAndCmsnModel singleBNGInstAndCmsnModel=new SingleBNGInstAndCmsnModel();
+	 					singleBNGInstAndCmsnModel.setCurrentBNGOrderId(currentOrderId);
 	 					singleBNGInstAndCmsnModel.setStatus(row[1].toString());
 	 					if(null !=row[2]){
-	 					singleBNGInstAndCmsnModel.setCloseDate(new SimpleDateFormat("yyyy-mm-dd").parse(row[2].toString()));
+	 						singleBNGInstAndCmsnModel.setCloseDate((Date) row[2]);
+	 				//	singleBNGInstAndCmsnModel.setCloseDate(new SimpleDateFormat("yyyy-mm-dd").parse(row[2].toString()));
 	 					}
 	 					if(null !=row[3]){
-	 					singleBNGInstAndCmsnModel.setCloseDate(new SimpleDateFormat("yyyy-mm-dd").parse(row[3].toString()));
+	 						singleBNGInstAndCmsnModel.setTargetDate((Date) row[3]);
+	 				//	singleBNGInstAndCmsnModel.setCloseDate(new SimpleDateFormat("yyyy-mm-dd").parse(row[3].toString()));
 	 					}
 	 					singleBNGInstAndCmsnModel.setOrderId((int) row[4]);
 	 					singleBNGInstAndCmsnModel.setBngid(row[5].toString());
@@ -403,12 +426,15 @@ public class BngMasterDaoImpl implements IBngMasterDAO {
 	 				}
 	 				else if(BSNLConstans.ATC.equals(row[0].toString())) {
 	 					SingleBNGInstAndCmsnModel singleBNGInstAndCmsnModel=new SingleBNGInstAndCmsnModel();
+	 					singleBNGInstAndCmsnModel.setCurrentBNGOrderId(currentOrderId);
 	 					singleBNGInstAndCmsnModel.setStatus(row[1].toString());
 	 					if(null !=row[2]){
-	 					singleBNGInstAndCmsnModel.setCloseDate(new SimpleDateFormat("yyyy-mm-dd").parse(row[2].toString()));
+	 						singleBNGInstAndCmsnModel.setCloseDate((Date) row[2]);
+	 				//	singleBNGInstAndCmsnModel.setCloseDate(new SimpleDateFormat("yyyy-mm-dd").parse(row[2].toString()));
 	 					}
 	 					if(null !=row[3]){
-	 					singleBNGInstAndCmsnModel.setCloseDate(new SimpleDateFormat("yyyy-mm-dd").parse(row[3].toString()));
+	 						singleBNGInstAndCmsnModel.setTargetDate((Date) row[3]);
+	 				//	singleBNGInstAndCmsnModel.setCloseDate(new SimpleDateFormat("yyyy-mm-dd").parse(row[3].toString()));
 	 					}
 	 					singleBNGInstAndCmsnModel.setOrderId((int) row[4]);
 	 					singleBNGInstAndCmsnModel.setBngid(row[5].toString());
@@ -425,7 +451,6 @@ public class BngMasterDaoImpl implements IBngMasterDAO {
 		System.out.println("DAO : "+map.size());
 		return map;
 	}
-
 	@Override
 	public Map<String, SingleBNGInvModel> getSingleBNGInvDAO(String bngId) {
 		Session session;
@@ -510,5 +535,36 @@ public class BngMasterDaoImpl implements IBngMasterDAO {
 		System.out.println("DAO : "+map.size());
 		return map;
 	}
+	
+	@Override
+	public int updateBngINSStage(SingleBNGInstAndCmsnModel singleModel) {
+		// update BNG stage info
+		//update TBLBNGINSTANDCOMMISTAGE A set A.TARGETDATE =:TDATE, A.CLOSEDATE=:CLDATE, 
+		//A.STATUS=:STATUS ,A.LASTMODIFIEDDATE=SYSDATE(), A.LATMODIFIEDBY=1 where BNGID=:bngId and  A.STAGEID=:stageId";
+		
+		Session session;
+		String updateQuery;
+		
+		try{
+			updateQuery = BSNLConstans.updateBNGInsStageDetail;
+			session = getSession(); 
+	 		System.out.println("hqlFetch >> :  "+ updateQuery);
+	 		//int i=0;
+	 		int queryStatus = session.createSQLQuery(updateQuery).setParameter("TDATE", singleModel.getTargetDate()).setParameter("CLDATE", singleModel.getCloseDate()).
+	 		setParameter("STATUS",singleModel.getStatus()).
+	 		setParameter("bngId", singleModel.getBngid()).setParameter("stageId", singleModel.getOrderId()).executeUpdate();
+	 		
+	 		if(queryStatus > 0) {
+	 			System.out.println("Executed");
+	 		}
+	 		
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		return 0;
+	}
+
 
 }

@@ -1,4 +1,3 @@
-
 package com.sterlite.bsnl.model;
 
 import java.util.Date;
@@ -71,4 +70,3 @@ public class SingleBNGInstAndCmsnModel {
 	
 	
 }
-

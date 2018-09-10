@@ -25,9 +25,17 @@ public interface IBngService {
 	
 	List<SummaryModel> getCircleWiseSummeryReport();
 	
-	Map<String, SingleBNGInstAndCmsnModel> getSingleBNGIAndCStatus(String bngId);
+	Map<String, SingleBNGInstAndCmsnModel> getSingleBNGIAndCStatus(String bngId,int currentOrderId);
 	
 	Map<String, SingleBNGInvModel> getSingleBNGInv(String bngId);
+	
+	//update TBLBNGINSTANDCOMMISTAGE
+		int updateBngINSStage(SingleBNGInstAndCmsnModel singleModel);
+
+		/*
+		int updateBngINSMasterStage(SingleBNGInstAndCmsnModel singleModel);
+		
+		int AddBngINSAudit(SingleBNGInstAndCmsnModel singleModel);*/
 	
 	
 

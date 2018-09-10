@@ -1,5 +1,5 @@
   <!-- Sidebar -->
-      <ul class="sidebar navbar-nav" style="width: 246px !important;    font-size: 14px;">
+      <ul class="sidebar navbar-nav" style="/* width: 246px !important; */    font-size: 14px;">
       <!--   <li class="nav-item active">
           <a class="nav-link" href="home">
             <i class="fas fa-fw fa-tachometer-alt"></i>

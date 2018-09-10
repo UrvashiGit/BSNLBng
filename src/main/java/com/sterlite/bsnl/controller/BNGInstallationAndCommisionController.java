@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,24 +31,32 @@ public class BNGInstallationAndCommisionController {
 	}
 	
 	@RequestMapping(value="/singleBNGDetails", method=RequestMethod.GET)
-	 public ModelAndView getSingleBngIAndCStatus(HttpServletResponse response,@RequestParam("getBNGID") String strBNGID){
-		Map<String,SingleBNGInstAndCmsnModel> singleBNGInstAndCmsMap = bngMasterService.getSingleBNGIAndCStatus(strBNGID);
-		System.out.println("CONTROLLER : "+singleBNGInstAndCmsMap.size());
+	 public ModelAndView getSingleBngIAndCStatus(HttpServletResponse response,@RequestParam("getBNGID") String strBNGID,
+			 @RequestParam("currentOrder") int currentOrder){
+		System.out.println("CONTROLLER >>>>>>>>>>>>: "+currentOrder);
+		Map<String,SingleBNGInstAndCmsnModel> singleBNGInstAndCmsMap = bngMasterService.getSingleBNGIAndCStatus(strBNGID,currentOrder);
+		
 		return new ModelAndView("singleBNGSiteDetailsForIAndC","singleMap",singleBNGInstAndCmsMap);	
 	}
 	
 	
-	@RequestMapping(value="/updateSingleBNGDetails", method=RequestMethod.POST)
-	 public ModelAndView updateSingleBngIAndCStatus(HttpServletRequest req, HttpServletResponse res){
+	@RequestMapping(value="/updateSiteSurvey", method=RequestMethod.POST)
+	 public ModelAndView updateSingleBngIAndCStatus(HttpServletRequest req, HttpServletResponse res,@ModelAttribute("SingleBNGInstAndCmsnModel")SingleBNGInstAndCmsnModel singleBNGInstAndCmsnModel){
 //		/Map<String,SingleBNGInstAndCmsnModel> singleBNGInstAndCmsMap = bngMasterService.getSingleBNGIAndCStatus(strBNGID);
-		System.out.println("Inside updateSsingleBNGDetails()");
+		System.out.println("Inside updateSiteSurvey() ????????????"+singleBNGInstAndCmsnModel.toString());
 		
 	 /***
 	  * Code for update data inside TBLBNGINSTANDCOMMISTAGE
 	  * Auditing code 
 	  * 
 	  */
+		
+		bngMasterService.updateBngINSStage(singleBNGInstAndCmsnModel);
+		
 		return new ModelAndView("singleBNGSiteDetailsForIAndC","singleMap","");	
 	}
+	
+	
+	
 
 }
