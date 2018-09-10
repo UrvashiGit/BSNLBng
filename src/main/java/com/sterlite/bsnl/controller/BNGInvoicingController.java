@@ -41,7 +41,7 @@ public class BNGInvoicingController {
 	
 	@RequestMapping(value="/updateSingleBNGInvDetails", method=RequestMethod.POST)
 	 public ModelAndView updateSingleBngIAndCStatus(HttpServletRequest req, HttpServletResponse res){
-		Map<String,SingleBNGInstAndCmsnModel> singleBNGInstAndCmsMap = bngMasterService.getSingleBNGIAndCStatus(strBNGID);
+		//Map<String,SingleBNGInstAndCmsnModel> singleBNGInstAndCmsMap = bngMasterService.getSingleBNGIAndCStatus(strBNGID);
 		System.out.println("Inside updateSsingleBNGDetails()");
 		
 	 /***
