@@ -74,7 +74,7 @@
 							 <c:if test="${entry.value.currentBNGOrderId() == entry.value.getOrderId}">
 								<input type="submit" value="update" <c:if test="{empty aaa}">disabled="disabled" </c:if>>
 							</c:if> --%>
-							Remarks <b style="color: red">*</b> &nbsp;&nbsp;&nbsp; : <input type="text" name="remark" maxlength="500" required="required" value="${entry.value.getRemark()}" id="siteSurRemark"
+							Remarks  <b style="color: red">*</b> &nbsp;&nbsp;&nbsp; : <input type="text" name="remark" maxlength="500" required="required" id="ssRemark1" value="${entry.value.getRemark()}" id="siteSurRemark"
 							 <c:if test="${entry.value.getStatus() == 'Completed'}">
 								<c:out value="disabled='disabled'"/></c:if>" > 
 							</br> 
@@ -121,12 +121,12 @@
 								</br> 
 								
 								TargetDate &nbsp;&nbsp;&nbsp; : <input type="date" name="targetDate" id="siteReadyTargetDate" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
-									value="${entry.value.getTargetDate()}" <c:if test="${entry.value.getStatus() == 'Completed'}">
+									value="${entry.value.getTargetDate()}"  onchange="resetSiteReadyCloseDate()" <c:if test="${entry.value.getStatus() == 'Completed'}">
 								<c:out value="disabled='disabled'"/></c:if>"> 
 									</br> 
 								 </br>
 								
-									Remarks &nbsp;&nbsp;&nbsp; : <input type="text" name="remark" maxlength="500" required="required" value="${entry.value.getRemark()}" id="siteReadyRemark"
+									Remarks <b style="color: red">*</b> &nbsp;&nbsp;&nbsp; : <input type="text" name="remark" maxlength="500" required="required" value="${entry.value.getRemark()}" id="ssRemark2"
 									 <c:if test="${entry.value.getStatus() == 'Completed'}">
 								<c:out value="disabled='disabled'"/></c:if>" > 
 							</br>
@@ -173,13 +173,13 @@
 								</br> 
 								
 								TargetDate &nbsp;&nbsp;&nbsp; : <input type="date" name="targetDate" id="MDTargetDate" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
-									value="${entry.value.getTargetDate()}" <c:if test="${entry.value.getStatus() == 'Completed'}">
+									value="${entry.value.getTargetDate()}"  onchange="resetMDCloseDate()" <c:if test="${entry.value.getStatus() == 'Completed'}">
 								<c:out value="disabled='disabled'"/></c:if>">  
 									</br> 
 								<!-- </br> Challan
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : <a href="#"> <u>
 										Details</u></a> </br> -->
-											Remarks &nbsp;&nbsp;&nbsp; : <input type="text" name="remark" maxlength="500" required="required" value="${entry.value.getRemark()}" id="MDRemark"
+											Remarks <b style="color: red">*</b> &nbsp;&nbsp;&nbsp; : <input type="text" name="remark" maxlength="500" required="required" value="${entry.value.getRemark()}" id="ssRemark3"
 											<c:if test="${entry.value.getStatus() == 'Completed'}">
 								<c:out value="disabled='disabled'"/></c:if>" > 
 							</br>
@@ -225,11 +225,11 @@
 								</br> 
 								
 								TargetDate &nbsp;&nbsp;&nbsp; : <input type="date" name="targetDate" id="powerOnTargetDate" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
-									value="${entry.value.getTargetDate()}" <c:if test="${entry.value.getStatus() == 'Completed'}">
+									value="${entry.value.getTargetDate()}"  onchange="resetPowerOnCloseDate()" <c:if test="${entry.value.getStatus() == 'Completed'}">
 								<c:out value="disabled='disabled'"/></c:if>">  
 									</br> 
 								</br>
-								Remarks &nbsp;&nbsp;&nbsp; : <input type="text" name="remark" maxlength="500" required="required" value="${entry.value.getRemark()}" id="powreOnRemark"
+								Remarks <b style="color: red">*</b> &nbsp;&nbsp;&nbsp; : <input type="text" name="remark" maxlength="500" required="required" value="${entry.value.getRemark()}" id="ssRemark4"
 								 <c:if test="${entry.value.getStatus() == 'Completed'}">
 								<c:out value="disabled='disabled'"/></c:if>" > </br>
 								<c:if test="${entry.value.getStatus() != 'Completed'}">
@@ -271,10 +271,10 @@
 								</br> 
 								
 								TargetDate &nbsp;&nbsp;&nbsp; : <input type="date" name="targetDate" id="NWIFormTargetDate" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
-									value="${entry.value.getTargetDate()}" <c:if test="${entry.value.getStatus() == 'Completed'}">
+									value="${entry.value.getTargetDate()}" onchange="resetNWICloseDate()" <c:if test="${entry.value.getStatus() == 'Completed'}">
 								<c:out value="disabled='disabled'"/></c:if>">  
 									</br> 
-									Remarks &nbsp;&nbsp;&nbsp; : <input type="text" name="remark" maxlength="500" required="required" value="${entry.value.getRemark()}" id="NWIRemark"
+									Remarks <b style="color: red">*</b> &nbsp;&nbsp;&nbsp; : <input type="text" name="remark" maxlength="500" required="required" value="${entry.value.getRemark()}" id="ssRemark5"
 									 <c:if test="${entry.value.getStatus() == 'Completed'}">
 								<c:out value="disabled='disabled'"/></c:if>" > <br>
 							<c:if test="${entry.value.getStatus() != 'Completed'}">
@@ -316,10 +316,10 @@
 								</br> 
 								
 								TargetDate &nbsp;&nbsp;&nbsp; : <input type="date" name="targetDate" id="ATFormTargetDate" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
-									value="${entry.value.getTargetDate()}" <c:if test="${entry.value.getStatus() == 'Completed'}">
+									value="${entry.value.getTargetDate()}" onchange="resetATCloseDate()" <c:if test="${entry.value.getStatus() == 'Completed'}">
 								<c:out value="disabled='disabled'"/></c:if>"> 
 									</br> 
-									Remarks &nbsp;&nbsp;&nbsp; : <input type="text" name="remark" maxlength="500" required="required" value="${entry.value.getRemark()}" id="ATRemark"  
+									Remarks <b style="color: red">*</b> &nbsp;&nbsp;&nbsp; : <input type="text" name="remark" maxlength="500" required="required" value="${entry.value.getRemark()}" id="ssRemark6"  
 									<c:if test="${entry.value.getStatus() == 'Completed'}">
 								<c:out value="disabled='disabled'"/></c:if>" > <br>
 								
@@ -362,10 +362,10 @@
 								</br> 
 								
 								TargetDate &nbsp;&nbsp;&nbsp; : <input type="date" name="targetDate" id="commissioningTargetDate" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
-									value="${entry.value.getTargetDate()}" <c:if test="${entry.value.getStatus() == 'Completed'}">
+									value="${entry.value.getTargetDate()}" onchange="resetCommisCloseDate()" <c:if test="${entry.value.getStatus() == 'Completed'}">
 								<c:out value="disabled='disabled'"/></c:if>">  
 									</br>  </br>
-									Remarks &nbsp;&nbsp;&nbsp; : <input type="text" name="remark" maxlength="500" required="required" value="${entry.value.getRemark()}" id="commissioningRemark" 
+									Remarks <b style="color: red">*</b> &nbsp;&nbsp;&nbsp; : <input type="text" name="remark" maxlength="500" required="required" value="${entry.value.getRemark()}" id="ssRemark7" 
 									 <c:if test="${entry.value.getStatus() == 'Completed'}">
 								<c:out value="disabled='disabled'"/></c:if>" > <br>
 							<c:if test="${entry.value.getStatus() != 'Completed'}">
@@ -407,11 +407,11 @@
 								</br> 
 								
 								TargetDate &nbsp;&nbsp;&nbsp; : <input type="date" name="targetDate" id="ATCTargetDate" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
-									value="${entry.value.getTargetDate()}" <c:if test="${entry.value.getStatus() == 'Completed'}">
+									value="${entry.value.getTargetDate()}" onchange="resetATCCloseDate()" <c:if test="${entry.value.getStatus() == 'Completed'}">
 								<c:out value="disabled='disabled'"/></c:if>"> 
 									</br> <!-- </br> Certificate
 								&nbsp;&nbsp;&nbsp; : <a href="#"> <u> Details</u></a> </br> -->
-								Remarks &nbsp;&nbsp;&nbsp; : <input type="text" name="remark" maxlength="500" required <c:if test="${entry.value.getStatus() == 'Completed'}">
+								Remarks <b style="color: red">*</b> &nbsp;&nbsp;&nbsp; : <input type="text" name="remark" maxlength="500" required id="ssRemark8" <c:if test="${entry.value.getStatus() == 'Completed'}">
 								<c:out value="disabled='disabled'"/></c:if>" > <br>
 							<c:if test="${entry.value.getStatus() != 'Completed'}">
 							<input type="button" onclick="ValidateATCForm()" value="update" <c:if test="${entry.value.getCurrentBNGOrderId() != stageLimit  && entry.value.getOrderId() > entry.value.getCurrentBNGOrderId()+1}">
@@ -464,134 +464,14 @@ function ValidateSiteSurveyForm() {
 	var myCDate = new Date(clDate);
 	
 	if(tgDate != '' /* && myTDate < myCDate */) {
-		document.getElementById("siteSurveyForm").submit();
-	}else{
-		$("#errorDiv").show();
-		 var now = new Date(),
-		    minDateForAll = now.toISOString().substring(0,10);
-			$('input[type="date"]').prop('min', minDateForAll);
-		$("#errorDiv" ).text( "Please Select Proper Target Date");
+		if ($("#ssRemark1" ).val() == '') {
+			$("#errorDiv").show();
+			$("#errorDiv" ).text( "Please Add Remark");
+		}else{
+			document.getElementById("siteSurveyForm").submit();
+		}
 	}
-	
-}
-function ValidateSiteReadyForm() {
-	
-	var clDate = document.getElementById("siteReadyCloseDate").value;
-	var tgDate = document.getElementById("siteReadyTargetDate").value;
-	var myTDate = new Date(tgDate);
-	var myCDate = new Date(clDate);
-	
-	if(tgDate != '') {
-		document.getElementById("siteReadyForm").submit();
-	}else{
-		$("#errorDiv").show();
-		 var now = new Date(),
-		    minDateForAll = now.toISOString().substring(0,10);
-			$('input[type="date"]').prop('min', minDateForAll);
-		$("#errorDiv" ).text( "Please Select Proper Target Date");
-	}
-	
-}
-function ValidateMDForm() {
-	
-	var clDate = document.getElementById("MDCloseDate").value;
-	var tgDate = document.getElementById("MDTargetDate").value;
-	var myTDate = new Date(tgDate);
-	var myCDate = new Date(clDate);
-	
-	if(tgDate != '') {
-		document.getElementById("MDForm").submit();
-	}else{
-		$("#errorDiv").show();
-		 var now = new Date(),
-		    minDateForAll = now.toISOString().substring(0,10);
-			$('input[type="date"]').prop('min', minDateForAll);
-		$("#errorDiv" ).text( "Please Select Proper Target Date");
-	}
-	
-}
-function ValidatePowerOnForm() {
-	
-	var clDate = document.getElementById("powerOnCloseDate").value;
-	var tgDate = document.getElementById("powerOnTargetDate").value;
-	var myTDate = new Date(tgDate);
-	var myCDate = new Date(clDate);
-	
-	if(tgDate != '') {
-		document.getElementById("powerOnForm").submit();
-	}else{
-		$("#errorDiv").show();
-		 var now = new Date(),
-		    minDateForAll = now.toISOString().substring(0,10);
-			$('input[type="date"]').prop('min', minDateForAll);
-		$("#errorDiv" ).text( "Please Select Proper Target Date");
-	}
-	
-}
-function ValidateNWIForm() {
-	
-	var clDate = document.getElementById("NWIFormCloseDate").value;
-	var tgDate = document.getElementById("NWIFormTargetDate").value;
-	var myTDate = new Date(tgDate);
-	var myCDate = new Date(clDate);
-	
-	if(tgDate != '') {
-		document.getElementById("NWIForm").submit();
-	}else{
-		$("#errorDiv").show();
-		 var now = new Date(),
-		    minDateForAll = now.toISOString().substring(0,10);
-			$('input[type="date"]').prop('min', minDateForAll);
-		$("#errorDiv" ).text( "Please Select Proper Target Date");
-	}
-	
-}
-function ValidateATForm() {
-	
-	var clDate = document.getElementById("ATFormCloseDate").value;
-	var tgDate = document.getElementById("ATFormTargetDate").value;
-	var myTDate = new Date(tgDate);
-	var myCDate = new Date(clDate);
-	
-	if(tgDate != '') {
-		document.getElementById("ATForm").submit();
-	}else{
-		$("#errorDiv").show();
-		 var now = new Date(),
-		    minDateForAll = now.toISOString().substring(0,10);
-			$('input[type="date"]').prop('min', minDateForAll);
-		$("#errorDiv" ).text( "Please Select Proper Target Date");
-	}
-	
-}
-function ValidateCommissioningForm() {
-	
-	var clDate = document.getElementById("commissioningCloseDate").value;
-	var tgDate = document.getElementById("commissioningTargetDate").value;
-	var myTDate = new Date(tgDate);
-	var myCDate = new Date(clDate);
-	
-	if(tgDate != '') {
-		document.getElementById("commissioningForm").submit();
-	}else{
-		$("#errorDiv").show();
-		 var now = new Date(),
-		    minDateForAll = now.toISOString().substring(0,10);
-			$('input[type="date"]').prop('min', minDateForAll);
-		$("#errorDiv" ).text( "Please Select Proper Target Date");
-	}
-	
-}
-function ValidateATCForm() {
-	
-	var clDate = document.getElementById("ATCCloseDate").value;
-	var tgDate = document.getElementById("ATCTargetDate").value;
-	var myTDate = new Date(tgDate);
-	var myCDate = new Date(clDate);
-	
-	if(tgDate != '') {
-		document.getElementById("ATCForm").submit();
-	}else{
+	else{
 		$("#errorDiv").show();
 		 var now = new Date(),
 		    minDateForAll = now.toISOString().substring(0,10);
@@ -607,6 +487,219 @@ function resetSiteSurveyCloseDate() {
 	$('#siteSurCloseDate').prop('max', tgDate);
 	$('#siteSurCloseDate').prop('min', tgDate);
 }
+
+function ValidateSiteReadyForm() {
+	
+	var clDate = document.getElementById("siteReadyCloseDate").value;
+	var tgDate = document.getElementById("siteReadyTargetDate").value;
+	var myTDate = new Date(tgDate);
+	var myCDate = new Date(clDate);
+	
+	if(tgDate != '') {
+		if ($("#ssRemark2" ).val() == '') {
+			$("#errorDiv").show();
+			$("#errorDiv" ).text( "Please Add Remark");
+		}else{
+			document.getElementById("siteReadyForm").submit();
+		}
+	}else{
+		$("#errorDiv").show();
+		 var now = new Date(),
+		    minDateForAll = now.toISOString().substring(0,10);
+			$('input[type="date"]').prop('min', minDateForAll);
+		$("#errorDiv" ).text( "Please Select Proper Target Date");
+	}
+	
+}
+
+
+function resetSiteReadyCloseDate() {
+	var tgDate = document.getElementById("siteReadyTargetDate").value;
+	$('#siteReadyCloseDate').prop('max', tgDate);
+	$('#siteReadyCloseDate').prop('min', tgDate);
+}
+
+function ValidateMDForm() {
+	
+	var clDate = document.getElementById("MDCloseDate").value;
+	var tgDate = document.getElementById("MDTargetDate").value;
+	var myTDate = new Date(tgDate);
+	var myCDate = new Date(clDate);
+	
+	if(tgDate != '') {
+		if ($("#ssRemark3" ).val() == '') {
+			$("#errorDiv").show();
+			$("#errorDiv" ).text( "Please Add Remark");
+		}else{
+			document.getElementById("MDForm").submit();
+		}
+	}else{
+		$("#errorDiv").show();
+		 var now = new Date(),
+		    minDateForAll = now.toISOString().substring(0,10);
+			$('input[type="date"]').prop('min', minDateForAll);
+		$("#errorDiv" ).text( "Please Select Proper Target Date");
+	}
+	
+}
+
+function resetMDCloseDate() {
+	var tgDate = document.getElementById("MDTargetDate").value;
+	$('#MDCloseDate').prop('max', tgDate);
+	$('#MDCloseDate').prop('min', tgDate);
+}
+
+function ValidatePowerOnForm() {
+	
+	var clDate = document.getElementById("powerOnCloseDate").value;
+	var tgDate = document.getElementById("powerOnTargetDate").value;
+	var myTDate = new Date(tgDate);
+	var myCDate = new Date(clDate);
+	
+	if(tgDate != '') {
+		if ($("#ssRemark4" ).val() == '') {
+			$("#errorDiv").show();
+			$("#errorDiv" ).text( "Please Add Remark");
+		}else{
+			document.getElementById("powerOnForm").submit();
+		}
+	}else{
+		$("#errorDiv").show();
+		 var now = new Date(),
+		    minDateForAll = now.toISOString().substring(0,10);
+			$('input[type="date"]').prop('min', minDateForAll);
+		$("#errorDiv" ).text( "Please Select Proper Target Date");
+	}
+	
+}
+
+function resetPowerOnCloseDate() {
+	var tgDate = document.getElementById("powerOnTargetDate").value;
+	$('#powerOnCloseDate').prop('max', tgDate);
+	$('#powerOnCloseDate').prop('min', tgDate);
+}
+
+function ValidateNWIForm() {
+	
+	var clDate = document.getElementById("NWIFormCloseDate").value;
+	var tgDate = document.getElementById("NWIFormTargetDate").value;
+	var myTDate = new Date(tgDate);
+	var myCDate = new Date(clDate);
+	
+	if(tgDate != '') {
+		if ($("#ssRemark5" ).val() == '') {
+			$("#errorDiv").show();
+			$("#errorDiv" ).text( "Please Add Remark");
+		}else{
+			document.getElementById("NWIForm").submit();
+		}
+	}else{
+		$("#errorDiv").show();
+		 var now = new Date(),
+		    minDateForAll = now.toISOString().substring(0,10);
+			$('input[type="date"]').prop('min', minDateForAll);
+		$("#errorDiv" ).text( "Please Select Proper Target Date");
+	}
+	
+}
+
+function resetNWICloseDate() {
+	var tgDate = document.getElementById("NWIFormTargetDate").value;
+	$('#NWIFormCloseDate').prop('max', tgDate);
+	$('#NWIFormCloseDate').prop('min', tgDate);
+}
+
+function ValidateATForm() {
+	
+	var clDate = document.getElementById("ATFormCloseDate").value;
+	var tgDate = document.getElementById("ATFormTargetDate").value;
+	var myTDate = new Date(tgDate);
+	var myCDate = new Date(clDate);
+	
+	if(tgDate != '') {
+		if ($("#ssRemark6" ).val() == '') {
+			$("#errorDiv").show();
+			$("#errorDiv" ).text( "Please Add Remark");
+		}else{
+			document.getElementById("ATCForm").submit();
+		}
+	}else{
+		$("#errorDiv").show();
+		 var now = new Date(),
+		    minDateForAll = now.toISOString().substring(0,10);
+			$('input[type="date"]').prop('min', minDateForAll);
+		$("#errorDiv" ).text( "Please Select Proper Target Date");
+	}
+	
+}
+
+function resetATCloseDate() {
+	var tgDate = document.getElementById("ATFormTargetDate").value;
+	$('#ATFormCloseDate').prop('max', tgDate);
+	$('#ATFormCloseDate').prop('min', tgDate);
+}
+
+function ValidateCommissioningForm() {
+	
+	var clDate = document.getElementById("commissioningCloseDate").value;
+	var tgDate = document.getElementById("commissioningTargetDate").value;
+	var myTDate = new Date(tgDate);
+	var myCDate = new Date(clDate);
+	
+	if(tgDate != '') {
+		if ($("#ssRemark7" ).val() == '') {
+			$("#errorDiv").show();
+			$("#errorDiv" ).text( "Please Add Remark");
+		}else{
+			document.getElementById("commissioningForm").submit();
+		}
+	}else{
+		$("#errorDiv").show();
+		 var now = new Date(),
+		    minDateForAll = now.toISOString().substring(0,10);
+			$('input[type="date"]').prop('min', minDateForAll);
+		$("#errorDiv" ).text( "Please Select Proper Target Date");
+	}
+	
+}
+function resetCommisCloseDate() {
+	var tgDate = document.getElementById("commissioningTargetDate").value;
+	$('#commissioningCloseDate').prop('max', tgDate);
+	$('#commissioningCloseDate').prop('min', tgDate);
+}
+
+function ValidateATCForm() {
+	
+	var clDate = document.getElementById("ATCCloseDate").value;
+	var tgDate = document.getElementById("ATCTargetDate").value;
+	var myTDate = new Date(tgDate);
+	var myCDate = new Date(clDate);
+	
+	if(tgDate != '') {
+		if ($("#ssRemark8" ).val() == '') {
+			$("#errorDiv").show();
+			$("#errorDiv" ).text( "Please Add Remark");
+		}else{
+			document.getElementById("ATCForm").submit();
+		}
+	}
+	else{
+		$("#errorDiv").show();
+		 var now = new Date(),
+		    minDateForAll = now.toISOString().substring(0,10);
+			$('input[type="date"]').prop('min', minDateForAll);
+		$("#errorDiv" ).text( "Please Select Proper Target Date");
+	}
+	
+}
+
+function resetATCCloseDate() {
+	var tgDate = document.getElementById("ATCTargetDate").value;
+	$('#ATCCloseDate').prop('max', tgDate);
+	$('#ATCCloseDate').prop('min', tgDate);
+}
+
+
          
 </script>
 
