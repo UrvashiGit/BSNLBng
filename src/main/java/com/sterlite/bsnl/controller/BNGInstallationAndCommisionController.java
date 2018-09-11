@@ -182,7 +182,8 @@ public class BNGInstallationAndCommisionController {
 			if(status.equals("In Progress")) {
 				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId();
 			}else if(status.equals("Closed")) {
-				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId()+1;
+				int currentBngOrderId = singleBNGInstAndCmsnModel.getCurrentBNGOrderId()+1;
+				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+currentBngOrderId;
 			}else if(status.equals("Pending")) {
 				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId();
 			}
@@ -207,7 +208,8 @@ public class BNGInstallationAndCommisionController {
 			if(status.equals("In Progress")) {
 				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId();
 			}else if(status.equals("Closed")) {
-				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId()+1;
+				int currentBngOrderId = singleBNGInstAndCmsnModel.getCurrentBNGOrderId()+1;
+				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+currentBngOrderId;
 			}else if(status.equals("Pending")) {
 				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId();
 			}
@@ -231,7 +233,8 @@ public class BNGInstallationAndCommisionController {
 			if(status.equals("In Progress")) {
 				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId();
 			}else if(status.equals("Closed")) {
-				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId()+1;
+				int currentBngOrderId = singleBNGInstAndCmsnModel.getCurrentBNGOrderId()+1;
+				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+currentBngOrderId;
 			}else if(status.equals("Pending")) {
 				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId();
 			}
@@ -239,10 +242,6 @@ public class BNGInstallationAndCommisionController {
 		
 		return new ModelAndView("redirect:/singleBNGDetails?getBNGID="+url);
 	}
-	//8
 	
 	
-	
-	
-
 }

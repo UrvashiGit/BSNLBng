@@ -617,7 +617,7 @@ function ValidateATForm() {
 			$("#errorDiv").show();
 			$("#errorDiv" ).text( "Please Add Remark");
 		}else{
-			document.getElementById("ATCForm").submit();
+			document.getElementById("ATForm").submit();
 		}
 	}else{
 		$("#errorDiv").show();
