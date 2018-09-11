@@ -113,6 +113,7 @@
 								<thead>
 									<tr>
 										<th>BNG ID</th>
+										<th>VID</th>
 										<th>Phase</th>
 										<th>Zone Name</th>
 										<th>Circle Name</th>
@@ -138,6 +139,7 @@
 									<c:forEach items="${bngList}" var="bng">
 										<tr>
 											<td><a href="singleBNGInvDetails?getBNGID=${bng.id}">${bng.id} </a></td>
+											<td>${bng.vid}</td>
 											<td>${bng.phase}</td>
 											<td>${bng.zoneName}</td>
 											<td>${bng.circleName}</td>

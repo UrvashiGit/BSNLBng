@@ -96,18 +96,18 @@ public class BngServiceImpl implements IBngService {
 		Date givenTargetDate = singleModel.getTargetDate();
 		
 		if(givenCloseDate != null && givenTargetDate != null) {
-			// if both date is equal then status is completed
+			// if both date is equal then status is Closed
 			if(givenCloseDate.compareTo(givenTargetDate) == 0) {
 				System.out.println("EQUAL >>");
-				singleModel.setStatus("Completed");
+				singleModel.setStatus("Closed");
 				
 			}else if(givenTargetDate.after(givenCloseDate)) {
-				// if TD is greater then sysdate or GT then Close date(in case of TG EXtended) --> status = inProgress
+				// if TD is greater then sysdate or GT then Close date(in case of TG EXtended) --> status = In Progress
 				System.out.println("INPROGESS >>");
-				singleModel.setStatus("InProgress");
+				singleModel.setStatus("In Progress");
 			}
 		}else if (givenTargetDate != null && givenCloseDate == null) {
-			singleModel.setStatus("InProgress");
+			singleModel.setStatus("In Progress");
 		}
 		else {
 			// if there is no date then Pending
@@ -131,19 +131,19 @@ public class BngServiceImpl implements IBngService {
 		Date givenTargetDate = singleModel.getTargetDate();
 		
 		if(givenCloseDate != null && givenTargetDate != null) {
-			// if both date is equal then status is completed
+			// if both date is equal then status is Closed
 			if(givenCloseDate.compareTo(givenTargetDate) == 0) {
 				System.out.println("EQUAL >>");
-				singleModel.setStatus("Completed");
+				singleModel.setStatus("Closed");
 				
 			}
-			// if TD is greater then sysdate or GT then Close date(in case of TG EXtended) --> status = inProgress
+			// if TD is greater then sysdate or GT then Close date(in case of TG EXtended) --> status = In Progress
 			if(givenTargetDate.compareTo(currentDate) > 0 || givenTargetDate.after(givenCloseDate)) {
 				System.out.println("INPROGESS >>");
-				singleModel.setStatus("InProgress");
+				singleModel.setStatus("In Progress");
 			}
 		}else if (givenTargetDate != null && givenCloseDate == null) {
-			singleModel.setStatus("InProgress");
+			singleModel.setStatus("In Progress");
 		}
 		else {
 			// if there is no date then Pending

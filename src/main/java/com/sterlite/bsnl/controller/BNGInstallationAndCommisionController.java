@@ -39,139 +39,210 @@ public class BNGInstallationAndCommisionController {
 		return new ModelAndView("singleBNGSiteDetailsForIAndC","singleMap",singleBNGInstAndCmsMap);	
 	}
 	
-	
-	@RequestMapping(value={"/updateSiteSurvey","/updateSiteReady","/updateMaterialDelivery"
-			,"/updatePowerOn","/updateNWIntegration","/updateAT","/updateCommisioning","/updateATC"}, method=RequestMethod.POST)
+	//1
+	@RequestMapping(value="/updateSiteSurvey", method=RequestMethod.POST)
 	 public ModelAndView updateSingleBngIAndCStatus(HttpServletRequest req, HttpServletResponse res,@ModelAttribute("SingleBNGInstAndCmsnModel")SingleBNGInstAndCmsnModel singleBNGInstAndCmsnModel) throws Exception{
-//		/Map<String,SingleBNGInstAndCmsnModel> singleBNGInstAndCmsMap = bngMasterService.getSingleBNGIAndCStatus(strBNGID);
+		
 		System.out.println("Inside updateSiteSurvey() ????????????"+singleBNGInstAndCmsnModel.toString());
 		
-	 /***
-	  * Code for update data inside TBLBNGINSTANDCOMMISTAGE
-	  * Auditing code 
-	  * 
-	  */
+		//Update I&C Status
+		int i=bngMasterService.updateBngINSStage(singleBNGInstAndCmsnModel);
 		
-		bngMasterService.updateBngINSStage(singleBNGInstAndCmsnModel);
+		//Get Current detail of BNG
 		String status = bngMasterService.getBngICStageStatusByStageId(singleBNGInstAndCmsnModel.getBngid(),singleBNGInstAndCmsnModel.getOrderId());
 		String url = null;
 		if(status != null) {
-			if(status.equals("InProgress")) {
+			if(status.equals("In Progress")) {
 				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId();
-			}else if(status.equals("Completed")) {
+			}else if(status.equals("Closed")) {
+				int currentBngOrderId = singleBNGInstAndCmsnModel.getCurrentBNGOrderId()+1;
+				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+currentBngOrderId;
+			}else if(status.equals("Pending")) {
+				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId();
+			}
+		}
+		
+		return new ModelAndView("redirect:/singleBNGDetails?getBNGID="+url);
+	}
+	
+	//#2
+	@RequestMapping(value="/updateSiteReady", method=RequestMethod.POST)
+	 public ModelAndView updateSiteReady(HttpServletRequest req, HttpServletResponse res,@ModelAttribute("SingleBNGInstAndCmsnModel")SingleBNGInstAndCmsnModel singleBNGInstAndCmsnModel) throws Exception{
+		
+		System.out.println("Inside updateSiteReady() ????????????"+singleBNGInstAndCmsnModel.toString());
+		
+		//Update I&C Status
+		bngMasterService.updateBngINSStage(singleBNGInstAndCmsnModel);
+		
+		//Get Current detail of BNG
+		String status = bngMasterService.getBngICStageStatusByStageId(singleBNGInstAndCmsnModel.getBngid(),singleBNGInstAndCmsnModel.getOrderId());
+		String url = null;
+		if(status != null) {
+			if(status.equals("In Progress")) {
+				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId();
+			}else if(status.equals("Closed")) {
+				int currentBngOrderId = singleBNGInstAndCmsnModel.getCurrentBNGOrderId()+1;
+				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+currentBngOrderId;
+			}else if(status.equals("Pending")) {
+				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId();
+			}
+		}
+		
+		return new ModelAndView("redirect:/singleBNGDetails?getBNGID="+url);
+	}
+	//3
+	@RequestMapping(value="/updateMD", method=RequestMethod.POST)
+	 public ModelAndView updateMD(HttpServletRequest req, HttpServletResponse res,@ModelAttribute("SingleBNGInstAndCmsnModel")SingleBNGInstAndCmsnModel singleBNGInstAndCmsnModel) throws Exception{
+		
+		System.out.println("Inside updateMD() ????????????"+singleBNGInstAndCmsnModel.toString());
+		
+		//Update I&C Status
+		bngMasterService.updateBngINSStage(singleBNGInstAndCmsnModel);
+		
+		//Get Current detail of BNG
+		String status = bngMasterService.getBngICStageStatusByStageId(singleBNGInstAndCmsnModel.getBngid(),singleBNGInstAndCmsnModel.getOrderId());
+		String url = null;
+		if(status != null) {
+			
+			if(status.equals("In Progress")) {
+				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId();
+			}else if(status.equals("Closed")) {
+				int currentBngOrderId = singleBNGInstAndCmsnModel.getCurrentBNGOrderId()+1;
+				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+currentBngOrderId;
+			}else if(status.equals("Pending")) {
+				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId();
+			}
+		}
+		
+		return new ModelAndView("redirect:/singleBNGDetails?getBNGID="+url);
+	}
+	//4
+	@RequestMapping(value="/updatePowerOn", method=RequestMethod.POST)
+	 public ModelAndView updatePowerOn(HttpServletRequest req, HttpServletResponse res,@ModelAttribute("SingleBNGInstAndCmsnModel")SingleBNGInstAndCmsnModel singleBNGInstAndCmsnModel) throws Exception{
+		
+		System.out.println("Inside updatePowerOn() ????????????"+singleBNGInstAndCmsnModel.toString());
+		
+		//Update I&C Status
+		bngMasterService.updateBngINSStage(singleBNGInstAndCmsnModel);
+		
+		//Get Current detail of BNG
+		String status = bngMasterService.getBngICStageStatusByStageId(singleBNGInstAndCmsnModel.getBngid(),singleBNGInstAndCmsnModel.getOrderId());
+		String url = null;
+		if(status != null) {
+			if(status.equals("In Progress")) {
+				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId();
+			}else if(status.equals("Closed")) {
+				int currentBngOrderId = singleBNGInstAndCmsnModel.getCurrentBNGOrderId()+1;
+				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+currentBngOrderId;
+			}else if(status.equals("Pending")) {
+				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId();
+			}
+		}
+		
+		return new ModelAndView("redirect:/singleBNGDetails?getBNGID="+url);
+	}
+	//5
+	@RequestMapping(value="/updateNWI", method=RequestMethod.POST)
+	 public ModelAndView updateNWI(HttpServletRequest req, HttpServletResponse res,@ModelAttribute("SingleBNGInstAndCmsnModel")SingleBNGInstAndCmsnModel singleBNGInstAndCmsnModel) throws Exception{
+		
+		System.out.println("Inside updateNWI() ????????????"+singleBNGInstAndCmsnModel.toString());
+		
+		//Update I&C Status
+		bngMasterService.updateBngINSStage(singleBNGInstAndCmsnModel);
+		
+		//Get Current detail of BNG
+		String status = bngMasterService.getBngICStageStatusByStageId(singleBNGInstAndCmsnModel.getBngid(),singleBNGInstAndCmsnModel.getOrderId());
+		String url = null;
+		if(status != null) {
+			if(status.equals("In Progress")) {
+				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId();
+			}else if(status.equals("Closed")) {
+				int currentBngOrderId = singleBNGInstAndCmsnModel.getCurrentBNGOrderId()+1;
+				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+currentBngOrderId;
+			}else if(status.equals("Pending")) {
+				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId();
+			}
+		}
+		
+		return new ModelAndView("redirect:/singleBNGDetails?getBNGID="+url);
+	}
+	//6
+	@RequestMapping(value="/updateAT", method=RequestMethod.POST)
+	 public ModelAndView updateAT(HttpServletRequest req, HttpServletResponse res,@ModelAttribute("SingleBNGInstAndCmsnModel")SingleBNGInstAndCmsnModel singleBNGInstAndCmsnModel) throws Exception{
+		
+		System.out.println("Inside updateAT() ????????????"+singleBNGInstAndCmsnModel.toString());
+		
+		//Update I&C Status
+		bngMasterService.updateBngINSStage(singleBNGInstAndCmsnModel);
+		
+		//Get Current detail of BNG
+		String status = bngMasterService.getBngICStageStatusByStageId(singleBNGInstAndCmsnModel.getBngid(),singleBNGInstAndCmsnModel.getOrderId());
+		String url = null;
+		if(status != null) {
+			if(status.equals("In Progress")) {
+				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId();
+			}else if(status.equals("Closed")) {
 				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId()+1;
 			}else if(status.equals("Pending")) {
 				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId();
 			}
-			
-		}
-		return new ModelAndView("redirect:/singleBNGDetails?getBNGID="+singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId()+1);
-	}
-	
-	/*@RequestMapping(value= {"/updateSiteSurvey","/updateSiteReady"}, method=RequestMethod.POST)
-	 public ModelAndView updateSingleBngIAndCStatus(HttpServletRequest req, HttpServletResponse res,@ModelAttribute("SingleBNGInstAndCmsnModel")SingleBNGInstAndCmsnModel singleBNGInstAndCmsnModel) throws Exception{
-//		/Map<String,SingleBNGInstAndCmsnModel> singleBNGInstAndCmsMap = bngMasterService.getSingleBNGIAndCStatus(strBNGID);
-		System.out.println("Inside updateSiteSurvey():"+singleBNGInstAndCmsnModel.toString());
-		
-	 *//***
-	  * Code for update data inside TBLBNGINSTANDCOMMISTAGE
-	  * Auditing code 
-	  * 
-	  *//*
-		
-		int finalResult=bngMasterService.updateBngINSStage(singleBNGInstAndCmsnModel);
-		
-		if(finalResult >0) {
-			
-			System.out.println("Success");
-		}else {
-			System.out.println("Failure");
-			
 		}
 		
-		return new ModelAndView("singleBNGSiteDetailsForIAndC","","");	
+		return new ModelAndView("redirect:/singleBNGDetails?getBNGID="+url);
 	}
 	
-	@RequestMapping(value="/updateSiteReady", method=RequestMethod.POST)
-	 public ModelAndView updateSiteReadyStatus(HttpServletRequest req, HttpServletResponse res,@ModelAttribute("SingleBNGInstAndCmsnModel")SingleBNGInstAndCmsnModel singleBNGInstAndCmsnModel){
-//		/Map<String,SingleBNGInstAndCmsnModel> singleBNGInstAndCmsMap = bngMasterService.getSingleBNGIAndCStatus(strBNGID);
-		System.out.println("Inside updateSiteReadyStatus() :"+singleBNGInstAndCmsnModel.toString());
+	//7
+	@RequestMapping(value="/updateCommissinong", method=RequestMethod.POST)
+	 public ModelAndView updateCommissinong(HttpServletRequest req, HttpServletResponse res,@ModelAttribute("SingleBNGInstAndCmsnModel")SingleBNGInstAndCmsnModel singleBNGInstAndCmsnModel) throws Exception{
 		
+		System.out.println("Inside updateCommissinong() ????????????"+singleBNGInstAndCmsnModel.toString());
+		
+		//Update I&C Status
 		bngMasterService.updateBngINSStage(singleBNGInstAndCmsnModel);
 		
-		return new ModelAndView("singleBNGSiteDetailsForIAndC","","");	
-	}
-	
-	@RequestMapping(value="/updateMaterialDelivery", method=RequestMethod.POST)
-	 public ModelAndView updateMaterialDeliveryStatus(HttpServletRequest req, HttpServletResponse res,@ModelAttribute("SingleBNGInstAndCmsnModel")SingleBNGInstAndCmsnModel singleBNGInstAndCmsnModel) throws Exception{
-//		/Map<String,SingleBNGInstAndCmsnModel> singleBNGInstAndCmsMap = bngMasterService.getSingleBNGIAndCStatus(strBNGID);
-		System.out.println("Inside updateMaterialDeliveryStatus() : "+singleBNGInstAndCmsnModel.toString());
-	
-		int finalResult=bngMasterService.updateBngINSStage(singleBNGInstAndCmsnModel);
-		
-		if(finalResult >0) {
-			
-			System.out.println("Success");
-		}else {
-			System.out.println("Failure");
-			
+		//Get Current detail of BNG
+		String status = bngMasterService.getBngICStageStatusByStageId(singleBNGInstAndCmsnModel.getBngid(),singleBNGInstAndCmsnModel.getOrderId());
+		String url = null;
+		if(status != null) {
+			if(status.equals("In Progress")) {
+				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId();
+			}else if(status.equals("Closed")) {
+				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId()+1;
+			}else if(status.equals("Pending")) {
+				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId();
+			}
 		}
 		
-		return new ModelAndView("singleBNGSiteDetailsForIAndC","","");	
+		return new ModelAndView("redirect:/singleBNGDetails?getBNGID="+url);
 	}
-	
-	@RequestMapping(value="/updatePowerOn", method=RequestMethod.POST)
-	 public ModelAndView updatePowerOnStatus(HttpServletRequest req, HttpServletResponse res,@ModelAttribute("SingleBNGInstAndCmsnModel")SingleBNGInstAndCmsnModel singleBNGInstAndCmsnModel) throws Exception{
-//		/Map<String,SingleBNGInstAndCmsnModel> singleBNGInstAndCmsMap = bngMasterService.getSingleBNGIAndCStatus(strBNGID);
-		System.out.println("Inside updatePowerOnStatus() : "+singleBNGInstAndCmsnModel.toString());
-	
-		bngMasterService.updateBngINSStage(singleBNGInstAndCmsnModel);
-		
-		return new ModelAndView("singleBNGSiteDetailsForIAndC","","");	
-	}
-	
-	@RequestMapping(value="/updateNWIntegration", method=RequestMethod.POST)
-	 public ModelAndView updateNWIntegrationStatus(HttpServletRequest req, HttpServletResponse res,@ModelAttribute("SingleBNGInstAndCmsnModel")SingleBNGInstAndCmsnModel singleBNGInstAndCmsnModel) throws Exception{
-//		/Map<String,SingleBNGInstAndCmsnModel> singleBNGInstAndCmsMap = bngMasterService.getSingleBNGIAndCStatus(strBNGID);
-		System.out.println("Inside updateNWIntegrationStatus() : "+singleBNGInstAndCmsnModel.toString());
-	
-		bngMasterService.updateBngINSStage(singleBNGInstAndCmsnModel);
-		
-		return new ModelAndView("singleBNGSiteDetailsForIAndC","","");	
-	}
-	
-	@RequestMapping(value="/updateAT", method=RequestMethod.POST)
-	 public ModelAndView updateATStatus(HttpServletRequest req, HttpServletResponse res,@ModelAttribute("SingleBNGInstAndCmsnModel")SingleBNGInstAndCmsnModel singleBNGInstAndCmsnModel) throws Exception{
-//		/Map<String,SingleBNGInstAndCmsnModel> singleBNGInstAndCmsMap = bngMasterService.getSingleBNGIAndCStatus(strBNGID);
-		System.out.println("Inside updateATStatus() :"+singleBNGInstAndCmsnModel.toString());
-	
-		bngMasterService.updateBngINSStage(singleBNGInstAndCmsnModel);
-		
-		return new ModelAndView("singleBNGSiteDetailsForIAndC","","");	
-	}
-	
-	@RequestMapping(value="/updateCommisioning", method=RequestMethod.POST)
-	 public ModelAndView updateCommisioningStatus(HttpServletRequest req, HttpServletResponse res,@ModelAttribute("SingleBNGInstAndCmsnModel")SingleBNGInstAndCmsnModel singleBNGInstAndCmsnModel) throws Exception{
-//		/Map<String,SingleBNGInstAndCmsnModel> singleBNGInstAndCmsMap = bngMasterService.getSingleBNGIAndCStatus(strBNGID);
-		System.out.println("Inside updateCommisioningStatus() :"+singleBNGInstAndCmsnModel.toString());
-	
-		bngMasterService.updateBngINSStage(singleBNGInstAndCmsnModel);
-		
-		return new ModelAndView("singleBNGSiteDetailsForIAndC","","");	
-	}
-	
+	//8
 	@RequestMapping(value="/updateATC", method=RequestMethod.POST)
-	 public ModelAndView updateATCStatus(HttpServletRequest req, HttpServletResponse res,@ModelAttribute("SingleBNGInstAndCmsnModel")SingleBNGInstAndCmsnModel singleBNGInstAndCmsnModel) throws Exception{
-//		/Map<String,SingleBNGInstAndCmsnModel> singleBNGInstAndCmsMap = bngMasterService.getSingleBNGIAndCStatus(strBNGID);
-		System.out.println("Inside updateATCStatus() :"+singleBNGInstAndCmsnModel.toString());
-	
+	 public ModelAndView updateATC(HttpServletRequest req, HttpServletResponse res,@ModelAttribute("SingleBNGInstAndCmsnModel")SingleBNGInstAndCmsnModel singleBNGInstAndCmsnModel) throws Exception{
+		
+		System.out.println("Inside updateATC() ????????????"+singleBNGInstAndCmsnModel.toString());
+		
+		//Update I&C Status
 		bngMasterService.updateBngINSStage(singleBNGInstAndCmsnModel);
 		
-		return new ModelAndView("singleBNGSiteDetailsForIAndC","","");	
+		//Get Current detail of BNG
+		String status = bngMasterService.getBngICStageStatusByStageId(singleBNGInstAndCmsnModel.getBngid(),singleBNGInstAndCmsnModel.getOrderId());
+		String url = null;
+		if(status != null) {
+			if(status.equals("In Progress")) {
+				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId();
+			}else if(status.equals("Closed")) {
+				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId()+1;
+			}else if(status.equals("Pending")) {
+				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId();
+			}
+		}
+		
+		return new ModelAndView("redirect:/singleBNGDetails?getBNGID="+url);
 	}
+	//8
 	
 	
-	*/
+	
 	
 
 }

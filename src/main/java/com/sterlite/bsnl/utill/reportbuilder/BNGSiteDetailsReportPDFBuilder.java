@@ -51,6 +51,10 @@ public class BNGSiteDetailsReportPDFBuilder {
             hcell = new PdfPCell(new Phrase("BNG ID", headFont));
             hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(hcell);
+            
+            hcell = new PdfPCell(new Phrase("VID", headFont));
+            hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(hcell);
 
             hcell = new PdfPCell(new Phrase("Zone Name", headFont));
             hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -119,6 +123,10 @@ public class BNGSiteDetailsReportPDFBuilder {
                 table.addCell(cell);
 
                 cell = new PdfPCell(new Phrase(bngMaster.getId()));
+                cell.setPaddingLeft(5);
+                table.addCell(cell);
+                
+                cell = new PdfPCell(new Phrase(bngMaster.getVid()));
                 cell.setPaddingLeft(5);
                 table.addCell(cell);
                 

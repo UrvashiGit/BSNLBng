@@ -43,6 +43,7 @@
 								<thead  style="font-size: 12px;">
 									<tr>
 										<th>BNG ID</th>
+										<th>VID</th>
 										<th>Phase</th>
 										<th>Zone Name</th>
 										<th>Circle Name</th>
@@ -51,6 +52,7 @@
 										<th>SSA Code</th>
 										<th>BNG Type</th>
 										<th>Exist/New/Train</th>
+										<th>Audit</th>
 										
 									</tr>
 								</thead>
@@ -69,6 +71,7 @@
 										<tr>
 											<td><a href="singleBNGDetails?getBNGID=${bng.id}&currentOrder=${bng.orderBicId}">${bng.id} </a></td>
 											<td>${bng.phase}</td>
+											<td>${bng.vid}</td>
 											<td>${bng.zoneName}</td>
 											<td>${bng.circleName}</td>
 											<td>${bng.circleCode}</td>
@@ -76,6 +79,7 @@
 											<td>${bng.ssaCode}</td>
 											<td>${bng.bngType}</td>
 											<td>${bng.exitNewTrain}</td>
+											<td><a href="#"> Details</a></td>
 											
 											
 											

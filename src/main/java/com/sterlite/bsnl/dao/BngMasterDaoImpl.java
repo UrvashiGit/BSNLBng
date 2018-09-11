@@ -198,24 +198,24 @@ public class BngMasterDaoImpl implements IBngMasterDAO {
 	 			
 	 				SummaryModel cwd=new SummaryModel();
 	 				cwd.setPhase(row[0].toString());
-	 				//cwd.setZoneName(row[1].toString());
-	 				cwd.setCircleName(row[1].toString());
-	 				cwd.setCircleCode(row[2].toString());
-	 				cwd.setTotalBng(row[3].toString());
+	 				cwd.setZoneName(row[1].toString());
+	 				//cwd.setCircleName(row[1].toString());
+	 				//cwd.setCircleCode(row[2].toString());
+	 				cwd.setTotalBng(row[2].toString());
 	 				/*cwd.setCircleName(row[3].toString());
 	 				cwd.setCircleCode(row[4].toString());*/
-	 				cwd.setSiteSurvey(row[4].toString());
-	 				cwd.setSiteReady(row[5].toString());
-	 				cwd.setMaterialDelivery(row[6].toString());
-	 				cwd.setPowerOn(row[7].toString());
-	 				cwd.setNWIntegration(row[8].toString());
-	 				cwd.setAT(row[9].toString());
-	 				cwd.setCommissioning(row[10].toString());
-	 				cwd.setATC(row[11].toString());
-	 				cwd.setERPPO(row[12].toString());
-	 				cwd.setMIGO(row[13].toString());
-	 				cwd.setMIRO(row[14].toString());
-	 				cwd.setPaymentStatus(row[15].toString());
+	 				cwd.setSiteSurvey(row[3].toString());
+	 				cwd.setSiteReady(row[4].toString());
+	 				cwd.setMaterialDelivery(row[5].toString());
+	 				cwd.setPowerOn(row[6].toString());
+	 				cwd.setNWIntegration(row[7].toString());
+	 				cwd.setAT(row[8].toString());
+	 				cwd.setCommissioning(row[9].toString());
+	 				cwd.setATC(row[10].toString());
+	 				cwd.setERPPO(row[11].toString());
+	 				cwd.setMIGO(row[12].toString());
+	 				cwd.setMIRO(row[13].toString());
+	 				cwd.setPaymentStatus(row[14].toString());
 	 				zoneWiseSummaryList.add(cwd);
 	 			//	System.out.println( "row :  "+ cwd.toString());
 	 				
@@ -320,6 +320,9 @@ public class BngMasterDaoImpl implements IBngMasterDAO {
 	 					}
 	 					singleBNGInstAndCmsnModel.setOrderId((int) row[4]);
 	 					singleBNGInstAndCmsnModel.setBngid(row[5].toString());
+	 					if(row[6] != null) {
+	 						singleBNGInstAndCmsnModel.setRemark(row[6].toString());
+	 					}
 	 					map.put(row[0].toString(),singleBNGInstAndCmsnModel);
 	 					System.out.println(map);
 	 				}
@@ -337,6 +340,10 @@ public class BngMasterDaoImpl implements IBngMasterDAO {
 	 					}
 	 					singleBNGInstAndCmsnModel.setOrderId((int) row[4]);
 	 					singleBNGInstAndCmsnModel.setBngid(row[5].toString());
+	 					if(row[6] != null) {
+	 						singleBNGInstAndCmsnModel.setRemark(row[6].toString());
+	 					}
+	 					
 	 					map.put(row[0].toString(),singleBNGInstAndCmsnModel);
 	 					System.out.println(map);
 	 				}
@@ -354,6 +361,10 @@ public class BngMasterDaoImpl implements IBngMasterDAO {
 	 					}
 	 					singleBNGInstAndCmsnModel.setOrderId((int) row[4]);
 	 					singleBNGInstAndCmsnModel.setBngid(row[5].toString());
+	 					if(row[6] != null) {
+	 						singleBNGInstAndCmsnModel.setRemark(row[6].toString());
+	 					}
+	 					
 	 					map.put(row[0].toString(),singleBNGInstAndCmsnModel);
 	 					System.out.println(map);
 	 				}
@@ -371,6 +382,10 @@ public class BngMasterDaoImpl implements IBngMasterDAO {
 	 					}
 	 					singleBNGInstAndCmsnModel.setOrderId((int) row[4]);
 	 					singleBNGInstAndCmsnModel.setBngid(row[5].toString());
+	 					if(row[6] != null) {
+	 						singleBNGInstAndCmsnModel.setRemark(row[6].toString());
+	 					}
+	 					
 	 					map.put(row[0].toString(),singleBNGInstAndCmsnModel);
 	 					System.out.println(map);
 	 				}
@@ -388,6 +403,10 @@ public class BngMasterDaoImpl implements IBngMasterDAO {
 	 					}
 	 					singleBNGInstAndCmsnModel.setOrderId((int) row[4]);
 	 					singleBNGInstAndCmsnModel.setBngid(row[5].toString());
+	 					if(row[6] != null) {
+	 						singleBNGInstAndCmsnModel.setRemark(row[6].toString());
+	 					}
+	 					
 	 					map.put(row[0].toString(),singleBNGInstAndCmsnModel);
 	 					System.out.println(map);
 	 				}
@@ -405,6 +424,10 @@ public class BngMasterDaoImpl implements IBngMasterDAO {
 	 					}
 	 					singleBNGInstAndCmsnModel.setOrderId((int) row[4]);
 	 					singleBNGInstAndCmsnModel.setBngid(row[5].toString());
+	 					if(row[6] != null) {
+	 						singleBNGInstAndCmsnModel.setRemark(row[6].toString());
+	 					}
+	 					
 	 					map.put(row[0].toString(),singleBNGInstAndCmsnModel);
 	 					System.out.println(map);
 	 				}
@@ -422,6 +445,10 @@ public class BngMasterDaoImpl implements IBngMasterDAO {
 	 					}
 	 					singleBNGInstAndCmsnModel.setOrderId((int) row[4]);
 	 					singleBNGInstAndCmsnModel.setBngid(row[5].toString());
+	 					if(row[6] != null) {
+	 						singleBNGInstAndCmsnModel.setRemark(row[6].toString());
+	 					}
+	 					
 	 					map.put(row[0].toString(),singleBNGInstAndCmsnModel);
 	 					System.out.println(map);
 	 				}
@@ -439,6 +466,10 @@ public class BngMasterDaoImpl implements IBngMasterDAO {
 	 					}
 	 					singleBNGInstAndCmsnModel.setOrderId((int) row[4]);
 	 					singleBNGInstAndCmsnModel.setBngid(row[5].toString());
+	 					if(row[6] != null) {
+	 						singleBNGInstAndCmsnModel.setRemark(row[6].toString());
+	 					}
+	 					
 	 					map.put(row[0].toString(),singleBNGInstAndCmsnModel);
 	 					System.out.println(map);
 	 				}
@@ -484,6 +515,9 @@ public class BngMasterDaoImpl implements IBngMasterDAO {
 	 					}
 	 					singleBNGInvModel.setOrderId((int) row[5]);
 	 					singleBNGInvModel.setBngid(row[6].toString());
+	 					if(row[7] != null) {
+	 						singleBNGInvModel.setRemark(row[7].toString());
+	 					}
 	 					map.put(row[0].toString(),singleBNGInvModel);
 	 					System.out.println(map);
 	 				}
@@ -502,6 +536,9 @@ public class BngMasterDaoImpl implements IBngMasterDAO {
 	 					}
 	 					singleBNGInvModel.setOrderId((int) row[5]);
 	 					singleBNGInvModel.setBngid(row[6].toString());
+	 					if(row[7] != null) {
+	 						singleBNGInvModel.setRemark(row[7].toString());
+	 					}
 	 					map.put(row[0].toString(),singleBNGInvModel);
 	 					System.out.println(map);
 	 				}
@@ -520,6 +557,9 @@ public class BngMasterDaoImpl implements IBngMasterDAO {
 	 					}
 	 					singleBNGInvModel.setOrderId((int) row[5]);
 	 					singleBNGInvModel.setBngid(row[6].toString());
+	 					if(row[7] != null) {
+	 						singleBNGInvModel.setRemark(row[7].toString());
+	 					}
 	 					map.put(row[0].toString(),singleBNGInvModel);
 	 					System.out.println(map);
 	 				}
@@ -538,6 +578,9 @@ public class BngMasterDaoImpl implements IBngMasterDAO {
 	 					}
 	 					singleBNGInvModel.setOrderId((int) row[5]);
 	 					singleBNGInvModel.setBngid(row[6].toString());
+	 					if(row[7] != null) {
+	 						singleBNGInvModel.setRemark(row[7].toString());
+	 					}
 	 					map.put(row[0].toString(),singleBNGInvModel);
 	 					System.out.println(map);
 	 				}
@@ -561,6 +604,7 @@ public class BngMasterDaoImpl implements IBngMasterDAO {
 		
 		Session session;
 		String updateQuery;
+		int finalResult=0;
 		
 		try{
 			updateQuery = BSNLConstans.updateBNGInsStageDetail;
@@ -568,11 +612,31 @@ public class BngMasterDaoImpl implements IBngMasterDAO {
 	 		System.out.println("hqlFetch >> :  "+ updateQuery);
 	 		//int i=0;
 	 		int queryStatus = session.createSQLQuery(updateQuery).setParameter("TDATE", singleModel.getTargetDate()).setParameter("CLDATE", singleModel.getCloseDate()).
-	 		setParameter("STATUS",singleModel.getStatus()).
+	 		setParameter("STATUS",singleModel.getStatus()).setParameter("REMARK", singleModel.getRemark()).
 	 		setParameter("bngId", singleModel.getBngid()).setParameter("stageId", singleModel.getOrderId()).executeUpdate();
 	 		
-	 		if(queryStatus > 0) {
+	 		if(queryStatus > 0 && "Closed".equals(singleModel.getStatus())) {
 	 			System.out.println("Executed");
+	 			
+	 			/**Code for update BNGIANDCORDERID  in bngMaster table*/
+	 			
+	 			int updateStatus=updateBngINSMasterStage(singleModel,session);
+	 			
+	 			if(updateStatus > 0) {
+	 				
+	 				
+	 				
+	 				/**Code for Audit  in AuditMaster table*/
+	 				
+	 				//int insertStatus=insertAudit(singleModel,session);
+	 				
+	 				//if(insertStatus >0) {
+	 					
+	 					finalResult++;
+	 				//}
+	 			}
+	 		}else if(queryStatus > 0) {
+	 			finalResult++;
 	 		}
 	 		
 		}catch (Exception e) {
@@ -580,7 +644,7 @@ public class BngMasterDaoImpl implements IBngMasterDAO {
 		}
 		
 		
-		return 0;
+		return finalResult;
 	}
 
 	@Override
@@ -671,12 +735,12 @@ public class BngMasterDaoImpl implements IBngMasterDAO {
 	 				
 	 				/**Code for Audit  in AuditMaster table*/
 	 				
-	 				int insertStatus=insertAudit(singleModel,session);
+	 				//int insertStatus=insertAudit(singleModel,session);
 	 				
-	 				if(insertStatus >0) {
+	 				//if(insertStatus >0) {
 	 					
 	 					finalResult++;
-	 				}
+	 				//}
 	 			}
 	 			
 	 			

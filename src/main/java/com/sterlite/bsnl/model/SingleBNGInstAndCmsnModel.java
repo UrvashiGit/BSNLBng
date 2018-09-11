@@ -2,10 +2,13 @@ package com.sterlite.bsnl.model;
 
 import java.util.Date;
 
+import javax.validation.constraints.NotBlank;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class SingleBNGInstAndCmsnModel {
 	
+	@NotBlank
 	private String Status;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date closeDate;
@@ -15,9 +18,14 @@ public class SingleBNGInstAndCmsnModel {
 	private String stageName;
 	private String bngid;
 	private int currentBNGOrderId;
+	private String remark;
 	
-	
-	
+	public String getRemark() {
+		return remark;
+	}
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
 	public int getCurrentBNGOrderId() {
 		return currentBNGOrderId;
 	}

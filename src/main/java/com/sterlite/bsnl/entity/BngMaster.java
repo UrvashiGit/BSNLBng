@@ -20,6 +20,9 @@ public class BngMaster implements Serializable {
 	@Column(name="BNGID")
 	private String id;
 	
+	@Column(name="VID")
+	private String vid;
+	
 	@Column(name="PHASE")
 	private String phase;
 	
@@ -259,22 +262,32 @@ public class BngMaster implements Serializable {
 		this.orderBInvId = orderBInvId;
 	}
 
+	
+	public String getVid() {
+		return vid;
+	}
+
+	public void setVid(String vid) {
+		this.vid = vid;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("BngMaster [id=").append(id).append(", phase=").append(phase).append(", zoneName=")
-				.append(zoneName).append(", circleName=").append(circleName).append(", circleCode=").append(circleCode)
-				.append(", location=").append(location).append(", ssaCode=").append(ssaCode).append(", bngType=")
-				.append(bngType).append(", exitNewTrain=").append(exitNewTrain).append(", siteNameLocation=")
-				.append(siteNameLocation).append(", circleCoordinatorDet=").append(circleCoordinatorDet)
-				.append(", consigneeDet=").append(consigneeDet).append(", siteAddress=").append(siteAddress)
-				.append(", sitePersonDet=").append(sitePersonDet).append(", siteContactNo=").append(siteContactNo)
-				.append(", gstin=").append(gstin).append(", orderBicId=").append(orderBicId).append(", orderBInvId=")
-				.append(orderBInvId).append(", createdDate=").append(createdDate).append(", lastModifiDate=")
-				.append(lastModifiDate).append(", createdBy=").append(createdBy).append(", modifiedBy=")
-				.append(modifiedBy).append("]");
+		builder.append("BngMaster [id=").append(id).append(", vid=").append(vid).append(", phase=").append(phase)
+				.append(", zoneName=").append(zoneName).append(", circleName=").append(circleName)
+				.append(", circleCode=").append(circleCode).append(", location=").append(location).append(", ssaCode=")
+				.append(ssaCode).append(", bngType=").append(bngType).append(", exitNewTrain=").append(exitNewTrain)
+				.append(", siteNameLocation=").append(siteNameLocation).append(", circleCoordinatorDet=")
+				.append(circleCoordinatorDet).append(", consigneeDet=").append(consigneeDet).append(", siteAddress=")
+				.append(siteAddress).append(", sitePersonDet=").append(sitePersonDet).append(", siteContactNo=")
+				.append(siteContactNo).append(", gstin=").append(gstin).append(", orderBicId=").append(orderBicId)
+				.append(", orderBInvId=").append(orderBInvId).append(", createdDate=").append(createdDate)
+				.append(", lastModifiDate=").append(lastModifiDate).append(", createdBy=").append(createdBy)
+				.append(", modifiedBy=").append(modifiedBy).append("]");
 		return builder.toString();
 	}
+
 	
 	
 	

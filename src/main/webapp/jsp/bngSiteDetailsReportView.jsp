@@ -48,8 +48,9 @@
 								cellspacing="0">
 								<thead style="font-size: 12px;">
 									<tr>
+									    <th>Phase</th>
 										<th>BNG ID</th>
-										<th>Phase</th>
+										<th>VID</th>
 										<th>Zone</th>
 										<th>Circle</th>
 										<th>Circle Code</th>
@@ -79,8 +80,9 @@
 								<tbody style="font-size: 11px;">
 									<c:forEach items="${bngList}" var="bng">
 										<tr>
+										    <td>${bng.phase}</td>
 											<td>${bng.id}</td>
-											<td>${bng.phase}</td>
+											<td>${bng.vid}</td>
 											<td>${bng.zoneName}</td>
 											<td>${bng.circleName}</td>
 											<td>${bng.circleCode}</td>

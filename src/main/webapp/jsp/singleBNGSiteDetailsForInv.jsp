@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 
- <script>
+<script>
          
 </script>
 
@@ -25,6 +25,7 @@
 </head>
 
 <body id="page-top">
+<c:set var = "stageLimit" value = "4"/>
 	<%@include file="header.jsp"%>
 	<div id="wrapper">
 
@@ -32,157 +33,184 @@
 		<%@include file="sidebar.jsp"%>
 
 		<div id="content-wrapper">
-
+		<h6>&nbsp;&nbsp;&nbsp;BNG ID :  <c:out value = "${singleMap.get('ERP PO').getBngid()}"/></h6>
 			<div class="container-fluid">
+				<c:forEach var="entry" items="${singleMap}">
+				
+	<hr>
 
-				<form method="post" action="updateSingleBNGInvDetails" name="updateBNGInv">
-					<!-- DataTables Example -->
-					<div class="card mb-3">
-						<div class="card-header">
-							<i class="fas fa-table"></i> BSNL-BNG Invoicing
-						</div>
-						<div class="card-body">
-
-
-							<c:forEach var="entry" items="${singleMap}">
-
-								<c:if test="${'ERP PO' == entry.key}">
-									<b><u> ERP PO </u></b>
-									</br>
-									Status
-										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
-										 <%-- ${entry.value.getStatus()} --%>
-										<select name="Status">
-											<option value="Completed"   <c:if test="${entry.value.getStatus() eq 'Completed'}">selected</c:if>>Pending </option>
-										 	<option value="Pending" <c:if test="${entry.value.getStatus() eq 'Pending'}">selected</c:if>>Completed </option>
-											<option value="InProgress" <c:if test="${entry.value.getStatus() eq 'InProgress'}">selected</c:if>>InProgress </option>
-									</select>
-									 </br>
-									 <!-- Date logic based on Status (code pending)
+					<div id="erpPo">
+						<c:if test="${'ERP PO' == entry.key}">
+							<form method="post" action="updateERPPO"
+								name="">
+								<b><u> ERP PO </u></b> </br> Status :
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+								<%-- ${entry.value.getStatus()} --%>
+								<input type="hidden" name="Status" value="${entry.value.getStatus()}">
+								<input type="hidden" name=bngid value="${entry.value.getBngid()}">
+								<input type="hidden" name="orderId" value="${entry.value.getOrderId()}">
+								<select name="Status" disabled="disabled">
+									<option value="Closed"${entry.value.getStatus() == 'Closed' ? 'selected="selected"' : ''}">Closed
+									</option>
+									<option value="Pending"${entry.value.getStatus() == 'Pending' ? 'selected="selected"' : ''}">Pending
+									</option>
+									<option value="In Progress"${entry.value.getStatus() == 'In Progress'? 'selected="selected"' : ''}">In Progress
+									</option>
+								</select> </br>
+								<!-- Date logic based on Status (code pending)
 									  -->
-									CloseDate &nbsp;&nbsp;&nbsp; :  ${entry.value.getCloseDate()}  
-									 <input type="date" name="closeDate1" id="closeDate1id"  pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" value ="${entry.value.getCloseDate()}" >
-									 </br>
-									TargetDate &nbsp; :  ${entry.value.getTargetDate()} 
-									 <input type="date" name="targetDate1" id="targetDate1id"  pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" value ="${entry.value.getCloseDate()}" >
-									</br>
+								CloseDate &nbsp;&nbsp;&nbsp; : <input type="date" name="closeDate" id="closeDate" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
+									value="${entry.value.getCloseDate()}"> 
 									
-									
-								</c:if>
-
-								<c:if test="${'MIGO' == entry.key}">
-									<b><u> MIGO </u></b>
-									</br>
-									Status
-										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
-										 <%-- ${entry.value.getStatus()} --%>
-										<select name="Status">
-											<option value="Completed"   <c:if test="${entry.value.getStatus() eq 'Completed'}">selected</c:if>>Pending </option>
-										 	<option value="Pending" <c:if test="${entry.value.getStatus() eq 'Pending'}">selected</c:if>>Completed </option>
-											<option value="InProgress" <c:if test="${entry.value.getStatus() eq 'InProgress'}">selected</c:if>>InProgress </option>
-									</select>
-									 </br>
-									CloseDate &nbsp;&nbsp;&nbsp; :  ${entry.value.getCloseDate()}  
-									 <input type="date" name="closeDate2" id="closeDate2id"  pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" value ="${entry.value.getCloseDate()}" >
-									 </br>
-									TargetDate &nbsp; :  ${entry.value.getTargetDate()} 
-									 <input type="date" name="targetDate2" id="targetDate2id"  pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" value ="${entry.value.getCloseDate()}" >
-									</br>
-								</c:if>
-
-								<c:if test="${'MIRO' == entry.key}">
-									<b><u> MIRO</u></b>
-									</br>
-									Status
-										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
-										 <%-- ${entry.value.getStatus()} --%>
-										<select name="Status">
-											<option value="Completed"   <c:if test="${entry.value.getStatus() eq 'Completed'}">selected</c:if>>Pending </option>
-										 	<option value="Pending" <c:if test="${entry.value.getStatus() eq 'Pending'}">selected</c:if>>Completed </option>
-											<option value="InProgress" <c:if test="${entry.value.getStatus() eq 'InProgress'}">selected</c:if>>InProgress </option>
-									</select>
-									 </br>
-									CloseDate &nbsp;&nbsp;&nbsp; :  ${entry.value.getCloseDate()}  
-									 <input type="date" name="closeDate3" id="closeDate3id"  pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" value ="${entry.value.getCloseDate()}" >
-									 </br>
-									TargetDate &nbsp; :  ${entry.value.getTargetDate()} 
-									 <input type="date" name="targetDate3" id="targetDate3id"  pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" value ="${entry.value.getCloseDate()}" >
-									</br>
-									
+								</br> 
 								
-								</c:if>
-
-								<c:if test="${'Payment Status' == entry.key}">
-									<b><u> Payment Status </u></b>
-									</br>
-									Status
-										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
-										 <%-- ${entry.value.getStatus()} --%>
-										<select name="Status">
-											<option value="Completed"   <c:if test="${entry.value.getStatus() eq 'Completed'}">selected</c:if>>Pending </option>
-										 	<option value="Pending" <c:if test="${entry.value.getStatus() eq 'Pending'}">selected</c:if>>Completed </option>
-											<option value="InProgress" <c:if test="${entry.value.getStatus() eq 'InProgress'}">selected</c:if>>InProgress </option>
-									</select>
-									 </br>
-									CloseDate &nbsp;&nbsp;&nbsp; :  ${entry.value.getCloseDate()}  
-									 <input type="date" name="closeDate4" id="closeDate4id"  pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" value ="${entry.value.getCloseDate()}" >
-									 </br>
-									TargetDate &nbsp; :  ${entry.value.getTargetDate()} 
-									 <input type="date" name="targetDate4" id="targetDate4id"  pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" value ="${entry.value.getCloseDate()}" >
-									</br>
+								TargetDate &nbsp;&nbsp;&nbsp; : <input type="date" name="targetDate" id="targetDate" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
+									value="${entry.value.getTargetDate()}"> 
+									</br> 
 									
-									JV &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;:  <input type="text" name= "JV" value="${entry.value.getJV()}" /> 
-							</br>
-								</c:if>
-
-								
-
-							</c:forEach>
 							
-							</br>
-						
-							<!-- separate jsp page will show all history (Auditing) -->
-							<a href="#"><b> <u> Audit</u> </b></a>
-							</br>
 							
-							<div>
-							</br>
-							</br>
-    <input type="submit" value = "Update Details" >
-  </div>
-				</form>
+							<input type="submit" value="update" <c:if test="${entry.value.getCurrentBNGOrderId() != stageLimit && entry.value.getOrderId() > entry.value.getCurrentBNGOrderId()+1}">
+								<c:out value="disabled='disabled'"/></c:if>">
+							</form>
+						</c:if>
 
-
-
-				<div class="table-responsive">
-					<table class="table table-bordered" id="dataTable" width="100%"
-						cellspacing="0">
-						
-						</thead>
-						
-						<tbody>
-						
-						</tbody>
-
-
-					</table>
-
-					<div>
-					
 					</div>
-				</div>
-			
+
+
+					<div id="migo">
+
+
+						<c:if test="${'MIGO' == entry.key}">
+							<form method="post" action="updateMIGO" name="">
+								<b><u> MIGO </u></b> </br> Status
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
+								<%-- ${entry.value.getStatus()} --%>
+								<input type="hidden" name="Status" value="${entry.value.getStatus()}">
+								<input type="hidden" name=bngid value="${entry.value.getBngid()}">
+								<input type="hidden" name="orderId" value="${entry.value.getOrderId()}">
+								<select name="Status">
+									<option value="Closed"
+										<c:if test="${entry.value.getStatus() eq 'Closed'}">selected</c:if>>Closed
+									</option>
+									<option value="Pending"
+										<c:if test="${entry.value.getStatus() eq 'Pending'}">selected</c:if>>Pending
+									</option>
+									<option value="In Progress"
+										<c:if test="${entry.value.getStatus() eq 'In Progress'}">selected</c:if>>In Progress
+									</option>
+								</select> </br> 
+								
+								CloseDate &nbsp;&nbsp;&nbsp; : <input type="date" name="closeDate" id="closeDate" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
+									value="${entry.value.getCloseDate()}"> 
+									
+								</br> 
+								
+								TargetDate &nbsp;&nbsp;&nbsp; : <input type="date" name="targetDate" id="targetDate" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
+									value="${entry.value.getTargetDate()}"> 
+									</br> 
+								 </br>
+									
+									<input type="submit" value="update" <c:if test="${entry.value.getCurrentBNGOrderId() != stageLimit  && entry.value.getOrderId() > entry.value.getCurrentBNGOrderId()+1}">
+								<c:out value="disabled='disabled'"/></c:if>">
+							</form>
+						</c:if>
+
+					</div>
+
+
+					<div id="miro">
+
+
+						<c:if test="${'MIRO' == entry.key}">
+							<form method="post" action="updateMIRO" name="">
+								<b><u> MIRO </u></b> </br> Status
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
+								<%-- ${entry.value.getStatus()} --%>
+								<input type="hidden" name="Status" value="${entry.value.getStatus()}">
+								<input type="hidden" name=bngid value="${entry.value.getBngid()}">
+								<input type="hidden" name="orderId" value="${entry.value.getOrderId()}">
+								<select name="Status">
+									<option value="Closed"
+										<c:if test="${entry.value.getStatus() eq 'Closed'}">selected</c:if>>Closed
+									</option>
+									<option value="Pending"
+										<c:if test="${entry.value.getStatus() eq 'Pending'}">selected</c:if>>Pending
+									</option>
+									<option value="In Progress"
+										<c:if test="${entry.value.getStatus() eq 'In Progress'}">selected</c:if>>In Progress
+									</option>
+								</select> </br> 
+								
+								CloseDate &nbsp;&nbsp;&nbsp; : <input type="date" name="closeDate" id="closeDate" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
+									value="${entry.value.getCloseDate()}"> 
+									
+								</br> 
+								
+								TargetDate &nbsp;&nbsp;&nbsp; : <input type="date" name="targetDate" id="targetDate" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
+									value="${entry.value.getTargetDate()}"> 
+								</br> JV &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;:  <input type="text" name= "JV" value="${entry.value.getJV()}" /> 
+							</br>
+							
+							<input type="submit" value="update" <c:if test="${entry.value.getCurrentBNGOrderId() != stageLimit && entry.value.getOrderId() > entry.value.getCurrentBNGOrderId()+1}">
+								<c:out value="disabled='disabled'"/></c:if>">
+							</form>
+						</c:if>
+
+					</div>
+
+
+
+					<div id="paymentStatus">
+
+
+						<c:if test="${'Payment Status' == entry.key}">
+							<form method="post" action="updatePaymentStatus" name="">
+								<b><u> Payment Status </u></b> </br> Status
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
+								<%-- ${entry.value.getStatus()} --%>
+								<input type="hidden" name="Status" value="${entry.value.getStatus()}">
+								<input type="hidden" name=bngid value="${entry.value.getBngid()}">
+								<input type="hidden" name="orderId" value="${entry.value.getOrderId()}">
+								<select name="Status">
+									<option value="Closed"
+										<c:if test="${entry.value.getStatus() eq 'Closed'}">selected</c:if>>Closed
+									</option>
+									<option value="Pending"
+										<c:if test="${entry.value.getStatus() eq 'Pending'}">selected</c:if>>Pending
+									</option>
+									<option value="In Progress"
+										<c:if test="${entry.value.getStatus() eq 'In Progress'}">selected</c:if>>In Progress
+									</option>
+								</select> </br> 
+
+								CloseDate &nbsp;&nbsp;&nbsp; : <input type="date" name="closeDate" id="closeDate" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
+									value="${entry.value.getCloseDate()}"> 
+									
+								</br> 
+								
+								TargetDate &nbsp;&nbsp;&nbsp; : <input type="date" name="targetDate" id="targetDate" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
+									value="${entry.value.getTargetDate()}"> 
+									</br> 
+								</br>
+							<input type="submit" value="update" <c:if test="${entry.value.getCurrentBNGOrderId() != stageLimit  && entry.value.getOrderId() > entry.value.getCurrentBNGOrderId()+1}">
+								<c:out value="disabled='disabled'"/></c:if>">
+							</form>
+						</c:if>
+
+					</div>
+
+
+				</c:forEach>
+
+
+			</div>
 			</div>
 
+
+			<%@include file="footer.jsp"%>
+
 		</div>
-		
-
-		<%@include file="footer.jsp"%>
-
-	</div>
-
-	</div>
-	
 </body>
 
 </html>
