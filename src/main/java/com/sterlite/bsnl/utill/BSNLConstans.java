@@ -40,14 +40,14 @@ public class BSNLConstans {
 
 	public static final String sqlCircleWiseSummary = "";
 
-	public static final String sqlSingleBNGIAndCStatus = "select B.STAGENAME,A.STATUS,A.CLOSEDATE,A.TARGETDATE,B.ORDERID,A.bngid from \r\n"
+	public static final String sqlSingleBNGIAndCStatus = "select B.STAGENAME,A.STATUS,A.CLOSEDATE,A.TARGETDATE,B.ORDERID,A.bngid,A.REMARKS from \r\n"
 			+ "TBLBNGINSTANDCOMMISTAGE A, TBLBNGINSTANDCOMMISTAGEODER B where B.STAGEID=A.STAGEID and A.bngid= :bngid  order by B.STAGEID";
 	
 	public static final String sqlSingleBNGInvStatus = "select B.STAGENAME,A.STATUS,A.CLOSEDATE,A.TARGETDATE, A.JV,B.ORDERID,A.bngid  from TBLBNGINVOICEANFAPYMENTSTAGE A, TBLBNGINVOICEANDPAYMENTSTAGEODER B where B.STAGEID=A.STAGEID and A.bngid= :bngid order by B.STAGEID";
 	
 	
 	//Query to Update BNG INS Stage Detail
-	public static final String updateBNGInsStageDetail= "update TBLBNGINSTANDCOMMISTAGE A set A.TARGETDATE =:TDATE, A.CLOSEDATE=:CLDATE, A.STATUS=:STATUS ,A.LASTMODIFIEDDATE=SYSDATE(), A.LATMODIFIEDBY=1 where BNGID=:bngId and  A.STAGEID=:stageId";
+	public static final String updateBNGInsStageDetail= "update TBLBNGINSTANDCOMMISTAGE A set A.TARGETDATE =:TDATE, A.CLOSEDATE=:CLDATE, A.STATUS=:STATUS ,A.LASTMODIFIEDDATE=SYSDATE(), A.LATMODIFIEDBY=1, A.REMARKS=:REMARK where BNGID=:bngId and  A.STAGEID=:stageId";
 
 	// Query to get Master BNG by ID
 	public static final String getBngICStageStatusByStageId="select STATUS from TBLBNGINSTANDCOMMISTAGE where BNGID=:bngId and STAGEID=:stageId" ;

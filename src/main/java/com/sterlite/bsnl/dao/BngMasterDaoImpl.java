@@ -320,6 +320,7 @@ public class BngMasterDaoImpl implements IBngMasterDAO {
 	 					}
 	 					singleBNGInstAndCmsnModel.setOrderId((int) row[4]);
 	 					singleBNGInstAndCmsnModel.setBngid(row[5].toString());
+	 					singleBNGInstAndCmsnModel.setRemark(row[6].toString());
 	 					map.put(row[0].toString(),singleBNGInstAndCmsnModel);
 	 					System.out.println(map);
 	 				}
@@ -337,6 +338,10 @@ public class BngMasterDaoImpl implements IBngMasterDAO {
 	 					}
 	 					singleBNGInstAndCmsnModel.setOrderId((int) row[4]);
 	 					singleBNGInstAndCmsnModel.setBngid(row[5].toString());
+	 					if(row[6] != null) {
+	 						singleBNGInstAndCmsnModel.setRemark(row[6].toString());
+	 					}
+	 					
 	 					map.put(row[0].toString(),singleBNGInstAndCmsnModel);
 	 					System.out.println(map);
 	 				}
@@ -354,6 +359,10 @@ public class BngMasterDaoImpl implements IBngMasterDAO {
 	 					}
 	 					singleBNGInstAndCmsnModel.setOrderId((int) row[4]);
 	 					singleBNGInstAndCmsnModel.setBngid(row[5].toString());
+	 					if(row[6] != null) {
+	 						singleBNGInstAndCmsnModel.setRemark(row[6].toString());
+	 					}
+	 					
 	 					map.put(row[0].toString(),singleBNGInstAndCmsnModel);
 	 					System.out.println(map);
 	 				}
@@ -371,6 +380,10 @@ public class BngMasterDaoImpl implements IBngMasterDAO {
 	 					}
 	 					singleBNGInstAndCmsnModel.setOrderId((int) row[4]);
 	 					singleBNGInstAndCmsnModel.setBngid(row[5].toString());
+	 					if(row[6] != null) {
+	 						singleBNGInstAndCmsnModel.setRemark(row[6].toString());
+	 					}
+	 					
 	 					map.put(row[0].toString(),singleBNGInstAndCmsnModel);
 	 					System.out.println(map);
 	 				}
@@ -388,6 +401,10 @@ public class BngMasterDaoImpl implements IBngMasterDAO {
 	 					}
 	 					singleBNGInstAndCmsnModel.setOrderId((int) row[4]);
 	 					singleBNGInstAndCmsnModel.setBngid(row[5].toString());
+	 					if(row[6] != null) {
+	 						singleBNGInstAndCmsnModel.setRemark(row[6].toString());
+	 					}
+	 					
 	 					map.put(row[0].toString(),singleBNGInstAndCmsnModel);
 	 					System.out.println(map);
 	 				}
@@ -405,6 +422,10 @@ public class BngMasterDaoImpl implements IBngMasterDAO {
 	 					}
 	 					singleBNGInstAndCmsnModel.setOrderId((int) row[4]);
 	 					singleBNGInstAndCmsnModel.setBngid(row[5].toString());
+	 					if(row[6] != null) {
+	 						singleBNGInstAndCmsnModel.setRemark(row[6].toString());
+	 					}
+	 					
 	 					map.put(row[0].toString(),singleBNGInstAndCmsnModel);
 	 					System.out.println(map);
 	 				}
@@ -422,6 +443,10 @@ public class BngMasterDaoImpl implements IBngMasterDAO {
 	 					}
 	 					singleBNGInstAndCmsnModel.setOrderId((int) row[4]);
 	 					singleBNGInstAndCmsnModel.setBngid(row[5].toString());
+	 					if(row[6] != null) {
+	 						singleBNGInstAndCmsnModel.setRemark(row[6].toString());
+	 					}
+	 					
 	 					map.put(row[0].toString(),singleBNGInstAndCmsnModel);
 	 					System.out.println(map);
 	 				}
@@ -439,6 +464,10 @@ public class BngMasterDaoImpl implements IBngMasterDAO {
 	 					}
 	 					singleBNGInstAndCmsnModel.setOrderId((int) row[4]);
 	 					singleBNGInstAndCmsnModel.setBngid(row[5].toString());
+	 					if(row[6] != null) {
+	 						singleBNGInstAndCmsnModel.setRemark(row[6].toString());
+	 					}
+	 					
 	 					map.put(row[0].toString(),singleBNGInstAndCmsnModel);
 	 					System.out.println(map);
 	 				}
@@ -552,7 +581,7 @@ public class BngMasterDaoImpl implements IBngMasterDAO {
 	 		System.out.println("hqlFetch >> :  "+ updateQuery);
 	 		//int i=0;
 	 		int queryStatus = session.createSQLQuery(updateQuery).setParameter("TDATE", singleModel.getTargetDate()).setParameter("CLDATE", singleModel.getCloseDate()).
-	 		setParameter("STATUS",singleModel.getStatus()).
+	 		setParameter("STATUS",singleModel.getStatus()).setParameter("REMARK", singleModel.getRemark()).
 	 		setParameter("bngId", singleModel.getBngid()).setParameter("stageId", singleModel.getOrderId()).executeUpdate();
 	 		
 	 		if(queryStatus > 0) {

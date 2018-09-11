@@ -15,9 +15,14 @@ public class SingleBNGInstAndCmsnModel {
 	private String stageName;
 	private String bngid;
 	private int currentBNGOrderId;
+	private String remark;
 	
-	
-	
+	public String getRemark() {
+		return remark;
+	}
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
 	public int getCurrentBNGOrderId() {
 		return currentBNGOrderId;
 	}
