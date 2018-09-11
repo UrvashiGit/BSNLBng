@@ -126,7 +126,8 @@
 									</br> 
 								 </br>
 								
-									Remarks &nbsp;&nbsp;&nbsp; : <input type="text" name="remark" maxlength="500" required="required" <c:if test="${entry.value.getStatus() == 'Completed'}">
+									Remarks &nbsp;&nbsp;&nbsp; : <input type="text" name="remark" maxlength="500" required="required" value="${entry.value.getRemark()}" id="siteReadyRemark"
+									 <c:if test="${entry.value.getStatus() == 'Completed'}">
 								<c:out value="disabled='disabled'"/></c:if>" > 
 							</br>
 									
@@ -178,7 +179,8 @@
 								<!-- </br> Challan
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : <a href="#"> <u>
 										Details</u></a> </br> -->
-											Remarks &nbsp;&nbsp;&nbsp; : <input type="text" name="remark" maxlength="500" required="required" <c:if test="${entry.value.getStatus() == 'Completed'}">
+											Remarks &nbsp;&nbsp;&nbsp; : <input type="text" name="remark" maxlength="500" required="required" value="${entry.value.getRemark()}" id="MDRemark"
+											<c:if test="${entry.value.getStatus() == 'Completed'}">
 								<c:out value="disabled='disabled'"/></c:if>" > 
 							</br>
 										
@@ -227,7 +229,8 @@
 								<c:out value="disabled='disabled'"/></c:if>">  
 									</br> 
 								</br>
-								Remarks &nbsp;&nbsp;&nbsp; : <input type="text" name="remark" maxlength="500" required="required" <c:if test="${entry.value.getStatus() == 'Completed'}">
+								Remarks &nbsp;&nbsp;&nbsp; : <input type="text" name="remark" maxlength="500" required="required" value="${entry.value.getRemark()}" id="powreOnRemark"
+								 <c:if test="${entry.value.getStatus() == 'Completed'}">
 								<c:out value="disabled='disabled'"/></c:if>" > </br>
 								<c:if test="${entry.value.getStatus() != 'Completed'}">
 							<input type="button" onclick="ValidatePowerOnForm()" value="update" <c:if test="${entry.value.getCurrentBNGOrderId() != stageLimit  && entry.value.getOrderId() > entry.value.getCurrentBNGOrderId()+1}">
@@ -271,7 +274,8 @@
 									value="${entry.value.getTargetDate()}" <c:if test="${entry.value.getStatus() == 'Completed'}">
 								<c:out value="disabled='disabled'"/></c:if>">  
 									</br> 
-									Remarks &nbsp;&nbsp;&nbsp; : <input type="text" name="remark" maxlength="500" required="required" <c:if test="${entry.value.getStatus() == 'Completed'}">
+									Remarks &nbsp;&nbsp;&nbsp; : <input type="text" name="remark" maxlength="500" required="required" value="${entry.value.getRemark()}" id="NWIRemark"
+									 <c:if test="${entry.value.getStatus() == 'Completed'}">
 								<c:out value="disabled='disabled'"/></c:if>" > <br>
 							<c:if test="${entry.value.getStatus() != 'Completed'}">
 							<input type="button" value="update" onclick="ValidateNWIForm()" <c:if test="${entry.value.getCurrentBNGOrderId() != stageLimit  && entry.value.getOrderId() > entry.value.getCurrentBNGOrderId()+1}">
@@ -315,7 +319,8 @@
 									value="${entry.value.getTargetDate()}" <c:if test="${entry.value.getStatus() == 'Completed'}">
 								<c:out value="disabled='disabled'"/></c:if>"> 
 									</br> 
-									Remarks &nbsp;&nbsp;&nbsp; : <input type="text" name="remark" maxlength="500" required="required" <c:if test="${entry.value.getStatus() == 'Completed'}">
+									Remarks &nbsp;&nbsp;&nbsp; : <input type="text" name="remark" maxlength="500" required="required" value="${entry.value.getRemark()}" id="ATRemark"  
+									<c:if test="${entry.value.getStatus() == 'Completed'}">
 								<c:out value="disabled='disabled'"/></c:if>" > <br>
 								
 									<c:if test="${entry.value.getStatus() != 'Completed'}">
@@ -360,7 +365,8 @@
 									value="${entry.value.getTargetDate()}" <c:if test="${entry.value.getStatus() == 'Completed'}">
 								<c:out value="disabled='disabled'"/></c:if>">  
 									</br>  </br>
-									Remarks &nbsp;&nbsp;&nbsp; : <input type="text" name="remark" maxlength="500" required="required" <c:if test="${entry.value.getStatus() == 'Completed'}">
+									Remarks &nbsp;&nbsp;&nbsp; : <input type="text" name="remark" maxlength="500" required="required" value="${entry.value.getRemark()}" id="commissioningRemark" 
+									 <c:if test="${entry.value.getStatus() == 'Completed'}">
 								<c:out value="disabled='disabled'"/></c:if>" > <br>
 							<c:if test="${entry.value.getStatus() != 'Completed'}">
 							<input type="button" value="update" onclick="ValidateCommissioningForm()"<c:if test="${entry.value.getCurrentBNGOrderId() != stageLimit  && entry.value.getOrderId() > entry.value.getCurrentBNGOrderId()+1}">
@@ -405,7 +411,7 @@
 								<c:out value="disabled='disabled'"/></c:if>"> 
 									</br> <!-- </br> Certificate
 								&nbsp;&nbsp;&nbsp; : <a href="#"> <u> Details</u></a> </br> -->
-								Remarks &nbsp;&nbsp;&nbsp; : <input type="text" name="remark" maxlength="500" required="required" <c:if test="${entry.value.getStatus() == 'Completed'}">
+								Remarks &nbsp;&nbsp;&nbsp; : <input type="text" name="remark" maxlength="500" required <c:if test="${entry.value.getStatus() == 'Completed'}">
 								<c:out value="disabled='disabled'"/></c:if>" > <br>
 							<c:if test="${entry.value.getStatus() != 'Completed'}">
 							<input type="button" onclick="ValidateATCForm()" value="update" <c:if test="${entry.value.getCurrentBNGOrderId() != stageLimit  && entry.value.getOrderId() > entry.value.getCurrentBNGOrderId()+1}">

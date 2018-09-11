@@ -320,7 +320,9 @@ public class BngMasterDaoImpl implements IBngMasterDAO {
 	 					}
 	 					singleBNGInstAndCmsnModel.setOrderId((int) row[4]);
 	 					singleBNGInstAndCmsnModel.setBngid(row[5].toString());
-	 					singleBNGInstAndCmsnModel.setRemark(row[6].toString());
+	 					if(row[6] != null) {
+	 						singleBNGInstAndCmsnModel.setRemark(row[6].toString());
+	 					}
 	 					map.put(row[0].toString(),singleBNGInstAndCmsnModel);
 	 					System.out.println(map);
 	 				}
