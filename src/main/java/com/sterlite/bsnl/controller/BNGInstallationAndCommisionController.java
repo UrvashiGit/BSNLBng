@@ -39,19 +39,16 @@ public class BNGInstallationAndCommisionController {
 		return new ModelAndView("singleBNGSiteDetailsForIAndC","singleMap",singleBNGInstAndCmsMap);	
 	}
 	
-	
+	//1
 	@RequestMapping(value="/updateSiteSurvey", method=RequestMethod.POST)
 	 public ModelAndView updateSingleBngIAndCStatus(HttpServletRequest req, HttpServletResponse res,@ModelAttribute("SingleBNGInstAndCmsnModel")SingleBNGInstAndCmsnModel singleBNGInstAndCmsnModel){
-//		/Map<String,SingleBNGInstAndCmsnModel> singleBNGInstAndCmsMap = bngMasterService.getSingleBNGIAndCStatus(strBNGID);
+		
 		System.out.println("Inside updateSiteSurvey() ????????????"+singleBNGInstAndCmsnModel.toString());
 		
-	 /***
-	  * Code for update data inside TBLBNGINSTANDCOMMISTAGE
-	  * Auditing code 
-	  * 
-	  */
-		
+		//Update I&C Status
 		bngMasterService.updateBngINSStage(singleBNGInstAndCmsnModel);
+		
+		//Get Current detail of BNG
 		String status = bngMasterService.getBngICStageStatusByStageId(singleBNGInstAndCmsnModel.getBngid(),singleBNGInstAndCmsnModel.getOrderId());
 		String url = null;
 		if(status != null) {
@@ -62,10 +59,182 @@ public class BNGInstallationAndCommisionController {
 			}else if(status.equals("Pending")) {
 				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId();
 			}
-			
 		}
-		return new ModelAndView("redirect:/singleBNGDetails?getBNGID="+singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId()+1);
+		
+		return new ModelAndView("redirect:/singleBNGDetails?getBNGID="+url);
 	}
+	
+	//#2
+	@RequestMapping(value="/updateSiteReady", method=RequestMethod.POST)
+	 public ModelAndView updateSiteReady(HttpServletRequest req, HttpServletResponse res,@ModelAttribute("SingleBNGInstAndCmsnModel")SingleBNGInstAndCmsnModel singleBNGInstAndCmsnModel){
+		
+		System.out.println("Inside updateSiteSurvey() ????????????"+singleBNGInstAndCmsnModel.toString());
+		
+		//Update I&C Status
+		bngMasterService.updateBngINSStage(singleBNGInstAndCmsnModel);
+		
+		//Get Current detail of BNG
+		String status = bngMasterService.getBngICStageStatusByStageId(singleBNGInstAndCmsnModel.getBngid(),singleBNGInstAndCmsnModel.getOrderId());
+		String url = null;
+		if(status != null) {
+			if(status.equals("InProgress")) {
+				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId();
+			}else if(status.equals("Completed")) {
+				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId()+1;
+			}else if(status.equals("Pending")) {
+				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId();
+			}
+		}
+		
+		return new ModelAndView("redirect:/singleBNGDetails?getBNGID="+url);
+	}
+	//3
+	@RequestMapping(value="/updateMD", method=RequestMethod.POST)
+	 public ModelAndView updateMD(HttpServletRequest req, HttpServletResponse res,@ModelAttribute("SingleBNGInstAndCmsnModel")SingleBNGInstAndCmsnModel singleBNGInstAndCmsnModel){
+		
+		System.out.println("Inside updateSiteSurvey() ????????????"+singleBNGInstAndCmsnModel.toString());
+		
+		//Update I&C Status
+		bngMasterService.updateBngINSStage(singleBNGInstAndCmsnModel);
+		
+		//Get Current detail of BNG
+		String status = bngMasterService.getBngICStageStatusByStageId(singleBNGInstAndCmsnModel.getBngid(),singleBNGInstAndCmsnModel.getOrderId());
+		String url = null;
+		if(status != null) {
+			if(status.equals("InProgress")) {
+				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId();
+			}else if(status.equals("Completed")) {
+				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId()+1;
+			}else if(status.equals("Pending")) {
+				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId();
+			}
+		}
+		
+		return new ModelAndView("redirect:/singleBNGDetails?getBNGID="+url);
+	}
+	//4
+	@RequestMapping(value="/updatePowerOn", method=RequestMethod.POST)
+	 public ModelAndView updatePowerOn(HttpServletRequest req, HttpServletResponse res,@ModelAttribute("SingleBNGInstAndCmsnModel")SingleBNGInstAndCmsnModel singleBNGInstAndCmsnModel){
+		
+		System.out.println("Inside updateSiteSurvey() ????????????"+singleBNGInstAndCmsnModel.toString());
+		
+		//Update I&C Status
+		bngMasterService.updateBngINSStage(singleBNGInstAndCmsnModel);
+		
+		//Get Current detail of BNG
+		String status = bngMasterService.getBngICStageStatusByStageId(singleBNGInstAndCmsnModel.getBngid(),singleBNGInstAndCmsnModel.getOrderId());
+		String url = null;
+		if(status != null) {
+			if(status.equals("InProgress")) {
+				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId();
+			}else if(status.equals("Completed")) {
+				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId()+1;
+			}else if(status.equals("Pending")) {
+				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId();
+			}
+		}
+		
+		return new ModelAndView("redirect:/singleBNGDetails?getBNGID="+url);
+	}
+	//5
+	@RequestMapping(value="/updateNWI", method=RequestMethod.POST)
+	 public ModelAndView updateNWI(HttpServletRequest req, HttpServletResponse res,@ModelAttribute("SingleBNGInstAndCmsnModel")SingleBNGInstAndCmsnModel singleBNGInstAndCmsnModel){
+		
+		System.out.println("Inside updateSiteSurvey() ????????????"+singleBNGInstAndCmsnModel.toString());
+		
+		//Update I&C Status
+		bngMasterService.updateBngINSStage(singleBNGInstAndCmsnModel);
+		
+		//Get Current detail of BNG
+		String status = bngMasterService.getBngICStageStatusByStageId(singleBNGInstAndCmsnModel.getBngid(),singleBNGInstAndCmsnModel.getOrderId());
+		String url = null;
+		if(status != null) {
+			if(status.equals("InProgress")) {
+				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId();
+			}else if(status.equals("Completed")) {
+				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId()+1;
+			}else if(status.equals("Pending")) {
+				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId();
+			}
+		}
+		
+		return new ModelAndView("redirect:/singleBNGDetails?getBNGID="+url);
+	}
+	//6
+	@RequestMapping(value="/updateAT", method=RequestMethod.POST)
+	 public ModelAndView updateAT(HttpServletRequest req, HttpServletResponse res,@ModelAttribute("SingleBNGInstAndCmsnModel")SingleBNGInstAndCmsnModel singleBNGInstAndCmsnModel){
+		
+		System.out.println("Inside updateSiteSurvey() ????????????"+singleBNGInstAndCmsnModel.toString());
+		
+		//Update I&C Status
+		bngMasterService.updateBngINSStage(singleBNGInstAndCmsnModel);
+		
+		//Get Current detail of BNG
+		String status = bngMasterService.getBngICStageStatusByStageId(singleBNGInstAndCmsnModel.getBngid(),singleBNGInstAndCmsnModel.getOrderId());
+		String url = null;
+		if(status != null) {
+			if(status.equals("InProgress")) {
+				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId();
+			}else if(status.equals("Completed")) {
+				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId()+1;
+			}else if(status.equals("Pending")) {
+				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId();
+			}
+		}
+		
+		return new ModelAndView("redirect:/singleBNGDetails?getBNGID="+url);
+	}
+	
+	//7
+	@RequestMapping(value="/updateCommissinong", method=RequestMethod.POST)
+	 public ModelAndView updateCommissinong(HttpServletRequest req, HttpServletResponse res,@ModelAttribute("SingleBNGInstAndCmsnModel")SingleBNGInstAndCmsnModel singleBNGInstAndCmsnModel){
+		
+		System.out.println("Inside updateSiteSurvey() ????????????"+singleBNGInstAndCmsnModel.toString());
+		
+		//Update I&C Status
+		bngMasterService.updateBngINSStage(singleBNGInstAndCmsnModel);
+		
+		//Get Current detail of BNG
+		String status = bngMasterService.getBngICStageStatusByStageId(singleBNGInstAndCmsnModel.getBngid(),singleBNGInstAndCmsnModel.getOrderId());
+		String url = null;
+		if(status != null) {
+			if(status.equals("InProgress")) {
+				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId();
+			}else if(status.equals("Completed")) {
+				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId()+1;
+			}else if(status.equals("Pending")) {
+				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId();
+			}
+		}
+		
+		return new ModelAndView("redirect:/singleBNGDetails?getBNGID="+url);
+	}
+	//8
+	@RequestMapping(value="/updateATC", method=RequestMethod.POST)
+	 public ModelAndView updateATC(HttpServletRequest req, HttpServletResponse res,@ModelAttribute("SingleBNGInstAndCmsnModel")SingleBNGInstAndCmsnModel singleBNGInstAndCmsnModel){
+		
+		System.out.println("Inside updateSiteSurvey() ????????????"+singleBNGInstAndCmsnModel.toString());
+		
+		//Update I&C Status
+		bngMasterService.updateBngINSStage(singleBNGInstAndCmsnModel);
+		
+		//Get Current detail of BNG
+		String status = bngMasterService.getBngICStageStatusByStageId(singleBNGInstAndCmsnModel.getBngid(),singleBNGInstAndCmsnModel.getOrderId());
+		String url = null;
+		if(status != null) {
+			if(status.equals("InProgress")) {
+				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId();
+			}else if(status.equals("Completed")) {
+				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId()+1;
+			}else if(status.equals("Pending")) {
+				url = singleBNGInstAndCmsnModel.getBngid()+"&currentOrder="+singleBNGInstAndCmsnModel.getCurrentBNGOrderId();
+			}
+		}
+		
+		return new ModelAndView("redirect:/singleBNGDetails?getBNGID="+url);
+	}
+	//8
+	
 	
 	
 	
